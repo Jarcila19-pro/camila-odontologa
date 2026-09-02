@@ -29,6 +29,130 @@
   .deep-shadow {
     box-shadow: 0 40px 60px -15px rgba(0, 0, 0, 0.6);
   }
+  .golden-fire-container {
+    position: relative;
+    z-index: 1;
+    padding: 5px;
+    border-radius: 16px;
+    overflow: hidden;
+    isolation: isolate;
+    animation: glowPulse 3.5s ease-in-out infinite;
+  }
+  .golden-fire-container::before {
+    content: "";
+    position: absolute;
+    inset: -150%;
+    z-index: 0;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      #f8db60 40deg,
+      #c9a03c 80deg,
+      transparent 130deg,
+      transparent 180deg,
+      #f8db60 220deg,
+      #c9a03c 260deg,
+      transparent 310deg
+    );
+    animation: fireSpin 7s linear infinite;
+    will-change: transform;
+  }
+  .golden-fire-container img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    border-radius: 11px;
+  }
+}
+
+@keyframes fireSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 12px rgba(248, 219, 96, 0.11),
+      0 0 24px rgba(201, 160, 60, 0.06);
+  }
+  50% {
+    box-shadow:
+      0 0 18px rgba(248, 219, 96, 0.2),
+      0 0 40px rgba(201, 160, 60, 0.12);
+  }
+}
+
+.orbit-scene {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+.orbit3d {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+}
+.orbit3d-a {
+  width: 470px;
+  height: 470px;
+  animation: orbitSpinA 38s linear infinite;
+}
+.orbit3d-b {
+  width: 590px;
+  height: 590px;
+  animation: orbitSpinB 60s linear infinite;
+}
+.orbit-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--s, 7px);
+  height: var(--s, 7px);
+  border-radius: 50%;
+  background: #f8db60;
+  box-shadow: 0 0 10px rgba(248, 219, 96, 0.9);
+  transform: translate(-50%, -50%) rotate(var(--a, 0deg)) translateY(calc(var(--r, 235px) * -1));
+}
+.orbit-dot-b {
+  background: #c9a03c;
+}
+.orbit-dot-dim {
+  opacity: 0.55;
+}
+@keyframes orbitSpinA {
+  from {
+    transform: translate(-50%, -50%) rotateX(66deg) rotateZ(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(66deg) rotateZ(360deg);
+  }
+}
+@keyframes orbitSpinB {
+  from {
+    transform: translate(-50%, -50%) rotateX(58deg) rotateZ(180deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(58deg) rotateZ(-180deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .golden-fire-container {
+    animation: none;
+  }
+  .golden-fire-container::before {
+    animation-duration: 30s;
+  }
+  .orbit3d-a,
+  .orbit3d-b {
+    animation: none;
+  }
 }
 
 .material-symbols-outlined {
@@ -75,4 +199,10 @@
 .cascade-section {
   opacity: 0;
   transform: translateY(60px);
+}
+
+.nav-hidden {
+  transform: translate(-50%, calc(-100% - 3rem)) scale(0.96) !important;
+  opacity: 0;
+  pointer-events: none;
 }

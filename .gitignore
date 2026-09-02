@@ -2,3 +2,7 @@ node_modules/
 dist/
 .DS_Store
 *.local
+vite.log
+vite.err
+vite-dev.log
+.vite-dev.pid

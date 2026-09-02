@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Alineadores Invisibles - Dra. Camila Valencia</title>
+<link rel="icon" type="image/webp" href="/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
 <link rel="stylesheet" href="/src/styles/main.css">
 <script type="module" src="/src/js/main.js"></script>
 <style>
@@ -11,10 +12,9 @@
     appearance: none;
     width: 100%;
     height: 100%;
-    background: rgba(255,255,255,0.05);
+    background: transparent;
     outline: none;
     margin: 0;
-    transition: all .2s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,6 +28,14 @@
     background: #AF9880;
     cursor: col-resize;
     box-shadow: 0 0 20px rgba(175, 152, 128, 0.8);
+  }
+
+  #before-image {
+    transition: clip-path 0.05s linear;
+  }
+
+  #slider-handle {
+    transition: left 0.05s linear;
   }
 
   .faq-cell {
@@ -45,7 +53,7 @@
   .faq-cell:nth-child(9) { animation-delay: 2.8s; }
   @keyframes glowWave {
     0%, 100% { box-shadow: 0 0 0 1px rgba(175,152,128,0.1); }
-    12%, 20% { box-shadow: 0 0 0 1.5px rgba(175,152,128,0.6), 0 0 14px 1px rgba(175,152,128,0.15); }
+    15%, 25% { box-shadow: 0 0 0 1.5px rgba(175,152,128,0.5), 0 0 20px 2px rgba(175,152,128,0.12); }
   }
 </style>
 </head>
@@ -54,12 +62,14 @@
 <main class="relative">
   <!-- Hero -->
   <section class="relative min-h-screen overflow-hidden">
-    <div class="min-h-screen flex items-center relative overflow-hidden" style="background: radial-gradient(ellipse at 30% 50%, #0d1a24 0%, #080c10 50%, #050708 100%);">
-      <div class="max-w-7xl mx-auto px-8 w-full py-24 lg:py-0">
+    <div class="min-h-screen flex items-center relative overflow-hidden">
+      <img src="/images/bg-alineadores.webp" alt="" class="absolute inset-0 w-full h-full object-cover"/>
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="max-w-7xl mx-auto px-8 w-full py-24 lg:py-0 relative z-10">
         <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
-          <div class="w-full lg:w-5/12">
-            <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-5 leading-tight font-bold tracking-tight">Revelando la <span class="text-[#AF9880]">Ciencia</span> detrás de tu Sonrisa</h1>
-            <p class="font-body-md text-on-surface-variant max-w-md leading-relaxed">Transforma tu sonrisa con total libertad. Nuestros alineadores invisibles son tan cómodos y discretos que olvidarás que los llevas puestos.</p>
+          <div class="w-full lg:w-5/12 lg:ml-16">
+            <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl text-white mb-5 leading-tight font-bold tracking-tight">Precisión <span class="text-[#AF9880]">digital</span> para transformar tu sonrisa</h1>
+            <p class="font-body-md text-on-surface-variant max-w-md leading-relaxed">Alineadores invisibles, discretos, cómodos y diseñados para ti, con planificación digital y seguimiento personalizado.</p>
           </div>
         </div>
       </div>
@@ -86,20 +96,20 @@
         <defs>
           <clipPath id="cloudSplit">
             <path d="M0,0 
-              C80,20 140,80 220,130 
-              C300,180 360,150 440,220 
-              C520,290 580,260 660,340 
-              C740,420 800,380 880,460 
-              C960,540 1040,570 1140,630 
-              C1240,690 1340,720 1440,770 
+              C80,80 140,140 220,190 
+              C300,240 360,210 440,280 
+              C520,350 580,320 660,400 
+              C740,480 800,440 880,520 
+              C960,600 1040,630 1140,690 
+              C1240,750 1340,780 1440,800 
               L1440,0 Z"/>
           </clipPath>
         </defs>
-        <image clip-path="url(#cloudSplit)" href="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1400&q=80&fit=crop&auto=format" class="w-full h-full object-cover" preserveAspectRatio="xMidYMid slice"/>
+        <image clip-path="url(#cloudSplit)" href="/images/fondo-alineadores.webp" class="w-full h-full object-cover" preserveAspectRatio="xMidYMid slice"/>
       </svg>
     </div>
     <!-- Content at bottom-left of dark area -->
-    <div class="relative z-10 min-h-[320px] md:min-h-[420px] flex flex-col justify-end">
+    <div class="relative z-10 min-h-[360px] md:min-h-[500px] flex flex-col justify-end">
       <div class="max-w-7xl mx-auto px-8 w-full pb-4 md:pb-6">
         <div class="md:w-[55%]">
           <div class="mb-4">
@@ -153,37 +163,37 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
         <div class="group relative">
-          <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col items-center text-center hover:scale-[1.02] transition-all duration-500">
+          <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
             <h3 class="font-headline-md text-[#AF9880] mb-2">Analizar tu mordida</h3>
             <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container relative">
-              <img class="w-full h-full object-cover grayscale opacity-60 group-hover:scale-110 transition-transform duration-[3s]" alt="Escáner intraoral 3D" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl9Ctd-hNiVrjP1aIP2m10i5uja4IQ_eWftilJ9k2MrbpplA9u53v7E4LXIjWQJytB6aIiPk-DHoWsQYt84RP9ekRBIq9ZCu3oVt9J5-tGEbxwOPd-7VXabSUOfgqGqW7wthROrSprJRBbVYLpFp8a_558_0-nYLHT2zxd7JYvXNBtKM6o6YIR4_642jnoV8nVqkDdwxVAD2I_FyOa3mNCJrAGOyr0V9ik6GsIKUFXzRTt-yBga6lH-fbrVodJoFekSNL6DFw2NGqB"/>
+              <img class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Escáner intraoral 3D" src="/images/analizar tu mordida.webp"/>
             </div>
           </div>
         </div>
         <div class="group relative">
           <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col
-items-center text-center hover:scale-[1.02] transition-all duration-500">
+items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
             <h3 class="font-headline-md text-[#AF9880]">Estudiar la posición de cada diente</h3>
             <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover grayscale opacity-60 group-hover:scale-110 transition-transform duration-[3s]" alt="Diseño dental 3D" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuBsP--doKqwDxuPCmmhRX1v5pX1UuTBcF66c1nVuiiP7213y7fTtpfiJM7Co46e7Sl4Y0J3Sd6UE_iI-wnnY3gGhqDl6shjxp7Qf_rKoJluDQhdAz9YY1j0qigXQO8PxCiDZLC3t9UDV8rLu97uoSRwTU1_XV0OcYw9H7dbxq6Zu7T6SsgRH0P3jj-5w_gXKwtZQmKZiYIKgqhhzRq8PPOVUSDu8sYE3BPv_Qi5z-uvTphNBU628qtqqETTx8hghrcfPhWoQpORzP"/>
+              <img class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Diseño dental 3D" src="/images/estudiar la posicion.webp"/>
             </div>
           </div>
         </div>
         <div class="group relative">
           <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col
-items-center text-center hover:scale-[1.02] transition-all duration-500">
+items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
             <h3 class="font-headline-md text-[#AF9880]">Diseñar el movimiento dental de forma precisa</h3>
             <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover grayscale opacity-60 group-hover:scale-110 transition-transform duration-[3s]" alt="Impresión 3D alineadores" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyRUE8Lzg5QOJP4yQ15bWYTpjKin0tfnaiiBZGcjWsq5UtRZz-2yvzezf2WW3RjyFpAya-3XOiTfJV3PUdCVGKPc7JdzOGPjxfBD0KMV6EyEGcUBgo6ibeO_TEs5g1BpvUeZ8MX-3NTTXkLjlSoRLytgxuj_BaVtxMlzOGSxSI5RBkrI4k6Dr1twMFk5uMGkyd95dYtVqr_-dXDbY67gdZ5htqusDtpbeLs_eioeQCsVBDkARVqOk-Yd_V3vBNVKbffTfn2r0Jpcbs"/>
+              <img class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Impresión 3D alineadores" src="/images/movimiento.webp"/>
             </div>
           </div>
         </div>
         <div class="group relative">
           <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col
-items-center text-center hover:scale-[1.02] transition-all duration-500">
+items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
             <h3 class="font-headline-md text-[#AF9880]">Mostrarte una simulación de cómo se verá tu sonrisa al finalizar</h3>
             <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover grayscale opacity-60 group-hover:scale-110 transition-transform duration-[3s]" alt="Sonrisa perfecta" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxQszfZpqPBVlNw8QeUsNROVGWP6Refjqd2GCe__wu7oxUPCoe0rkQ8-19_lN9H5h8X4NO2YEbA_8kKkRZFgcmCis-jkhbSSjAucmclHhI6nt3z_Si5wq0TfIfYm0yGNui7fjxUnzufQYTsyfUXAAdJCj2yxn8HBHF1XrY8nktwZGup39jvtWZho19z2BStDXrXbITpOnlx6bXCFz2X9FIeyKJVP1HozjBigyH8e3BS5v5514dKozy4J7gJqPSI_36zgYeIJ2sm4M4"/>
+              <img class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Sonrisa perfecta" src="/images/sonrisa.webp"/>
             </div>
           </div>
         </div>
@@ -201,18 +211,14 @@ items-center text-center hover:scale-[1.02] transition-all duration-500">
         <h2 class="font-display-xl text-on-surface">Antes y Después</h2>
         <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto mt-4">Precisión Invisible: Compare el diseño digital predictivo con el resultado clínico real.</p>
       </div>
-      <div class="relative max-w-5xl mx-auto h-[600px] rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl group">
-        <div class="absolute inset-0 w-full h-full">
-          <img alt="Realidad" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxQszfZpqPBVlNw8QeUsNROVGWP6Refjqd2GCe__wu7oxUPCoe0rkQ8-19_lN9H5h8X4NO2YEbA_8kKkRZFgcmCis-jkhbSSjAucmclHhI6nt3z_Si5wq0TfIfYm0yGNui7fjxUnzufQYTsyfUXAAdJCj2yxn8HBHF1XrY8nktwZGup39jvtWZho19z2BStDXrXbITpOnlx6bXCFz2X9FIeyKJVP1HozjBigyH8e3BS5v5514dKozy4J7gJqPSI_36zgYeIJ2sm4M4"/>
-          <div class="absolute bottom-10 right-10 bg-[#AF9880] text-[#122838] px-6 py-2 rounded-full font-label-caps text-xs tracking-widest">REALIDAD</div>
-        </div>
-        <div class="absolute inset-0 w-1/2 h-full overflow-hidden border-r-2 border-[#AF9880]/50" id="before-image">
-          <img alt="Diseño 3D" class="absolute inset-0 w-[1024px] h-[600px] max-w-none object-cover sepia-[0.5] brightness-75" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuBsP--doKqwDxuPCmmhRX1v5pX1UuTBcF66c1nVuiiP7213y7fTtpfiJM7Co46e7Sl4Y0J3Sd6UE_iI-wnnY3gGhqDl6shjxp7Qf_rKoJluDQhdAz9YY1j0qigXQO8PxCiDZLC3t9UDV8rLu97uoSRwTU1_XV0OcYw9H7dbxq6Zu7T6SsgRH0P3jj-5w_gXKwtZQmKZiYIKgqhhzRq8PPOVUSDu8sYE3BPv_Qi5z-uvTphNBU628qtqqETTx8hghrcfPhWoQpORzP"/>
-          <div class="absolute bottom-10 left-10 bg-white/10 backdrop-blur-md text-white border border-white/20 px-6 py-2 rounded-full font-label-caps text-xs tracking-widest">DISEÑO 3D</div>
-        </div>
-        <input class="absolute inset-0 z-20 opacity-0 cursor-col-resize" id="comparison-slider" type="range" min="0" max="100" value="50" oninput="document.getElementById('before-image').style.width=this.value+'%';document.getElementById('slider-handle').style.left=this.value+'%'"/>
+      <div class="relative max-w-xl mx-auto rounded-2xl overflow-hidden border-2 border-[#AF9880]/40 shadow-2xl group">
+        <img alt="Realidad" class="w-full h-auto block" src="/images/antes1.webp"/>
+        <img alt="Diseño 3D" class="absolute top-0 left-0 w-full h-full object-contain" id="before-image" style="clip-path: inset(0 50% 0 0);" src="/images/despues2.webp"/>
+        <span class="absolute top-4 right-4 z-10 bg-[#AF9880] text-[#122838] px-4 py-1.5 rounded-full font-label-caps text-[10px] tracking-widest pointer-events-none transition-opacity duration-300" id="label-antes">ANTES</span>
+        <span class="absolute top-4 left-4 z-10 bg-[#AF9880] text-[#122838] px-4 py-1.5 rounded-full font-label-caps text-[10px] tracking-widest pointer-events-none transition-opacity duration-300 opacity-0" id="label-despues">DESPUÉS</span>
+        <input class="absolute inset-0 z-20 opacity-0 cursor-col-resize" id="comparison-slider" type="range" min="0" max="100" value="50" oninput="var v=this.value;document.getElementById('before-image').style.clipPath='inset(0 '+(100-v)+'% 0 0)';document.getElementById('slider-handle').style.left=v+'%';document.getElementById('label-antes').style.opacity=v>=50?'0':'1';document.getElementById('label-despues').style.opacity=v<=50?'0':'1'"/>
         <div class="absolute top-0 bottom-0 left-1/2 w-1 bg-[#AF9880] z-10 pointer-events-none -translate-x-1/2 shadow-[0_0_20px_rgba(175,152,128,0.8)]" id="slider-handle">
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#AF9880] rounded-full flex items-center justify-center text-[#122838] shadow-xl">
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-[#AF9880] rounded-full flex items-center justify-center text-[#122838] shadow-xl">
             <span class="material-symbols-outlined text-sm">unfold_more</span>
           </div>
         </div>
@@ -229,57 +235,57 @@ items-center text-center hover:scale-[1.02] transition-all duration-500">
     </div>
      <div class="max-w-5xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="relative group aspect-square rounded-2xl overflow-hidden glass-card">
-        <img class="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 transition-transform duration-[2s]" alt="Estilo de vida aligner" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXK0BO6XzbTGROpKBuoQUH4V15KtdfWQJ58xb7h3--i05pmoIo26Rw81hogzpWVWNtsmQEm4rsNWCrrSIbg-Ro1o5v6Z-gpHv0HX9S7FmWThfy79h3oh0t-drNXibIMWRJykpNqJeFfVtwWyU8CaL58O86eBo-eRK_MEa3m7C4RJdW8-WUqQcMfEwUynpXDqVc1MWR9b80vW-d_rsghSN_qQOKF8N-pyWpKHIUM4AMvBQcJ3xe_AffaZsfF4X3XyfukBRuF3O3vluq"/>
+        <img class="w-full h-full object-cover grayscale-[30%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Estilo de vida aligner" src="/images/imperceptibles.webp"/>
         <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent flex flex-col px-6 pt-6 pb-1">
-          <div class="mt-auto flex flex-col transition-transform duration-500 group-hover:-translate-y-10">
+          <div class="mt-auto flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-8">
             <h4 class="font-headline-md text-white">Prácticamente imperceptibles</h4>
-            <div class="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500"><p class="font-body-md text-slate-300 text-sm mt-1">La mayoría de las personas ni siquiera notará que los estás usando.            </p></div>
+            <div class="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"><p class="font-body-md text-slate-300 text-sm mt-1">La mayoría de las personas ni siquiera notará que los estás usando.            </p></div>
           </div>
         </div>
       </div>
       <div class="relative group aspect-square rounded-2xl overflow-hidden glass-card">
-        <img class="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 transition-transform duration-[2s]" alt="Mujer sonriendo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-hzMav1QTg_5vUT_CizYD_NZ32BYiYW3FdqSFg9oCtNOSizFwCnplE_sTbQ8RxpXYav96R0Eudx4VorbbrG7fv6gs7iXZtYtVs_XfD5R9L8jvnS_o2HqmyOKI0JkFg372mKJQ3CSmYbG2lvF1xaaPOTy_ZxMV3jxCux_o5B7Jort1qU-4mfyt2h1PuNLQQ-TfKsYCl7Z8_W54K6Re-IfZtN-iwmw-FyVZ6cQHJa2UxbYAuBp-12boTmnZgW61h4hvo941DoTlmH0p"/>
+        <img class="w-full h-full object-cover grayscale-[30%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Mujer sonriendo" src="/images/comodos.webp"/>
         <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent flex flex-col px-6 pt-6 pb-1">
-          <div class="mt-auto flex flex-col transition-transform duration-500 group-hover:-translate-y-10">
+          <div class="mt-auto flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-8">
             <h4 class="font-headline-md text-white">Cómodos</h4>
-            <div class="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500"><p class="font-body-md text-slate-300 text-sm mt-1">Sin alambres ni brackets que puedan generar llagas o rozaduras.            </p></div>
+            <div class="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"><p class="font-body-md text-slate-300 text-sm mt-1">Sin alambres ni brackets que puedan generar llagas o rozaduras.            </p></div>
           </div>
         </div>
       </div>
       <div class="relative group aspect-square rounded-2xl overflow-hidden glass-card">
-        <img class="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 transition-transform duration-[2s]" alt="Espacio profesional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUaZeiQ8ORMATCQCNYQSV7kVFr6SOV5-WvAQaNfxXlXLxL7iOLjFPcdr5OPo-vZNyu28oaSNLq_h3YiqiiP6WK6MGPlUoi5QYoLrkvku3HgfNmmjv2mk-z0HryBee1NSHG66t0mkOD6qVJQQcoTYAICQOXcehXdFPK3Y78AmQnfUC8WVg6L3Q4ed8vuHb1A4Xsj8g_MfVYDsEywGvSE15_PXcwGleYrEcEMD2tpZDxblR3uJib04fUJ1Hn9YbrrLoI-HrWH2jdaYAp"/>
+        <img class="w-full h-full object-cover grayscale-[30%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Espacio profesional" src="/images/removibles.webp"/>
         <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent flex flex-col px-6 pt-6 pb-1">
-          <div class="mt-auto flex flex-col transition-transform duration-500 group-hover:-translate-y-10">
+          <div class="mt-auto flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-8">
             <h4 class="font-headline-md text-white">Removibles</h4>
-            <div class="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500"><p class="font-body-md text-slate-300 text-sm mt-1">Puedes retirarlos para: Comer, Cepillarte, Usar seda dental, Eventos importantes.            </p></div>
+            <div class="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"><p class="font-body-md text-slate-300 text-sm mt-1">Puedes retirarlos para: Comer, Cepillarte, Usar seda dental, Eventos importantes.            </p></div>
           </div>
         </div>
       </div>
       <!-- row 2 -->
       <div class="relative group aspect-square rounded-2xl overflow-hidden glass-card">
-        <img class="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 transition-transform duration-[2s]" alt="Higiene dental" src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80&fit=crop&auto=format"/>
+        <img class="w-full h-full object-cover grayscale-[30%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Higiene dental" src="/images/mejor-higiene.webp"/>
         <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent flex flex-col px-6 pt-6 pb-1">
-          <div class="mt-auto flex flex-col transition-transform duration-500 group-hover:-translate-y-10">
+          <div class="mt-auto flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-8">
             <h4 class="font-headline-md text-white">Mejor higiene oral</h4>
-            <div class="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500"><p class="font-body-md text-slate-300 text-sm mt-1">Facilitan el cepillado, lo cual permite mantener una adecuada salud dental y periodontal durante el tratamiento.            </p></div>
+            <div class="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"><p class="font-body-md text-slate-300 text-sm mt-1">Facilitan el cepillado, lo cual permite mantener una adecuada salud dental y periodontal durante el tratamiento.            </p></div>
           </div>
         </div>
       </div>
       <div class="relative group aspect-square rounded-2xl overflow-hidden glass-card">
-        <img class="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 transition-transform duration-[2s]" alt="Plan digital 3D" src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=600&q=80&fit=crop&auto=format"/>
+        <img class="w-full h-full object-cover object-center grayscale-[30%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Plan digital 3D" src="/images/urgencias.webp"/>
         <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent flex flex-col px-6 pt-6 pb-1">
-          <div class="mt-auto flex flex-col transition-transform duration-500 group-hover:-translate-y-10">
+          <div class="mt-auto flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-8">
             <h4 class="font-headline-md text-white">Menos urgencias</h4>
-            <div class="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500"><p class="font-body-md text-slate-300 text-sm mt-1">No existen brackets despegados ni alambres que puedan lastimar.            </p></div>
+            <div class="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"><p class="font-body-md text-slate-300 text-sm mt-1">No existen brackets despegados ni alambres que puedan lastimar.            </p></div>
           </div>
         </div>
       </div>
       <div class="relative group aspect-square rounded-2xl overflow-hidden glass-card">
-        <img class="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 transition-transform duration-[2s]" alt="Sonrisa sin metal" src="https://images.unsplash.com/photo-1606293459334-8c5c0be1f2b6?w=600&q=80&fit=crop&auto=format"/>
+        <img class="w-full h-full object-cover grayscale-[30%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Sonrisa sin metal" src="/images/presivilidad.webp"/>
         <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent flex flex-col px-6 pt-6 pb-1">
-          <div class="mt-auto flex flex-col transition-transform duration-500 group-hover:-translate-y-10">
+          <div class="mt-auto flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-8">
             <h4 class="font-headline-md text-white">Mayor previsibilidad</h4>
-            <div class="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500"><p class="font-body-md text-slate-300 text-sm mt-1">Gracias a la planeación digital podemos visualizar el resultado antes de iniciar.            </p></div>
+            <div class="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"><p class="font-body-md text-slate-300 text-sm mt-1">Gracias a la planeación digital podemos visualizar el resultado antes de iniciar.            </p></div>
           </div>
         </div>
       </div>
@@ -290,12 +296,10 @@ items-center text-center hover:scale-[1.02] transition-all duration-500">
 
   <!-- Precision Diagnostics -->
   <section class="py-section-padding bg-surface-container relative">
-    <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center">
-      <div class="relative group">
-        <div class="absolute -inset-4 bg-[#AF9880]/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-        <div class="glass-card p-4 rounded-[2rem] border-[#AF9880]/30 relative">
-          <img class="w-full h-full rounded-[1.5rem] grayscale object-cover aspect-square" alt="Escáner intraoral" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALN_4JTXFcgtXgJqKwO0VvOk39TZI7m4Ou2jy30BNg1r35a_W7Y76ftO3eVHvN6_ZIRHbuefeCU_rzWX7NCjMM3xMhDRZfid4DNZdt260EbmtJN4S4V3rUKNGCkPklFCV9Jcss21tO1AD2pRYpDZTAHuVM0HdmuQFEW6DSCJV1VD9xcUvwVW7E47P-vaX4_UascS5R7_KscvSmXB6eUoFbhz2RJA5TeH-Q9-7lnZdq_gjBqE4nT_r5Zwsg5kndUQ82bMwaFFCYqhtw"/>
-
+    <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 lg:gap-16 gap-stack-lg items-center">
+      <div class="relative lg:ml-auto lg:mr-6">
+        <div class="glass-card p-4 max-w-sm rounded-[2rem] border-[#AF9880]/30 relative">
+          <img class="w-full h-auto rounded-[1.5rem] object-contain" alt="Cita de valoración" src="/images/QUE-INCLUYE-LA-CITA-DE-VALORACI%C3%93N-.webp"/>
         </div>
       </div>
       <div class="flex flex-col gap-8">
@@ -391,8 +395,8 @@ items-center text-center hover:scale-[1.02] transition-all duration-500">
 
     faqs.forEach(function(faq, i) {
       var cell = document.createElement('div');
-      cell.className = 'glass-card p-2 rounded-xl border border-[#AF9880]/10 hover:border-[#AF9880]/40 cursor-pointer transition-all duration-300 flex items-center justify-center text-center min-h-[60px] group';
-      cell.innerHTML = '<h5 class="font-headline-md text-xs text-white group-hover:text-[#AF9880] transition-colors leading-snug">' + faq.q + '</h5>';
+      cell.className = 'glass-card p-2 rounded-xl border border-[#AF9880]/10 hover:border-[#AF9880]/40 cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] flex items-center justify-center text-center min-h-[60px] group';
+      cell.innerHTML = '<h5 class="font-headline-md text-xs text-white group-hover:text-[#AF9880] transition-colors duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] leading-snug">' + faq.q + '</h5>';
       cell.addEventListener('click', function() {
         document.querySelectorAll('#faq-grid > div').forEach(function(c) {
           c.classList.remove('border-[#AF9880]/60', 'bg-[#AF9880]/5');

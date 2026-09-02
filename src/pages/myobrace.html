@@ -4,16 +4,14 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Myobrace - Dra. Camila Valencia</title>
+<link rel="icon" type="image/webp" href="/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
 <link rel="stylesheet" href="/src/styles/main.css">
 <script type="module" src="/src/js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" integrity="sha512-jTBMl2Y6GWRTx/VkOq/xJ6cc4gNY/z1vj5H6jnGLxbnMw4U2CQO7oxJAmYgN2U6hl4IXkLCQGLPYaf3w2KCmCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <style>
   .slider-handle { left: 50%; cursor: ew-resize; }
-  .slider-overlay { width: 50%; }
+  .slider-overlay { clip-path: inset(0 50% 0 0); }
   .hero-slide { opacity: 0; transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1); position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
   .hero-slide.active { opacity: 1; position: relative; }
-  .hero-slide .lottie-wrap { filter: drop-shadow(0 0 30px rgba(175,152,128,0.15)) drop-shadow(0 0 60px rgba(175,152,128,0.1)); transition: filter 0.6s ease; }
-  .hero-slide.active .lottie-wrap { filter: drop-shadow(0 0 40px rgba(175,152,128,0.25)) drop-shadow(0 0 80px rgba(175,152,128,0.15)); }
   .hero-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(175,152,128,0.2); border: 1px solid rgba(175,152,128,0.3); transition: all 0.5s ease; cursor: pointer; }
   .hero-dot.active { background: #AF9880; border-color: #AF9880; box-shadow: 0 0 12px rgba(175,152,128,0.5); width: 32px; border-radius: 999px; }
 </style>
@@ -21,19 +19,20 @@
 <body data-page="myobrace">
 <div id="navbar"></div>
 <!-- Hero Section - Carrusel Dinámico -->
-<section class="relative h-screen flex items-center justify-center overflow-hidden" id="hero-carousel">
-  <div class="absolute inset-0 z-0">
-    <img class="w-full h-full object-cover opacity-60 scale-105" alt="Myobrace appliance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2dQNaUp6n38aaYVHIgTqNHhdwjLMqNhHQDsakh1RR4CFctyR9J9Ee5B7rllnJa_Xhj0-FNt-5g7bRvVPkafUEGHWt7k_ON-CInsmESVyCzmaAGPWHEV9ZqgVYhinmCUfSh6Jblv_ZmT64-Bsgd9TLTihEKA6X46x8dCAq4Wrv7TX2wkK819-gbeobXtEVMyvN9VF5BWHb034TKaPHkKLr62yF3u9cJRdQ34Rkp8x_cDRGGGWQnlW3qaJgNArN2ExsEzzXf-8rNhZw"/>
-    <div class="absolute inset-0 bg-gradient-to-b from-[#122838]/40 via-[#122838]/20 to-[#122838]"></div>
+<section class="relative min-h-screen flex flex-col md:flex-row items-stretch overflow-hidden bg-[#0b1d28]" id="hero-carousel">
+  <!-- Mitad izquierda: imagen fija -->
+  <div class="w-full md:w-1/2 h-[50vh] md:h-screen relative">
+    <img class="absolute inset-0 w-full h-full object-cover" alt="Aparato Myobrace" src="/images/MYOBRACE1-.webp"/>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0b1d28]/70 via-transparent to-transparent md:hidden"></div>
+    <div class="hidden md:block absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#0b1d28] to-transparent z-10 pointer-events-none"></div>
   </div>
 
-  <!-- Slides container -->
-  <div class="relative z-10 w-full h-full flex flex-col items-center justify-center" id="slides-container">
-    <!-- Slide 1 - Problema -->
-    <div class="hero-slide active" data-index="0">
-      <div class="text-center max-w-5xl mx-auto px-gutter flex flex-col md:flex-row items-center gap-10 md:gap-16">
-        <div class="lottie-wrap w-56 h-56 md:w-72 md:h-72 shrink-0" data-lottie="https://assets-v2.lottiefiles.com/a/0c34624a-1180-11ee-9343-ebf88afb653f/XwvB33Vh2Z.json"></div>
-        <div class="text-left max-w-xl">
+  <!-- Mitad derecha: textos rotativos -->
+  <div class="w-full md:w-1/2 relative flex items-center justify-center px-gutter pt-14 pb-24 md:py-0">
+    <div class="relative w-full max-w-xl" id="slides-container">
+      <!-- Slide 1 - Problema -->
+      <div class="hero-slide active" data-index="0">
+        <div class="text-center">
           <span class="font-label-caps text-[#AF9880] mb-3 block tracking-[0.3em] text-sm">PROBLEMA</span>
           <h2 class="font-display-xl text-on-surface mb-4 leading-tight">Respiración oral y alteración funcional</h2>
           <p class="font-body-lg text-on-surface-variant leading-relaxed">
@@ -41,13 +40,10 @@
           </p>
         </div>
       </div>
-    </div>
 
-    <!-- Slide 2 - Proceso -->
-    <div class="hero-slide" data-index="1">
-      <div class="text-center max-w-5xl mx-auto px-gutter flex flex-col md:flex-row items-center gap-10 md:gap-16">
-        <div class="lottie-wrap w-56 h-56 md:w-72 md:h-72 shrink-0" data-lottie="https://assets-v2.lottiefiles.com/a/4f8e3506-1177-11ee-b8da-1b61e15d67c4/16ZfzaQ72T.json"></div>
-        <div class="text-left max-w-xl">
+      <!-- Slide 2 - Proceso -->
+      <div class="hero-slide" data-index="1">
+        <div class="text-center">
           <span class="font-label-caps text-[#AF9880] mb-3 block tracking-[0.3em] text-sm">PROCESO</span>
           <h2 class="font-display-xl text-on-surface mb-4 leading-tight">Terapia personalizada paso a paso</h2>
           <p class="font-body-lg text-on-surface-variant leading-relaxed">
@@ -55,13 +51,10 @@
           </p>
         </div>
       </div>
-    </div>
 
-    <!-- Slide 3 - Resultado -->
-    <div class="hero-slide" data-index="2">
-      <div class="text-center max-w-5xl mx-auto px-gutter flex flex-col md:flex-row items-center gap-10 md:gap-16">
-        <div class="lottie-wrap w-56 h-56 md:w-72 md:h-72 shrink-0" data-lottie="https://assets-v2.lottiefiles.com/a/a7ca6a42-1167-11ee-a6d1-cb9e0032631b/cnVis4CGm0.json"></div>
-        <div class="text-left max-w-xl">
+      <!-- Slide 3 - Resultado -->
+      <div class="hero-slide" data-index="2">
+        <div class="text-center">
           <span class="font-label-caps text-[#AF9880] mb-3 block tracking-[0.3em] text-sm">RESULTADO</span>
           <h2 class="font-display-xl text-on-surface mb-4 leading-tight">Armonía facial y sonrisa saludable</h2>
           <p class="font-body-lg text-on-surface-variant leading-relaxed">
@@ -70,13 +63,13 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Dots -->
-  <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
-    <div class="hero-dot active" data-slide="0"></div>
-    <div class="hero-dot" data-slide="1"></div>
-    <div class="hero-dot" data-slide="2"></div>
+    <!-- Dots -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+      <div class="hero-dot active" data-slide="0"></div>
+      <div class="hero-dot" data-slide="1"></div>
+      <div class="hero-dot" data-slide="2"></div>
+    </div>
   </div>
 </section>
 
@@ -87,18 +80,6 @@
   var current = 0;
   var total = slides.length;
   var interval;
-
-  function initLottie(container, url) {
-    if (typeof lottie !== 'undefined') {
-      lottie.loadAnimation({
-        container: container,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: url
-      });
-    }
-  }
 
   function goTo(index) {
     slides.forEach(function(s, i) {
@@ -116,7 +97,7 @@
 
   function startAuto() {
     stopAuto();
-    interval = setInterval(next, 6000);
+    interval = setInterval(next, 4000);
   }
 
   function stopAuto() {
@@ -129,19 +110,6 @@
       goTo(idx);
       startAuto();
     });
-    dot.addEventListener('mouseenter', stopAuto);
-    dot.addEventListener('mouseleave', startAuto);
-  });
-
-  slides.forEach(function(slide) {
-    slide.addEventListener('mouseenter', stopAuto);
-    slide.addEventListener('mouseleave', startAuto);
-  });
-
-  var lottieContainers = document.querySelectorAll('#hero-carousel .lottie-wrap');
-  lottieContainers.forEach(function(el) {
-    var url = el.dataset.lottie;
-    initLottie(el, url);
   });
 
   startAuto();
@@ -185,7 +153,7 @@
       </div>
     </div>
     <div class="order-1 md:order-2 relative aspect-square">
-      <img class="w-full h-full object-cover rounded-3xl border border-white/5 shadow-2xl" alt="Estructura craneofacial" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9sUr0qTlxMvqKsv4x-OAVl8BZbMVAGBAIb4rArl0KEiNpPdQQmq74oCu8pHG5e28ZvswLKZjcaRat6V97pDXBKR2uTONbqmJaHsXm89L7vKPca8fvFZ3BQwTovxyZv7ixkgww3AvYI02hOrpOCsBq3JrJjW56zgpT0jYPuWlhBwAYYfHTClalmoMpt_Q2XBCmHPpq5_QZVd1AMXsC_v9GHNh5tOFCHqYloFly9xGVZ3XAeMPpqecOSIbDSqQGEebk39NQZW98n0ub"/>
+      <img class="w-full h-full object-cover rounded-3xl border border-white/5 shadow-2xl" alt="Estructura craneofacial" src="/images/MYOBRACE-2.webp"/>
     </div>
   </section>
 
@@ -198,37 +166,74 @@
       <h2 class="font-headline-lg text-on-surface">Resultados de Alta Precisión</h2>
       <p class="font-body-md text-on-surface-variant mt-4">Deslice para revelar la evolución fisiológica.</p>
     </div>
-    <div class="relative w-full max-w-4xl mx-auto h-[500px] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl group" id="slider-container">
-      <img class="absolute inset-0 w-full h-full object-cover" alt="Después" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjKaI3FFmAEFxuHYbFetOaUnsiv6xMeVoyOEEoqxqgu0feMmFjwYBhM4MAoCJjBMbyBnJF52HU-Pcb0hJc3PWV4eSt0YQfBMZTBv3RLlM8nmUEPtfYAfkCNm5WDZe_7tgsMfkpCsoQhO4JsWnOWtZhotwYK856RGPmfSmUaB5cYPLzBoCd4zeQl8jX1hypAd_aUIlkPkRz5cnRAWMUh-oC19jndxRfs3NZPR8DOIrddOjKVKvI9Ugqmv94nGe2DDbrFKs-OSuQqCJs"/>
-      <div class="slider-overlay absolute inset-0 w-1/2 overflow-hidden border-r-2 border-[#AF9880] z-10" id="before-image">
-        <img class="absolute inset-0 w-[896px] h-full object-cover grayscale brightness-75" alt="Antes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAme4z8Dq6KPHuDCZ1qRTHiYwL28IFfZsn-tnaA1b-Dyu_5AmFg-Q-WmIt_wnPk76Suk96-RgLL9VxzMp3h5SThWMo3Z7BMkYgV8gZH7i2e_QEc5xsSN32sCJvqr3OiAQV8W9UQ9LkjTwrbbmf4ob7NMuymRNdlp_2rhLwCM6QFPOTzFJyXL8m7diX7WgLY2gs6KbG5ynkm3JEvOM_7Fs9rQRqSutFu7kRol18awqthpWgUo0vTt1KqrgyxICoG9qujrXVimC_lCZBS"/>
-        <div class="absolute top-8 left-8 bg-black/40 backdrop-blur-md px-4 py-1 rounded-full text-[10px] font-label-caps border border-white/10 uppercase">Antes</div>
-      </div>
-      <div class="slider-handle absolute top-0 bottom-0 w-1 bg-[#AF9880] z-20 flex items-center justify-center -translate-x-1/2" id="slider-handle">
-        <div class="w-10 h-10 rounded-full bg-[#AF9880] text-[#122838] flex items-center justify-center shadow-[0_0_20px_rgba(175,152,128,0.5)]">
-          <span class="material-symbols-outlined text-sm font-bold">unfold_more_double</span>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter max-w-5xl mx-auto">
+      <div class="ba-slider relative w-full h-[320px] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl group select-none cursor-ew-resize">
+        <img class="absolute inset-0 w-full h-full object-cover" alt="Antes" src="/images/2%20MYOBRACE%20CASO%20ANTES.webp"/>
+        <div class="slider-overlay absolute inset-0 overflow-hidden z-10">
+          <img class="absolute inset-0 w-full h-full object-cover" alt="Después" src="/images/2-MYOBRACE-CASO-DESPUES.webp"/>
+          <div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-label-caps border border-white/10 uppercase">Después</div>
         </div>
+        <div class="slider-handle absolute top-0 bottom-0 w-1 bg-[#AF9880] z-20 flex items-center justify-center -translate-x-1/2">
+          <div class="w-8 h-8 rounded-full bg-[#AF9880] text-[#122838] flex items-center justify-center shadow-[0_0_20px_rgba(175,152,128,0.5)]">
+            <span class="material-symbols-outlined text-xs font-bold">unfold_more_double</span>
+          </div>
+        </div>
+        <div class="ba-badge-before absolute top-4 right-4 bg-[#AF9880] text-[#122838] px-3 py-1 rounded-full text-[9px] font-label-caps uppercase font-bold z-20 transition-opacity duration-300">Antes</div>
       </div>
-      <div class="absolute top-8 right-8 bg-[#AF9880] text-[#122838] px-4 py-1 rounded-full text-[10px] font-label-caps uppercase font-bold z-20">Después</div>
+
+      <div class="ba-slider relative w-full h-[320px] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl group select-none cursor-ew-resize">
+        <img class="absolute inset-0 w-full h-full object-cover" alt="Antes" src="/images/1.-MYOBRACE-CASO-ANTES.webp"/>
+        <div class="slider-overlay absolute inset-0 overflow-hidden z-10">
+          <img class="absolute inset-0 w-full h-full object-cover" alt="Después" src="/images/1.-MYOBRACE-CASO-DESPUES.webp"/>
+          <div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-label-caps border border-white/10 uppercase">Después</div>
+        </div>
+        <div class="slider-handle absolute top-0 bottom-0 w-1 bg-[#AF9880] z-20 flex items-center justify-center -translate-x-1/2">
+          <div class="w-8 h-8 rounded-full bg-[#AF9880] text-[#122838] flex items-center justify-center shadow-[0_0_20px_rgba(175,152,128,0.5)]">
+            <span class="material-symbols-outlined text-xs font-bold">unfold_more_double</span>
+          </div>
+        </div>
+        <div class="ba-badge-before absolute top-4 right-4 bg-[#AF9880] text-[#122838] px-3 py-1 rounded-full text-[9px] font-label-caps uppercase font-bold z-20 transition-opacity duration-300">Antes</div>
+      </div>
     </div>
     <script>
       (function() {
-        var container = document.getElementById('slider-container');
-        if (!container) return;
-        var before = document.getElementById('before-image');
-        var handle = document.getElementById('slider-handle');
-        function moveSlider(e) {
+        document.querySelectorAll('.ba-slider').forEach(function(container) {
+          var before = container.querySelector('.slider-overlay');
+          var handle = container.querySelector('.slider-handle');
+          var badgeBefore = container.querySelector('.ba-badge-before');
+          var dragging = false;
+
+          function setPercent(clientX) {
+            var rect = container.getBoundingClientRect();
+            var x = Math.min(Math.max(clientX - rect.left, 0), rect.width);
+            var percent = (x / rect.width) * 100;
+            before.style.clipPath = 'inset(0 ' + (100 - percent) + '% 0 0)';
+            handle.style.left = percent + '%';
+            badgeBefore.style.opacity = (percent > 97) ? '0' : '1';
+          }
+
+          container.addEventListener('mousedown', function(e) {
+            dragging = true;
+            setPercent(e.clientX);
+            e.preventDefault();
+          });
+          window.addEventListener('mousemove', function(e) {
+            if (dragging) { setPercent(e.clientX); e.preventDefault(); }
+          });
+          window.addEventListener('mouseup', function() { dragging = false; });
+
+          container.addEventListener('touchstart', function(e) {
+            dragging = true;
+            setPercent(e.touches[0].clientX);
+          }, { passive: true });
+          container.addEventListener('touchmove', function(e) {
+            if (dragging) { setPercent(e.touches[0].clientX); e.preventDefault(); }
+          }, { passive: false });
+          container.addEventListener('touchend', function() { dragging = false; });
+
           var rect = container.getBoundingClientRect();
-          var pageX = e.pageX || (e.touches ? e.touches[0].pageX : 0);
-          var x = pageX - rect.left;
-          if (x < 0) x = 0;
-          if (x > rect.width) x = rect.width;
-          var percent = (x / rect.width) * 100;
-          before.style.width = percent + '%';
-          handle.style.left = percent + '%';
-        }
-        container.addEventListener('mousemove', moveSlider);
-        container.addEventListener('touchmove', moveSlider);
+          setPercent(rect.left + rect.width / 2);
+        });
       })();
     </script>
   </section>
@@ -243,7 +248,7 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
       <div class="md:col-span-8 relative overflow-hidden rounded-3xl glass-card group">
-        <img class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" alt="Perfil facial" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgzs8-wAEqDXOYjTtbGdXHTCTYYeIwEC2uUQBiAoijBHmg4ROwGrZb21Snakxla17W6WX2EmHldA0Zwcfg9uMEDTcPSL9-aVVj0Ov04MbTdUIiQcRch0Wgm3e5s37hBdfP_TwcYj2WxUA9wZjI9sdLvXZWX_MYYOkc3sO-miPh5RzWorg1Do0E73eRpUKKTQj5ZTKA0LZG6i3DbAtuFKCcJsiodCXwnK4Tu8pIszqT_v8LYmbvs2qzDzrnAXZ4IqkjikPgsf7WQbMx"/>
+        <img class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" alt="Perfil facial" src="/images/QUE%20ES%20MYOBRACE%20.webp"/>
         <div class="absolute bottom-8 left-8">
           <h3 class="font-headline-md mb-2 text-[#AF9880]">¿Qué es?</h3>
           <p class="font-label-caps text-on-surface">Es la fisioterapia de la boca y la respiración. Enseña al paciente a usar correctamente los músculos de la lengua, labios, mejillas y mandíbula, y restablece la respiración nasal adecuada.</p>

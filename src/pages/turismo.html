@@ -4,8 +4,45 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Turismo Dental - Dra. Camila Valencia</title>
+<link rel="icon" type="image/webp" href="/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
 <link rel="stylesheet" href="/src/styles/main.css">
 <script type="module" src="/src/js/main.js"></script>
+<style>
+  .hotel-slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; z-index: 1; }
+  .hotel-slide.active { opacity: 1; pointer-events: auto; z-index: 2; }
+  .hotel-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(175,152,128,0.2); border: 1px solid rgba(175,152,128,0.3); transition: all 0.5s ease; cursor: pointer; }
+  .hotel-dot.active { background: #AF9880; border-color: #AF9880; box-shadow: 0 0 12px rgba(175,152,128,0.5); width: 32px; border-radius: 999px; }
+
+  /* Hotel Modal — slide-up sheet */
+  #hotel-modal { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1); }
+  #hotel-modal.is-open { opacity: 1; pointer-events: auto; }
+  #hotel-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0); backdrop-filter: blur(0); transition: all 0.5s cubic-bezier(0.22,1,0.36,1); }
+  #hotel-modal.is-open #hotel-modal-backdrop { background: rgba(0,0,0,0.65); backdrop-filter: blur(12px); }
+  #hotel-sheet { position: relative; width: 100%; max-width: 42rem; max-height: 80vh; background: #1c1b19; border: 1px solid rgba(175,152,128,0.15); border-radius: 2rem; overflow: hidden; transform: translateY(30px) scale(0.97); opacity: 0; transition: all 0.55s cubic-bezier(0.22,1,0.36,1); display: flex; flex-direction: column; }
+  #hotel-modal.is-open #hotel-sheet { transform: translateY(0) scale(1); opacity: 1; }
+  #hotel-sheet-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 1.5rem 2rem 2rem; -ms-overflow-style: none; scrollbar-width: none; }
+  #hotel-sheet-body::-webkit-scrollbar { display: none; }
+  .hotel-sheet-handle { width: 36px; height: 4px; border-radius: 999px; background: rgba(175,152,128,0.35); margin: 0.75rem auto 0; cursor: grab; }
+  .hotel-gallery-scroll { display: flex; gap: 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding-bottom: 0.5rem; -ms-overflow-style: none; scrollbar-width: none; }
+  .hotel-gallery-scroll::-webkit-scrollbar { display: none; }
+  .hotel-gallery-scroll > div { scroll-snap-align: start; flex: 0 0 85%; min-width: 0; }
+  @media (min-width: 768px) { .hotel-gallery-scroll > div { flex: 0 0 70%; } }
+  .hotel-sheet-close { position: sticky; top: 0; float: right; z-index: 10; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: rgba(28,27,25,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(175,152,128,0.2); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.3s, transform 0.3s; }
+  .hotel-sheet-close:hover { border-color: #AF9880; transform: rotate(90deg); }
+
+  /* Destinos Modal */
+  #destino-modal-backdrop { position: fixed; inset: 0; z-index: 59; background: rgba(0,0,0,0); backdrop-filter: blur(0); transition: all 0.5s cubic-bezier(0.22,1,0.36,1); }
+  #destino-modal.is-open #destino-modal-backdrop { background: rgba(0,0,0,0.65); backdrop-filter: blur(12px); }
+  #destino-modal { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1); }
+  #destino-modal.is-open { opacity: 1; pointer-events: auto; }
+  #destino-sheet { position: relative; width: 100%; max-width: 42rem; max-height: 80vh; background: #1c1b19; border: 1px solid rgba(175,152,128,0.15); border-radius: 2rem; overflow: hidden; transform: translateY(30px) scale(0.97); opacity: 0; transition: all 0.55s cubic-bezier(0.22,1,0.36,1); display: flex; flex-direction: column; }
+  #destino-modal.is-open #destino-sheet { transform: translateY(0) scale(1); opacity: 1; }
+  #destino-sheet-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 1.5rem 2rem 2rem; -ms-overflow-style: none; scrollbar-width: none; }
+  #destino-sheet-body::-webkit-scrollbar { display: none; }
+  .destino-sheet-handle { width: 36px; height: 4px; border-radius: 999px; background: rgba(175,152,128,0.35); margin: 0.75rem auto 0; cursor: grab; }
+  .destino-sheet-close { position: sticky; top: 0; float: right; z-index: 10; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: rgba(28,27,25,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(175,152,128,0.2); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.3s, transform 0.3s; }
+  .destino-sheet-close:hover { border-color: #AF9880; transform: rotate(90deg); }
+</style>
 </head>
 <body data-page="turismo">
 <div id="navbar"></div>
@@ -21,7 +58,10 @@
       <h1 class="font-display-xl text-on-surface mb-stack-md italic leading-tight">Tú experiencia comienza en Medellín.</h1>
       <p class="font-body-lg text-font-white max-w-2xl mx-auto opacity-80">Diseñamos una experiencia cómoda y personalizada para pacientes nacionales e internacionales. Integramos bienestar, tecnología y acompañamiento en cada etapa de su tratamiento.</p>
       <div class="mt-stack-lg flex justify-center">
-        <button class="bg-transparent border border-tertiary text-tertiary px-10 py-4 rounded-full font-label-caps hover:shadow-[0_0_30px_rgba(175,152,128,0.5)] transition-all">Tu experiencia comienza en Medellín</button>
+        <button class="relative border border-tertiary text-tertiary px-10 py-4 rounded-full font-label-caps overflow-hidden group transition-colors duration-500">
+          <span class="absolute inset-y-0 left-0 w-0 bg-tertiary group-hover:w-full transition-all duration-500 ease-in-out"></span>
+          <span class="relative z-10 group-hover:text-primary-container transition-colors duration-500">Tu experiencia comienza en Medellín</span>
+        </button>
       </div>
     </div>
   </section>
@@ -30,10 +70,10 @@
 
   <!-- VIP Journey -->
   <section class="py-section-padding container mx-auto px-gutter max-w-container-max">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
-      <div class="md:col-span-5 space-y-stack-md">
-        <div class="w-12 h-1 bg-tertiary mb-base"></div>
-        <h2 class="font-headline-lg text-[#AF9880]">La Experiencia VIP</h2>
+    <div class="flex flex-col md:flex-row items-center justify-between gap-stack-lg">
+      <div class="max-w-xl space-y-stack-md md:ml-20">
+        <div class="w-12 h-1 bg-tertiary mb-base mx-auto"></div>
+        <h2 class="font-headline-lg text-[#AF9880] text-center">La Experiencia VIP</h2>
         <p class="font-body-lg text-on-surface-variant">Nuestro equipo de concierge orquesta cada detalle de su visita, asegurando una transición fluida desde su hogar hasta nuestras instalaciones clínicas de vanguardia.</p>
         <ul class="space-y-stack-sm">
           <li class="flex items-start gap-4">
@@ -59,28 +99,275 @@
           </li>
         </ul>
       </div>
-      <div class="md:col-span-7 grid grid-cols-2 gap-4">
-        <div class="space-y-4 pt-12">
-          <div class="glass-card rounded-3xl overflow-hidden h-80">
-            <img alt="Suite de lujo" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI0giYr1zXKJ5Bp7-0SYNTzf9VaXpxsynHn1uUaU44SnyLgzYuGD97mGXUDD_8DJx5o8j933U8vBxM_-PXjAkPOqE7C1eBMHVhlOdx5HccMMRE16gJwnbT9W14I_uMWf2NrRFj7rlGCZbFIyfxkcvdd0BSrw9zqYvRonzlXxfvYxwHQ6H44CjgGAgNZBTEGf2jS8OIXKYGOF-p_cG47okbuz5xPRpHJzDmjNhuw1eC73UHhfZioPZ1TgxEt0WFxrbJjNtFf11GRQQw"/>
+      <div class="relative w-full max-w-[400px] shrink-0 md:mr-20">
+        <div id="hoteles-carousel" class="relative w-full h-[420px] md:h-[540px] overflow-hidden rounded-[2rem] glass-card">
+          <!-- Slide 1 -->
+          <div class="hotel-slide active" data-index="0">
+            <img alt="Hotel Estelar" class="w-full h-full object-cover opacity-80" src="/images/hotel%20estelar.webp"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <span class="font-label-caps text-[#AF9880] text-[10px] tracking-[0.25em] block">HOSPEDAJE RECOMENDADO</span>
+              <h3 class="font-headline-md text-on-surface mt-1">Hotel Estelar</h3>
+            </div>
           </div>
-          <div class="glass-card p-stack-sm rounded-3xl border-tertiary/20">
-            <span class="font-label-caps text-tertiary text-[10px]">CALIDAD DE SERVICIO</span>
-            <div class="text-2xl font-headline-md text-on-surface">Estándar 7 Estrellas</div>
+          <!-- Slide 2 -->
+          <div class="hotel-slide" data-index="1">
+            <img alt="Hotel Portón" class="w-full h-full object-cover opacity-80" src="/images/hotel%20porton.webp"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <span class="font-label-caps text-[#AF9880] text-[10px] tracking-[0.25em] block">HOSPEDAJE RECOMENDADO</span>
+              <h3 class="font-headline-md text-on-surface mt-1">Hotel Portón</h3>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="hotel-slide" data-index="2">
+            <img alt="Hotel Santa Ana" class="w-full h-full object-cover opacity-80" src="/images/hotel%20santa%20ana.webp"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <span class="font-label-caps text-[#AF9880] text-[10px] tracking-[0.25em] block">HOSPEDAJE RECOMENDADO</span>
+              <h3 class="font-headline-md text-on-surface mt-1">Hotel Santa Ana</h3>
+            </div>
           </div>
         </div>
-        <div class="space-y-4">
-          <div class="glass-card p-stack-sm rounded-3xl border-tertiary/20">
-            <span class="font-label-caps text-tertiary text-[10px]">TRANSPORTE</span>
-            <div class="text-2xl font-headline-md text-on-surface">Chófer Ejecutivo</div>
-          </div>
-          <div class="glass-card rounded-3xl overflow-hidden h-80">
-            <img alt="Vehículo ejecutivo" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIs17TlkBvUO-iY_yqlCk0mPN-4RElQ0BTZ-yv-SmUBglqxFa-PL6Hd2tMS2rKHkBTNtEpSfaMv8fnZC9SGYfeR6oyQPZzmd8XLRkUd_pl_xoHCecqXxX6u-spXvfR07V4l_wJ8x7xeTJUnAbOtUVI7P9cwNz7FSa6ba3NB2_IJC-HR9Is69Qmz-n0EyxdXPzS7I6Bc2W2l5LISp7asXXsSlsQJMj-5GWyT-YECAUcY7aARFDEzYlJABzGVYm4zsiYGPQRdVgW0zLw"/>
-          </div>
+        <div class="flex justify-center items-center gap-3 mt-4">
+          <div class="hotel-dot active" data-slide="0"></div>
+          <div class="hotel-dot" data-slide="1"></div>
+          <div class="hotel-dot" data-slide="2"></div>
+        </div>
+
+        <!-- Controles: atrás / ver más / siguiente -->
+        <div class="flex items-center justify-center gap-4 mt-6">
+          <button id="hoteles-prev" class="flex items-center gap-2 border border-[#AF9880]/40 text-on-surface px-6 py-3 rounded-full font-label-caps text-xs tracking-widest hover:border-[#AF9880] hover:text-[#AF9880] transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-sm">arrow_back</span>ATRÁS
+          </button>
+          <button id="hoteles-vermas" class="bg-[#AF9880] text-primary-container px-8 py-3 rounded-full font-label-caps text-xs tracking-widest hover:scale-105 transition-transform cursor-pointer">VER MÁS</button>
+          <button id="hoteles-next" class="flex items-center gap-2 border border-[#AF9880]/40 text-on-surface px-6 py-3 rounded-full font-label-caps text-xs tracking-widest hover:border-[#AF9880] hover:text-[#AF9880] transition-all cursor-pointer">
+            SIGUIENTE<span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
         </div>
       </div>
     </div>
   </section>
+
+<div id="hotel-modal">
+  <div id="hotel-modal-backdrop"></div>
+  <div id="hotel-sheet">
+    <div class="hotel-sheet-handle"></div>
+    <div id="hotel-sheet-body">
+      <button id="hotel-modal-close" class="hotel-sheet-close">
+        <span class="material-symbols-outlined text-[#AF9880] text-sm">close</span>
+      </button>
+      <span class="font-label-caps text-[#AF9880] text-[10px] tracking-[0.25em] block mb-1">HOSPEDAJE RECOMENDADO</span>
+      <h3 id="hotel-modal-title" class="font-headline-lg text-on-surface mb-3"></h3>
+      <p id="hotel-modal-desc" class="font-body-md text-on-surface-variant leading-relaxed"></p>
+      <ul id="hotel-modal-features" class="mt-4 mb-5 space-y-2"></ul>
+      <div id="hotel-modal-gallery" class="hotel-gallery-scroll"></div>
+      <a id="hotel-modal-wa" href="#" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-label-caps text-xs tracking-widest hover:scale-[1.03] transition-transform">
+        <span class="material-symbols-outlined text-base">chat</span>
+        <span>RESERVAR E INTERESADO POR WHATSAPP</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="destino-modal">
+  <div id="destino-modal-backdrop"></div>
+  <div id="destino-sheet">
+    <div class="destino-sheet-handle"></div>
+    <div id="destino-sheet-body">
+      <button id="destino-modal-close" class="destino-sheet-close">
+        <span class="material-symbols-outlined text-[#AF9880] text-sm">close</span>
+      </button>
+      <span class="font-label-caps text-[#AF9880] text-[10px] tracking-[0.25em] block mb-1">DESTINO RECOMENDADO</span>
+      <h3 id="destino-modal-title" class="font-headline-lg text-on-surface mb-3"></h3>
+      <p id="destino-modal-desc" class="font-body-md text-on-surface-variant leading-relaxed"></p>
+      <div id="destino-modal-tags" class="mt-4 flex flex-wrap gap-2"></div>
+    </div>
+  </div>
+</div>
+
+  <script>
+    (function() {
+      var slides = document.querySelectorAll('#hoteles-carousel .hotel-slide');
+      var dots = document.querySelectorAll('.hotel-dot');
+      var current = 0;
+
+      var hoteles = [
+        {
+          id: 'estelar',
+          nombre: 'Hotel Estelar',
+          desc: 'Ubicado en una de las zonas más exclusivas de Medellín, combina confort, gastronomía de autor y vistas panorámicas a la ciudad. Ideal para una recuperación tranquila y rodeada de comodidades.',
+          features: ['Habitaciones ejecutivas y suites', 'Restaurante y room service', 'Zona húmeda y gimnasio', 'Cercano a clínicas y restaurantes'],
+          imagenes: [
+            { src: '/images/hoteles/estelar/estelar-square-barc.webp', desc: 'Bar' },
+            { src: '/images/hoteles/estelar/estelar-square-piscinaf.webp', desc: 'Piscina' },
+            { src: '/images/hoteles/estelar/estelar-square-roomb.webp', desc: 'Habitación' }
+          ]
+        },
+        {
+          id: 'porton',
+          nombre: 'Hotel Portón',
+          desc: 'Hospitalidad cálida y ubicación estratégica para tu experiencia clínica. Sus espacios tranquilos y su atención personalizada hacen de tu estadía un momento de descanso total.',
+          features: ['Ambiente boutique y familiar', 'Desayuno incluido', 'Transporte privado disponible', 'Zonas verdes y terraza'],
+          imagenes: [
+            { src: '/images/hoteles/porton/unnamed.webp', desc: 'Habitación' },
+            { src: '/images/hoteles/porton/496986815.webp', desc: 'Suite' },
+            { src: '/images/hoteles/porton/496986048.webp', desc: 'Zonas comunes' }
+          ]
+        },
+        {
+          id: 'santa-ana',
+          nombre: 'Hotel Santa Ana',
+          desc: 'En el corazón financiero de El Poblado, a pocos minutos de la clínica. Perfecto para estancias cortas con estándares internacionales y fácil acceso a todo lo que necesitas.',
+          features: ['Ubicación privilegiada en El Poblado', 'Wi-Fi de alta velocidad', 'Recepción 24 horas', 'A pasos de cafés y restaurantes'],
+          imagenes: [
+            { src: '/images/hoteles/santa-ana/unnamed.webp', desc: 'Habitación' },
+            { src: '/images/hoteles/santa-ana/SANTA ANA.webp', desc: 'Suite' },
+            { src: '/images/hoteles/santa-ana/SANTA ANA COCINA.webp', desc: 'Cocina' }
+          ]
+        }
+      ];
+
+      var BASE = '/odontologia-medellin';
+      var manifesto = null;
+
+      function cargarManifesto() {
+        if (manifesto) return Promise.resolve(manifesto);
+        return fetch(BASE + '/images/hoteles/hoteles.json')
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .catch(function() { return null; })
+          .then(function(j) { manifesto = j; return j; });
+      }
+
+      function describirArchivo(archivo) {
+        var t = archivo.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ').trim();
+        return t.charAt(0).toUpperCase() + t.slice(1);
+      }
+
+      var animating = false;
+
+      function goTo(index, dir) {
+        if (index === current || animating) return;
+        dir = dir || 1;
+        var out = slides[current];
+        var inc = slides[index];
+        animating = true;
+
+        dots[current].classList.remove('active');
+        dots[index].classList.add('active');
+
+        inc.style.transition = 'none';
+        inc.style.transform = 'translateX(' + (dir > 0 ? 100 : -100) + '%)';
+        inc.classList.add('active');
+        void inc.offsetWidth;
+        inc.style.transition = 'transform 0.65s cubic-bezier(0.33, 1, 0.68, 1)';
+        inc.style.transform = 'translateX(0)';
+
+        setTimeout(function() {
+          out.classList.remove('active');
+          out.style.transition = '';
+          out.style.transform = '';
+          inc.style.transition = '';
+          inc.style.transform = '';
+          animating = false;
+        }, 680);
+
+        current = index;
+      }
+
+      dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() { goTo(i, i > current ? 1 : -1); });
+      });
+
+      document.getElementById('hoteles-prev').addEventListener('click', function() {
+        goTo((current - 1 + slides.length) % slides.length, -1);
+      });
+      document.getElementById('hoteles-next').addEventListener('click', function() {
+        goTo((current + 1) % slides.length, 1);
+      });
+
+      var modal = document.getElementById('hotel-modal');
+
+      function openModal() {
+        var h = hoteles[current];
+        document.getElementById('hotel-modal-title').textContent = h.nombre;
+        document.getElementById('hotel-modal-desc').textContent = h.desc;
+        var wa = document.getElementById('hotel-modal-wa');
+        var msg = 'Hola, me interesa el hospedaje recomendado ' + h.nombre + '. ¿Pueden darme más información?';
+        wa.href = 'https://wa.me/573160427231?text=' + encodeURIComponent(msg);
+        var ul = document.getElementById('hotel-modal-features');
+        ul.innerHTML = '';
+        h.features.forEach(function(f) {
+          var li = document.createElement('li');
+          li.className = 'flex items-start gap-2 text-sm text-on-surface-variant';
+          li.innerHTML = '<span class="material-symbols-outlined text-[#AF9880] text-base shrink-0">check</span>' + f;
+          ul.appendChild(li);
+        });
+
+        var gal = document.getElementById('hotel-modal-gallery');
+        gal.innerHTML = '';
+        var body = document.getElementById('hotel-sheet-body');
+        body.scrollTop = 0;
+
+        cargarManifesto().then(function(m) {
+          var items;
+          if (m && h.id && m[h.id] && m[h.id].length) {
+            items = m[h.id].map(function(a) {
+              return { src: BASE + '/images/hoteles/' + h.id + '/' + a, desc: describirArchivo(a) };
+            });
+          } else {
+            items = h.imagenes || [];
+          }
+          items.forEach(function(img) {
+            var wrap = document.createElement('div');
+            wrap.className = 'rounded-2xl overflow-hidden border border-white/10 bg-surface-container-low aspect-[4/3]';
+            var im = document.createElement('img');
+            im.src = img.src;
+            im.alt = img.desc;
+            im.loading = 'lazy';
+            im.className = 'w-full h-full object-cover';
+            im.onerror = function() { wrap.style.display = 'none'; };
+            wrap.appendChild(im);
+            gal.appendChild(wrap);
+          });
+        });
+
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('hoteles-vermas').addEventListener('click', openModal);
+      document.getElementById('hotel-modal-close').addEventListener('click', closeModal);
+      document.getElementById('hotel-modal-backdrop').addEventListener('click', closeModal);
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+      // Swipe-down on the handle to close
+      (function() {
+        var sheet = document.getElementById('hotel-sheet');
+        var handle = sheet.querySelector('.hotel-sheet-handle');
+        var startY = 0, currentY = 0, dragging = false;
+        handle.addEventListener('touchstart', function(e) { startY = e.touches[0].clientY; dragging = true; }, { passive: true });
+        document.addEventListener('touchmove', function(e) {
+          if (!dragging) return;
+          currentY = e.touches[0].clientY;
+          var diff = currentY - startY;
+          if (diff > 0) sheet.style.transform = 'translateY(' + diff + 'px)';
+        }, { passive: true });
+        document.addEventListener('touchend', function() {
+          if (!dragging) return;
+          dragging = false;
+          var diff = currentY - startY;
+          if (diff > 80) { closeModal(); }
+          sheet.style.transform = '';
+        });
+      })();
+    })();
+  </script>
 
   <div class="gold-divider w-full"></div>
 
@@ -95,44 +382,41 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-stack-lg">
         <div class="relative group cursor-pointer rounded-3xl overflow-hidden glass-card">
           <div class="aspect-[16/9] relative">
-            <img alt="Antes" class="w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4coDu40Eoz8xK3kigV1r0hByiI-CyCEz8y5O838goGt5_Cepi2eg9P9yafpNgvQUQ-5i0-phWrYU8nnWEK6UR39W933g2GIQlWBiPt0OBCqSHl4Cto0BEqDncQ6Rdo6EkPfD4DVMKSGn4z9o_S95DJ0ko-I_lBDme6GfuFKNPHEJpTuTnnHIX0Uyc69I86gIDnvrW1nZaKPMD1gT664b-CCvbYtIVjF901nrkX249BAtgOuMMyPDKCDgSY4xKBbuXKVinAGVdfl30"/>
+            <img alt="Antes" class="w-full h-full object-cover" src="/images/imagen-1-antes.webp"/>
             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[#122838]/60">
-              <img alt="Después" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw2cX3gtBbc3J4U6z5y-HxsxnJOrgN2oQG2r2kGfo4JmfX3ipPppg1x4SUwCNKZc9PgmrXyjgD_PuEgW9KumRWfE2KoG7w2bOdW1QO-tCwctt0d5gzZPll3UThnvnk9BFPhQMm8v2cnx7L8AbFpU-_omlUqdL7p4pPwcTevb8m1UBJ2LautYtKeAATbcF1oe1x2ZbzQplOHwRm6WlqWB-LNJ29oMIeIc_J0CCbepNzxKz059HbmLJqVNf9oZZNtuvRQGn_6qxiEPPe"/>
+              <img alt="Después" class="w-full h-full object-cover" src="/images/imagen-1-despues.webp"/>
             </div>
             <div class="absolute top-4 left-4 bg-surface/80 px-4 py-1 rounded-full text-[10px] font-label-caps text-tertiary border border-tertiary/20">ANTES</div>
             <div class="absolute top-4 right-4 bg-tertiary px-4 py-1 rounded-full text-[10px] font-label-caps text-primary-container shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">DESPUÉS</div>
           </div>
           <div class="p-stack-sm text-center">
             <h4 class="font-headline-md text-on-surface text-xl">Diseño Cerámico (Disilicato de Litio)</h4>
-            <p class="text-sm text-on-surface-variant">Paciente de Londres, Reino Unido</p>
           </div>
         </div>
         <div class="relative group cursor-pointer rounded-3xl overflow-hidden glass-card">
           <div class="aspect-[16/9] relative">
-            <img alt="Antes" class="w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4coDu40Eoz8xK3kigV1r0hByiI-CyCEz8y5O838goGt5_Cepi2eg9P9yafpNgvQUQ-5i0-phWrYU8nnWEK6UR39W933g2GIQlWBiPt0OBCqSHl4Cto0BEqDncQ6Rdo6EkPfD4DVMKSGn4z9o_S95DJ0ko-I_lBDme6GfuFKNPHEJpTuTnnHIX0Uyc69I86gIDnvrW1nZaKPMD1gT664b-CCvbYtIVjF901nrkX249BAtgOuMMyPDKCDgSY4xKBbuXKVinAGVdfl30"/>
+            <img alt="Antes" class="w-full h-full object-cover" src="/images/imagen-2-antes.webp"/>
             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[#122838]/60">
-              <img alt="Después" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw2cX3gtBbc3J4U6z5y-HxsxnJOrgN2oQG2r2kGfo4JmfX3ipPppg1x4SUwCNKZc9PgmrXyjgD_PuEgW9KumRWfE2KoG7w2bOdW1QO-tCwctt0d5gzZPll3UThnvnk9BFPhQMm8v2cnx7L8AbFpU-_omlUqdL7p4pPwcTevb8m1UBJ2LautYtKeAATbcF1oe1x2ZbzQplOHwRm6WlqWB-LNJ29oMIeIc_J0CCbepNzxKz059HbmLJqVNf9oZZNtuvRQGn_6qxiEPPe"/>
+              <img alt="Después" class="w-full h-full object-cover" src="/images/imagen-2-despues.webp"/>
             </div>
             <div class="absolute top-4 left-4 bg-surface/80 px-4 py-1 rounded-full text-[10px] font-label-caps text-tertiary border border-tertiary/20">ANTES</div>
             <div class="absolute top-4 right-4 bg-tertiary px-4 py-1 rounded-full text-[10px] font-label-caps text-primary-container shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">DESPUÉS</div>
           </div>
           <div class="p-stack-sm text-center">
             <h4 class="font-headline-md text-on-surface text-xl">Rehabilitaciones Orales Estéticas Integrales</h4>
-            <p class="text-sm text-on-surface-variant">Paciente de São Paulo, Brasil</p>
           </div>
         </div>
         <div class="relative group cursor-pointer rounded-3xl overflow-hidden glass-card">
           <div class="aspect-[16/9] relative">
-            <img alt="Antes" class="w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0fttm_u3-SXfwgcdIe3hqIYc8ByE0yFYYqSHmRxlTPRu7rk50Ci70l86-CJwnm04UluewRlg7F9QCPTjL_lKdH0qv2nUC2qZdU5uLGvPXEPKWTQ4B_8nHQRAbGBq3z1r3wXTzPhrh-QOnWJip0MIwZ1JUmLIfGcZfk8KOttEXLCM_91leaOFQC6cA7rmi5d3OkVZiB6H3k_M3JZ68msUKRo3zCjtgUgYZ7LcO_9VFS-4cLYz3JLCJIbRyzA4t8_NrYHw6fJDWr6IH"/>
+            <img alt="Antes" class="w-full h-full object-cover" src="/images/imagen-3-antes.webp"/>
             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[#122838]/60">
-              <img alt="Después" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1gD6eOtziFmoz25IJTo50pbkVC44WqJyiknQoj1pG0WZBPQsNsnlIsTqFNvtjLf7_rbQv7v-2KbE649iYiGjd7vd6jpLxcnPF_d2bgqXAge4WxQEmYnPG9bbMsI6Sr2FAa4yj98uCyTm2Q3SUmb9zi-hqUvn177zYttfVH_rOBwotcJ0nsQ0llFaC_Ay5O6QeoN41o0gPPpYafb4clgDgSTKp0KdMhJMvAxiI1l60czQRnR-8mY0ZnSd72AuqjT1Z1muNi63qnAQ-"/>
+              <img alt="Después" class="w-full h-full object-cover" src="/images/imagen-3-despues.webp"/>
             </div>
             <div class="absolute top-4 left-4 bg-surface/80 px-4 py-1 rounded-full text-[10px] font-label-caps text-tertiary border border-tertiary/20">ANTES</div>
             <div class="absolute top-4 right-4 bg-tertiary px-4 py-1 rounded-full text-[10px] font-label-caps text-primary-container shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">DESPUÉS</div>
           </div>
           <div class="p-stack-sm text-center">
-            <h4 class="font-headline-md text-on-surface text-xl">Diseño en Resina 3D Impresa</h4>
-            <p class="text-sm text-on-surface-variant">Paciente de Florida, USA</p>
+            <h4 class="font-headline-md text-on-surface text-xl">Diseño en Resina<br>3D Impresa</h4>
           </div>
         </div>
       </div>
@@ -155,17 +439,17 @@
         <div class="glass-card p-gutter rounded-3xl group hover:border-tertiary transition-all duration-500 text-center">
           <span class="material-symbols-outlined text-4xl text-tertiary mb-stack-sm block">connected_tv</span>
           <h3 class="font-headline-md text-tertiary mb-base">Valoración Digital</h3>
-          <p class="font-body-md text-on-surface-variant">Analizamos tu caso de manera remota para diseñar un plan de tratamiento personalizado desde el primer contacto.</p>
+          <p class="font-body-md text-on-surface-variant">Analizamos tu caso a distancia y diseñamos un plan personalizado antes de tu viaje.</p>
         </div>
         <div class="glass-card p-gutter rounded-3xl group hover:border-tertiary transition-all duration-500 text-center">
           <span class="material-symbols-outlined text-4xl text-tertiary mb-stack-sm block">biotech</span>
-          <h3 class="font-headline-md text-tertiary mb-base">Monitoreo virtual</h3>
-          <p class="font-body-md text-on-surface-variant"></p>
+          <h3 class="font-headline-md text-tertiary mb-base">Monitoreo Virtual</h3>
+          <p class="font-body-md text-on-surface-variant">Acompañamiento digital antes, durante y después de tu tratamiento.</p>
         </div>
         <div class="glass-card p-gutter rounded-3xl group hover:border-tertiary transition-all duration-500 text-center">
           <span class="material-symbols-outlined text-4xl text-tertiary mb-stack-sm block">security</span>
           <h3 class="font-headline-md text-tertiary mb-base">Atención Internacional</h3>
-          <p class="font-body-md text-on-surface-variant">Protocolos digitales para una experiencia rápida, segura y cómoda para pacientes internacionales.</p>
+          <p class="font-body-md text-on-surface-variant">Coordinamos tu experiencia dental para que tu visita sea segura, cómoda y eficiente.</p>
         </div>
       </div>
     </div>
@@ -184,59 +468,35 @@
       <div class="relative w-0 flex-grow group overflow-hidden hover:w-[300px] transition-all duration-500 ease-in-out">
         <img alt="Medellín" class="w-full h-full object-cover brightness-[0.35] group-hover:brightness-[0.5] transition-all duration-500" src="/images/medellin.webp"/>
         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:translate-y-0 translate-y-4 flex items-center justify-center p-6">
-          <div class="text-center text-white ">
-            <h3 class="font-headline-md text-tertiary mb-2">Medellín: La ciudad más innovadora de América Latina</h3>
-            <p class="text-sm text-white mb-3 ">El corazón de tu experiencia. Durante tus días libres, Medellín es tu ciudad. Disfruta del arte urbano en la Comuna 13, gastronomía de clase mundial, el Jardín Botánico, la Plaza Botero y una vida nocturna inigualable. Todo, a minutos de la clínica.</p>
-            <div class="grid grid-cols-2 gap-2 text-[11px]">
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Arte Urbano: Comuna 13</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Gastronomía: El Poblado</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Vida Nocturna: Provenza</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Tradición: Cerro Nutibara</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Naturaleza: Jardín Botánico</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Conectividad: Metrocable al Parque Arví</span>
-            </div>
-          </div>
+          <button class="destino-vermas cursor-pointer inline-flex items-center gap-1.5 bg-black/55 backdrop-blur-sm border border-[#AF9880] text-white px-4 py-2 rounded-full font-label-caps text-[10px] tracking-widest hover:bg-[#AF9880] hover:text-primary-container transition-all duration-500" data-destino="medellin">
+            VER MÁS <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
         </div>
       </div>
       <div class="relative w-0 flex-grow group overflow-hidden hover:w-[300px] transition-all duration-500 ease-in-out">
         <img alt="Guatapé" class="w-full h-full object-cover brightness-[0.35] group-hover:brightness-[0.5] transition-all duration-500" src="/images/guatape.webp"/>
         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:translate-y-0 translate-y-4 flex items-center justify-center p-6">
-          <div class="text-center text-white ">
-            <h3 class="font-headline-md text-tertiary mb-2">Guatapé: Escapada de un día</h3>
-            <p class="text-sm text-white mb-3 ">Distancia: 1h 30 min desde Medellín. Descubre una explosión de color y naturaleza. Sube los 740 escalones de la Piedra del Peñol para contemplar la mejor vista de Colombia, un panorama inolvidable del embalse. Recorre sus calles, donde los zócalos pintados a mano narran la historia de un pueblo que convirtió su arte en identidad.</p>
-            <div class="grid grid-cols-2 gap-2 text-[11px]">
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">La Piedra del Peñol: 740 escalones</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Zócalos tradicionales</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Deportes acuáticos</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Gastronomía local: trucha fresca</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full col-span-2 justify-self-center text-white">Arquitectura colonial</span>
-            </div>
-          </div>
+          <button class="destino-vermas cursor-pointer inline-flex items-center gap-1.5 bg-black/55 backdrop-blur-sm border border-[#AF9880] text-white px-4 py-2 rounded-full font-label-caps text-[10px] tracking-widest hover:bg-[#AF9880] hover:text-primary-container transition-all duration-500" data-destino="guatape">
+            VER MÁS <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
         </div>
       </div>
       <div class="relative w-0 flex-grow group overflow-hidden hover:w-[300px] transition-all duration-500 ease-in-out">
         <img alt="Jardín" class="w-full h-full object-cover brightness-[0.35] group-hover:brightness-[0.5] transition-all duration-500" src="/images/jardin.webp"/>
         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:translate-y-0 translate-y-4 flex items-center justify-center p-6">
-          <div class="text-center text-white ">
-            <h3 class="font-headline-md text-tertiary mb-2">Jardín: Escapada de un día</h3>
-            <p class="text-sm text-white mb-3 ">Distancia: 3h desde Medellín. Patrimonio cultural vivo entre montañas cafeteras. Jardín es un lugar donde el tiempo se detiene. Este pueblo, reconocido como Patrimonio Cultural de Colombia, te cautivará con su imponente catedral neogótica, sus tradicionales fincas cafeteras y el emblemático puente de hamaca. Disfruta del mejor café de origen antioqueño mientras contemplas la majestuosidad de las montañas desde su plaza central.</p>
-            <div class="grid grid-cols-2 gap-2 text-[11px]">
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Pueblo Patrimonio</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Catedral Neogótica</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Cultura Cafetera</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full text-white">Puente de Hamaca</span>
-              <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full col-span-2 justify-self-center text-white">Experiencia sensorial: Café de origen</span>
-            </div>
-          </div>
+          <button class="destino-vermas cursor-pointer inline-flex items-center gap-1.5 bg-black/55 backdrop-blur-sm border border-[#AF9880] text-white px-4 py-2 rounded-full font-label-caps text-[10px] tracking-widest hover:bg-[#AF9880] hover:text-primary-container transition-all duration-500" data-destino="jardin">
+            VER MÁS <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
         </div>
       </div>
-      <img alt="Café colombiano premium" class="w-0 flex-grow object-cover opacity-80 transition-all duration-500 ease-in-out hover:w-[300px] hover:cursor-crosshair hover:opacity-100 hover:contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMLw3_mbRMWcmuo58B6_q6hBt6FGNYcJtul2_54fwh8w3UhnVQCI7qFCEPVyzF97WeGrARnU9Q5jUb3TVq2aGHDiir9wBskYxKR-jh_GFr1fHYQVuOOIA8wjcZB_c7JwPkOzlEv0MI2Y-CwvZsEQ7zt6WaCxdvoqGX7dhSTBkzPnw-XKMeGs_Mbnr6UtFdSjQLtbgnV9Poz16suGinBPFFGGwFbpLC69cGLXdragqxlhFif-jUpZI3j7HrYwQL6LO2sgod_fcCGIVf"/>
-    </div>
-    <div class="text-center mt-stack-lg">
-      <button class="relative border border-tertiary text-tertiary font-label-caps px-10 py-4 rounded-full uppercase tracking-widest text-xs overflow-hidden group hover:text-primary-container transition-colors duration-500">
-  <span class="absolute inset-y-0 left-0 w-0 bg-tertiary group-hover:w-full transition-all duration-500 ease-in-out"></span>
-  <span class="relative z-10">Reserva tu experiencia</span>
-</button>
+      <div class="relative w-0 flex-grow group overflow-hidden hover:w-[300px] transition-all duration-500 ease-in-out">
+        <img alt="Santa Fe de Antioquia" class="w-full h-full object-cover brightness-[0.35] group-hover:brightness-[0.5] transition-all duration-500" src="/images/santa-fe-de-antioquia.webp"/>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:translate-y-0 translate-y-4 flex items-center justify-center p-6">
+          <button class="destino-vermas cursor-pointer inline-flex items-center gap-1.5 bg-black/55 backdrop-blur-sm border border-[#AF9880] text-white px-4 py-2 rounded-full font-label-caps text-[10px] tracking-widest hover:bg-[#AF9880] hover:text-primary-container transition-all duration-500" data-destino="santafe">
+            VER MÁS <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -320,6 +580,71 @@
         successMsg.classList.remove("hidden");
       });
   });
+</script>
+<script>
+  (function() {
+    var destinoModal = document.getElementById('destino-modal');
+    var destinoClose = document.getElementById('destino-modal-close');
+    var destinoBackdrop = document.getElementById('destino-modal-backdrop');
+
+    var destinos = {
+      medellin: {
+        title: 'Medellín: La ciudad más innovadora de América Latina',
+        desc: 'El corazón de tu experiencia. Durante tus días libres, Medellín es tu ciudad. Disfruta del arte urbano en la Comuna 13, gastronomía de clase mundial, el Jardín Botánico, la Plaza Botero y una vida nocturna inigualable. Todo, a minutos de la clínica.',
+        tags: ['Arte Urbano: Comuna 13', 'Gastronomía: El Poblado', 'Vida Nocturna: Provenza', 'Tradición: Cerro Nutibara', 'Naturaleza: Jardín Botánico', 'Conectividad: Metrocable al Parque Arví']
+      },
+      guatape: {
+        title: 'Guatapé: Escapada de un día',
+        desc: 'Distancia: 1h 30 min desde Medellín. Descubre una explosión de color y naturaleza. Sube los 740 escalones de la Piedra del Peñol para contemplar la mejor vista de Colombia, un panorama inolvidable del embalse. Recorre sus calles, donde los zócalos pintados a mano narran la historia de un pueblo que convirtió su arte en identidad.',
+        tags: ['La Piedra del Peñol: 740 escalones', 'Zócalos tradicionales', 'Deportes acuáticos', 'Gastronomía local: trucha fresca', 'Arquitectura colonial']
+      },
+      jardin: {
+        title: 'Jardín: Escapada de un día',
+        desc: 'Distancia: 3h desde Medellín. Patrimonio cultural vivo entre montañas cafeteras. Jardín es un lugar donde el tiempo se detiene. Este pueblo, reconocido como Patrimonio Cultural de Colombia, te cautivará con su imponente catedral neogótica, sus tradicionales fincas cafeteras y el emblemático puente de hamaca. Disfruta del mejor café de origen antioqueño mientras contemplas la majestuosidad de las montañas desde su plaza central.',
+        tags: ['Pueblo Patrimonio', 'Catedral Neogótica', 'Cultura Cafetera', 'Puente de Hamaca', 'Experiencia sensorial: Café de origen']
+      },
+      santafe: {
+        title: 'Santa Fe de Antioquia: Escapada de un día',
+        desc: '1h 30 min desde Medellín. La primera capital de Antioquia, intacta en el tiempo. A solo hora y media de Medellín, Santa Fe de Antioquia es un portal al pasado colonial colombiano. Sus calles empedradas, el icónico Puente de Occidente de 1887 y su arquitectura republicana te transportan a otra época. El calor del clima y la calidez de su gente hacen que sea imposible no enamorarse.',
+        tags: ['Escapada de un día', '1h 30 min desde Medellín', 'Puente de Occidente (1887)', 'Primera capital de Antioquia', 'Arquitectura republicana']
+      }
+    };
+
+    function openDestino(key) {
+      var d = destinos[key];
+      if (!d) return;
+      document.getElementById('destino-modal-title').textContent = d.title;
+      document.getElementById('destino-modal-desc').textContent = d.desc;
+      var tags = document.getElementById('destino-modal-tags');
+      tags.innerHTML = '';
+      d.tags.forEach(function(t) {
+        var s = document.createElement('span');
+        s.className = 'bg-black/50 backdrop-blur-sm px-3 py-1.5 rounded-full text-white text-[11px]';
+        s.textContent = t;
+        tags.appendChild(s);
+      });
+      destinoModal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDestino() {
+      destinoModal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('.destino-vermas');
+      if (btn && btn.getAttribute('data-destino')) {
+        openDestino(btn.getAttribute('data-destino'));
+      }
+    });
+
+    destinoClose.addEventListener('click', closeDestino);
+    destinoBackdrop.addEventListener('click', closeDestino);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeDestino();
+    });
+  })();
 </script>
 </body>
 </html>

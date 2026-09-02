@@ -79,11 +79,86 @@ function smoothAnchorScroll(e) {
   }
 }
 
+function initSmartNav() {
+  let lastY = window.scrollY;
+  let idleTimer = null;
+  let hovering = false;
+
+  function hideNav() {
+    const nav = document.querySelector("#navbar nav");
+    if (nav) nav.classList.add("nav-hidden");
+  }
+
+  function showNav() {
+    const nav = document.querySelector("#navbar nav");
+    if (nav) nav.classList.remove("nav-hidden");
+  }
+
+  function disarmIdle() {
+    clearTimeout(idleTimer);
+  }
+
+  function armIdle() {
+    disarmIdle();
+    idleTimer = setTimeout(() => {
+      if (!hovering && window.scrollY >= 100) hideNav();
+    }, 2500);
+  }
+
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY;
+    if (y < 100) {
+      disarmIdle();
+      showNav();
+    } else if (y > lastY + 4) {
+      disarmIdle();
+      hideNav();
+    } else if (y < lastY - 4) {
+      showNav();
+      armIdle();
+    }
+    lastY = y;
+  }, { passive: true });
+
+  document.addEventListener("mouseover", (e) => {
+    const nav = document.querySelector("#navbar nav");
+    if (!nav) return;
+    if (nav.contains(e.target)) {
+      hovering = true;
+      disarmIdle();
+      showNav();
+    } else if (hovering) {
+      hovering = false;
+      if (window.scrollY >= 100) armIdle();
+    }
+  });
+}
+
+function initMobileMenu() {
+  const toggle = document.getElementById("nav-mobile-toggle");
+  const menu = document.getElementById("nav-mobile-menu");
+  if (!toggle || !menu) return;
+  toggle.addEventListener("click", () => {
+    const open = menu.classList.contains("hidden");
+    menu.classList.toggle("hidden", !open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  document.addEventListener("click", (e) => {
+    if (menu.classList.contains("hidden")) return;
+    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+      menu.classList.add("hidden");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initProgressBar();
   finishProgress();
+  initSmartNav();
   loadComponent("navbar", "/odontologia-medellin/src/components/navbar.html");
   loadComponent("footer", "/odontologia-medellin/src/components/footer.html");
+  initMobileMenu();
 
   const viaTransition = sessionStorage.getItem("vt") === "1";
   sessionStorage.removeItem("vt");
