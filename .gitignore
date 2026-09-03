@@ -5,4 +5,5 @@ dist/
 vite.log
 vite.err
 vite-dev.log
+vite-dev.err
 .vite-dev.pid

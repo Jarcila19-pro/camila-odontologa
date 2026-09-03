@@ -18,7 +18,7 @@
   #hotel-modal.is-open { opacity: 1; pointer-events: auto; }
   #hotel-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0); backdrop-filter: blur(0); transition: all 0.5s cubic-bezier(0.22,1,0.36,1); }
   #hotel-modal.is-open #hotel-modal-backdrop { background: rgba(0,0,0,0.65); backdrop-filter: blur(12px); }
-  #hotel-sheet { position: relative; width: 100%; max-width: 42rem; max-height: 80vh; background: #1c1b19; border: 1px solid rgba(175,152,128,0.15); border-radius: 2rem; overflow: hidden; transform: translateY(30px) scale(0.97); opacity: 0; transition: all 0.55s cubic-bezier(0.22,1,0.36,1); display: flex; flex-direction: column; }
+  #hotel-sheet { position: relative; width: 100%; max-width: 42rem; max-height: 80vh; background: #262320; border: 1px solid rgba(175,152,128,0.2); border-radius: 2rem; overflow: hidden; transform: translateY(30px) scale(0.97); opacity: 0; transition: all 0.55s cubic-bezier(0.22,1,0.36,1); display: flex; flex-direction: column; box-shadow: 0 24px 60px rgba(0,0,0,0.55); }
   #hotel-modal.is-open #hotel-sheet { transform: translateY(0) scale(1); opacity: 1; }
   #hotel-sheet-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 1.5rem 2rem 2rem; -ms-overflow-style: none; scrollbar-width: none; }
   #hotel-sheet-body::-webkit-scrollbar { display: none; }
@@ -35,7 +35,7 @@
   #destino-modal.is-open #destino-modal-backdrop { background: rgba(0,0,0,0.65); backdrop-filter: blur(12px); }
   #destino-modal { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1); }
   #destino-modal.is-open { opacity: 1; pointer-events: auto; }
-  #destino-sheet { position: relative; width: 100%; max-width: 42rem; max-height: 80vh; background: #1c1b19; border: 1px solid rgba(175,152,128,0.15); border-radius: 2rem; overflow: hidden; transform: translateY(30px) scale(0.97); opacity: 0; transition: all 0.55s cubic-bezier(0.22,1,0.36,1); display: flex; flex-direction: column; }
+  #destino-sheet { position: relative; width: 100%; max-width: 42rem; max-height: 80vh; background: #262320; border: 1px solid rgba(175,152,128,0.2); border-radius: 2rem; overflow: hidden; transform: translateY(30px) scale(0.97); opacity: 0; transition: all 0.55s cubic-bezier(0.22,1,0.36,1); display: flex; flex-direction: column; box-shadow: 0 24px 60px rgba(0,0,0,0.55); }
   #destino-modal.is-open #destino-sheet { transform: translateY(0) scale(1); opacity: 1; }
   #destino-sheet-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 1.5rem 2rem 2rem; -ms-overflow-style: none; scrollbar-width: none; }
   #destino-sheet-body::-webkit-scrollbar { display: none; }
@@ -316,7 +316,9 @@
               return { src: BASE + '/images/hoteles/' + h.id + '/' + a, desc: describirArchivo(a) };
             });
           } else {
-            items = h.imagenes || [];
+            items = (h.imagenes || []).map(function(img) {
+              return { src: BASE + img.src, desc: img.desc };
+            });
           }
           items.forEach(function(img) {
             var wrap = document.createElement('div');
@@ -619,7 +621,7 @@
       tags.innerHTML = '';
       d.tags.forEach(function(t) {
         var s = document.createElement('span');
-        s.className = 'bg-black/50 backdrop-blur-sm px-3 py-1.5 rounded-full text-white text-[11px]';
+        s.className = 'bg-[#AF9880]/15 border border-[#AF9880]/30 px-3 py-1.5 rounded-full text-[#AF9880] text-[11px]';
         s.textContent = t;
         tags.appendChild(s);
       });
