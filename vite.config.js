@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/odontologia-medellin/",
+  base: "/camila-odontologa/",
   publicDir: "public",
   build: {
     outDir: "dist",

@@ -156,8 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initProgressBar();
   finishProgress();
   initSmartNav();
-  loadComponent("navbar", "/odontologia-medellin/src/components/navbar.html");
-  loadComponent("footer", "/odontologia-medellin/src/components/footer.html");
+  loadComponent("navbar", "/camila-odontologa/src/components/navbar.html");
+  loadComponent("footer", "/camila-odontologa/src/components/footer.html");
   initMobileMenu();
 
   const viaTransition = sessionStorage.getItem("vt") === "1";
