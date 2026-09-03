@@ -1,9 +1,10 @@
-async function loadComponent(id, url) {
+async function loadComponent(id, url, onLoad) {
   try {
     const res = await fetch(url);
     const html = await res.text();
     document.getElementById(id).innerHTML = html;
     highlightActiveNav();
+    if (typeof onLoad === "function") onLoad();
   } catch (e) {
     console.warn(`Could not load component: ${url}`, e);
   }
@@ -137,7 +138,8 @@ function initSmartNav() {
 function initMobileMenu() {
   const toggle = document.getElementById("nav-mobile-toggle");
   const menu = document.getElementById("nav-mobile-menu");
-  if (!toggle || !menu) return;
+  if (!toggle || !menu || toggle.dataset.bound) return;
+  toggle.dataset.bound = "true";
   toggle.addEventListener("click", () => {
     const open = menu.classList.contains("hidden");
     menu.classList.toggle("hidden", !open);
@@ -156,9 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initProgressBar();
   finishProgress();
   initSmartNav();
-  loadComponent("navbar", "/camila-odontologa/src/components/navbar.html");
+  loadComponent("navbar", "/camila-odontologa/src/components/navbar.html", initMobileMenu);
   loadComponent("footer", "/camila-odontologa/src/components/footer.html");
-  initMobileMenu();
 
   const viaTransition = sessionStorage.getItem("vt") === "1";
   sessionStorage.removeItem("vt");

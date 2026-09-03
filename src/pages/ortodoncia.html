@@ -25,6 +25,28 @@
     0%, 100% { box-shadow: 0 0 0 1px rgba(175,152,128,0.1); }
     15%, 25% { box-shadow: 0 0 0 1.5px rgba(175,152,128,0.5), 0 0 20px 2px rgba(175,152,128,0.12); }
   }
+  @keyframes heroRise {
+    from { opacity: 0; transform: translateY(36px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  .animate-hero-rise { opacity: 0; animation: heroRise 0.9s cubic-bezier(0.22,1,0.36,1) forwards; }
+  .animate-hero-float { animation: heroFloat 7s ease-in-out infinite; }
+  .tratamiento-card {
+    box-shadow: 0 0 0 1px rgba(175,152,128,0.15);
+    animation: tratRise 0.8s cubic-bezier(0.22,1,0.36,1) backwards;
+  }
+  .tratamiento-card:hover {
+    box-shadow: 0 0 0 1px rgba(175,152,128,0.55), 0 0 30px 2px rgba(175,152,128,0.15);
+    transform: translateY(-4px);
+  }
+  @keyframes tratRise {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 </style>
 </head>
 <body data-page="ortodoncia">
@@ -32,25 +54,27 @@
 <main class="relative">
   <!-- Hero -->
   <section class="relative min-h-screen overflow-hidden">
-    <div class="min-h-screen flex items-center relative overflow-hidden" style="background: radial-gradient(ellipse at 30% 50%, #0d1a24 0%, #080c10 50%, #050708 100%);">
-      <div class="max-w-7xl mx-auto px-8 w-full py-24 lg:py-0">
-        <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
-          <div class="w-full lg:w-5/12">
-            <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-5 leading-tight font-bold tracking-tight">Ortodoncia <span class="text-[#AF9880]">con Precisión</span></h1>
-            <p class="font-body-md text-on-surface-variant max-w-md leading-relaxed">Una sonrisa alineada, funcional y saludable para toda la vida. Corregimos la posición de los dientes y la relación entre los maxilares.</p>
-          </div>
+    <div class="absolute inset-0">
+      <img src="/images/form.webp" alt="" class="w-full h-full object-cover"/>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#141311] via-[#141311]/85 to-[#141311]/30"></div>
+      <div class="absolute -top-24 right-1/4 w-[420px] h-[420px] rounded-full bg-[#AF9880]/10 blur-3xl pointer-events-none"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-8 w-full min-h-screen flex flex-col justify-center py-28 lg:py-0">
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center gap-2 font-label-caps text-[#AF9880] tracking-[0.35em] text-[10px] uppercase mb-6 animate-hero-rise" style="animation-delay:.1s">
+          <span class="w-8 h-px bg-[#AF9880]/60"></span>Ortodoncia Avanzada
+        </span>
+        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white mb-6 leading-[1.05] font-bold tracking-tight animate-hero-rise" style="animation-delay:.25s">Ortodoncia <span class="text-[#AF9880] relative">con Precisión<span class="absolute -bottom-2 left-0 w-full h-px bg-gradient-to-r from-[#AF9880] via-[#AF9880]/60 to-transparent"></span></span></h1>
+        <p class="font-body-lg text-on-surface max-w-xl leading-relaxed animate-hero-rise opacity-90" style="animation-delay:.4s">Una sonrisa alineada, funcional y saludable para toda la vida. Corregimos la posición de los dientes y la relación entre los maxilares.</p>
+        <div class="mt-9 flex flex-col sm:flex-row items-center gap-4 animate-hero-rise" style="animation-delay:.55s">
+          <a href="https://wa.me/573160427231" target="_blank" class="bg-[#AF9880] text-white px-9 md:px-10 py-4 rounded-full font-label-caps text-xs tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(175,152,128,0.35)] transition-all duration-500 hover:scale-[1.02] text-center w-full sm:w-auto">Agendar Valoración</a>
         </div>
       </div>
-      <div class="absolute bottom-0 w-full pointer-events-none" style="height: 120px;">
-        <svg class="w-full h-full" viewBox="0 0 1440 120" preserveAspectRatio="none" fill="#f8f8f8">
-          <path d="M0,0 C400,100 1040,100 1440,0 L1440,120 L0,120 Z"/>
-        </svg>
-      </div>
     </div>
-    <div class="bg-[#f8f8f8] pb-16 md:pb-20 pt-12 md:pt-16 px-8">
-      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row gap-4 md:gap-5 justify-center">
-        <a href="https://wa.me/573160427231" target="_blank" class="bg-[#AF9880] text-white px-8 md:px-10 py-4 rounded-full font-label-caps text-xs tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(175,152,128,0.25)] transition-all duration-500 hover:scale-[1.02] text-center">Agendar Valoración</a>
-      </div>
+    <div class="absolute bottom-0 w-full pointer-events-none" style="height: 120px;">
+      <svg class="w-full h-full" viewBox="0 0 1440 120" preserveAspectRatio="none" fill="#f8f8f8">
+        <path d="M0,0 C400,100 1040,100 1440,0 L1440,120 L0,120 Z"/>
+      </svg>
     </div>
   </section>
 
@@ -68,48 +92,72 @@
 
   <!-- Problemas que corrige -->
   <section class="relative overflow-hidden min-h-[500px] bg-[#141311]">
+    <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-[#AF9880]/5 blur-3xl rounded-full pointer-events-none"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 46px 46px; mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);"></div>
+    <div class="absolute -right-32 top-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full border border-[#AF9880]/10 pointer-events-none"></div>
+    <div class="absolute -right-20 top-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-[#AF9880]/8 pointer-events-none"></div>
+    <div class="absolute -right-8 top-1/2 -translate-y-1/2 w-[280px] h-[280px] rounded-full border border-[#AF9880]/6 pointer-events-none"></div>
     <div class="relative z-10">
       <div class="max-w-7xl mx-auto px-8 py-section-padding">
-        <div class="mb-12">
-          <span class="font-label-caps text-[#AF9880] uppercase tracking-[0.3em] block mb-1 text-[10px]">Tratamiento</span>
-          <h2 class="font-headline-md text-white text-xl md:text-2xl">¿Qué problemas podemos corregir?</h2>
+        <div class="mb-12 text-center">
+          <span class="font-label-caps text-[#AF9880] uppercase tracking-[0.3em] block mb-2 text-[10px]">Tratamiento</span>
+          <h2 class="font-headline-md text-white text-xl md:text-3xl">¿Qué problemas podemos corregir?</h2>
+          <div class="mx-auto mt-4 h-px w-24 bg-gradient-to-r from-transparent via-[#AF9880]/60 to-transparent"></div>
         </div>
-        <div class="flex flex-wrap gap-x-4 gap-y-3">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#AF9880]/50 bg-transparent w-fit">
-            <span class="text-[#AF9880] text-xs font-bold shrink-0">&#10003;</span>
-            <span class="text-[12px] text-white whitespace-nowrap">Dientes torcidos o apiñados</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+          <div class="tratamiento-card group flex items-center gap-4 px-5 py-4 rounded-2xl border border-[#AF9880]/20 bg-gradient-to-br from-[#1d1b19] to-[#121110] overflow-hidden relative transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] cursor-default" style="animation-delay:.05s">
+            <span class="font-serif text-2xl text-[#AF9880]/70 w-9 shrink-0 leading-none">01</span>
+            <span class="w-px h-9 bg-[#AF9880]/20 shrink-0"></span>
+            <span class="text-[13px] text-white leading-snug">Dientes torcidos o apiñados</span>
+            <span class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AF9880]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
           </div>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#AF9880]/50 bg-transparent w-fit">
-            <span class="text-[#AF9880] text-xs font-bold shrink-0">&#10003;</span>
-            <span class="text-[12px] text-white whitespace-nowrap">Dientes separados</span>
+          <div class="tratamiento-card group flex items-center gap-4 px-5 py-4 rounded-2xl border border-[#AF9880]/20 bg-gradient-to-br from-[#1d1b19] to-[#121110] overflow-hidden relative transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] cursor-default" style="animation-delay:.1s">
+            <span class="font-serif text-2xl text-[#AF9880]/70 w-9 shrink-0 leading-none">02</span>
+            <span class="w-px h-9 bg-[#AF9880]/20 shrink-0"></span>
+            <span class="text-[13px] text-white leading-snug">Dientes separados</span>
+            <span class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AF9880]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
           </div>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#AF9880]/50 bg-transparent w-fit">
-            <span class="text-[#AF9880] text-xs font-bold shrink-0">&#10003;</span>
-            <span class="text-[12px] text-white whitespace-nowrap">Mordida cruzada</span>
+          <div class="tratamiento-card group flex items-center gap-4 px-5 py-4 rounded-2xl border border-[#AF9880]/20 bg-gradient-to-br from-[#1d1b19] to-[#121110] overflow-hidden relative transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] cursor-default" style="animation-delay:.15s">
+            <span class="font-serif text-2xl text-[#AF9880]/70 w-9 shrink-0 leading-none">03</span>
+            <span class="w-px h-9 bg-[#AF9880]/20 shrink-0"></span>
+            <span class="text-[13px] text-white leading-snug">Mordida cruzada</span>
+            <span class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AF9880]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
           </div>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#AF9880]/50 bg-transparent w-fit">
-            <span class="text-[#AF9880] text-xs font-bold shrink-0">&#10003;</span>
-            <span class="text-[12px] text-white whitespace-nowrap">Mordida abierta</span>
+          <div class="tratamiento-card group flex items-center gap-4 px-5 py-4 rounded-2xl border border-[#AF9880]/20 bg-gradient-to-br from-[#1d1b19] to-[#121110] overflow-hidden relative transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] cursor-default" style="animation-delay:.2s">
+            <span class="font-serif text-2xl text-[#AF9880]/70 w-9 shrink-0 leading-none">04</span>
+            <span class="w-px h-9 bg-[#AF9880]/20 shrink-0"></span>
+            <span class="text-[13px] text-white leading-snug">Mordida abierta</span>
+            <span class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AF9880]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
           </div>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#AF9880]/50 bg-transparent w-fit">
-            <span class="text-[#AF9880] text-xs font-bold shrink-0">&#10003;</span>
-            <span class="text-[12px] text-white whitespace-nowrap">Mordida profunda</span>
+          <div class="tratamiento-card group flex items-center gap-4 px-5 py-4 rounded-2xl border border-[#AF9880]/20 bg-gradient-to-br from-[#1d1b19] to-[#121110] overflow-hidden relative transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] cursor-default" style="animation-delay:.25s">
+            <span class="font-serif text-2xl text-[#AF9880]/70 w-9 shrink-0 leading-none">05</span>
+            <span class="w-px h-9 bg-[#AF9880]/20 shrink-0"></span>
+            <span class="text-[13px] text-white leading-snug">Mordida profunda</span>
+            <span class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AF9880]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
           </div>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#AF9880]/50 bg-transparent w-fit">
-            <span class="text-[#AF9880] text-xs font-bold shrink-0">&#10003;</span>
-            <span class="text-[12px] text-white whitespace-nowrap">Mordida borde a borde</span>
+          <div class="tratamiento-card group flex items-center gap-4 px-5 py-4 rounded-2xl border border-[#AF9880]/20 bg-gradient-to-br from-[#1d1b19] to-[#121110] overflow-hidden relative transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] cursor-default" style="animation-delay:.3s">
+            <span class="font-serif text-2xl text-[#AF9880]/70 w-9 shrink-0 leading-none">06</span>
+            <span class="w-px h-9 bg-[#AF9880]/20 shrink-0"></span>
+            <span class="text-[13px] text-white leading-snug">Mordida borde a borde</span>
+            <span class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AF9880]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
           </div>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#AF9880]/50 bg-transparent w-fit">
-            <span class="text-[#AF9880] text-xs font-bold shrink-0">&#10003;</span>
-            <span class="text-[12px] text-white whitespace-nowrap">Desviación de la línea media</span>
+          <div class="tratamiento-card group flex items-center gap-4 px-5 py-4 rounded-2xl border border-[#AF9880]/20 bg-gradient-to-br from-[#1d1b19] to-[#121110] overflow-hidden relative transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] cursor-default" style="animation-delay:.35s">
+            <span class="font-serif text-2xl text-[#AF9880]/70 w-9 shrink-0 leading-none">07</span>
+            <span class="w-px h-9 bg-[#AF9880]/20 shrink-0"></span>
+            <span class="text-[13px] text-white leading-snug">Desviación de la línea media</span>
+            <span class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AF9880]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
           </div>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#AF9880]/50 bg-transparent w-fit">
-            <span class="text-[#AF9880] text-xs font-bold shrink-0">&#10003;</span>
-            <span class="text-[12px] text-white whitespace-nowrap">Dientes impactados o retenidos</span>
+          <div class="tratamiento-card group flex items-center gap-4 px-5 py-4 rounded-2xl border border-[#AF9880]/20 bg-gradient-to-br from-[#1d1b19] to-[#121110] overflow-hidden relative transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] cursor-default" style="animation-delay:.4s">
+            <span class="font-serif text-2xl text-[#AF9880]/70 w-9 shrink-0 leading-none">08</span>
+            <span class="w-px h-9 bg-[#AF9880]/20 shrink-0"></span>
+            <span class="text-[13px] text-white leading-snug">Dientes impactados o retenidos</span>
+            <span class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AF9880]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
           </div>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#AF9880]/50 bg-transparent w-fit">
-            <span class="text-[#AF9880] text-xs font-bold shrink-0">&#10003;</span>
-            <span class="text-[12px] text-white whitespace-nowrap">Preparación para rehabilitación oral o diseño de sonrisa</span>
+          <div class="tratamiento-card group flex items-center gap-4 px-5 py-4 rounded-2xl border border-[#AF9880]/20 bg-gradient-to-br from-[#1d1b19] to-[#121110] overflow-hidden relative transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] cursor-default" style="animation-delay:.45s">
+            <span class="font-serif text-2xl text-[#AF9880]/70 w-9 shrink-0 leading-none">09</span>
+            <span class="w-px h-9 bg-[#AF9880]/20 shrink-0"></span>
+            <span class="text-[13px] text-white leading-snug">Preparación para rehabilitación oral o diseño de sonrisa</span>
+            <span class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AF9880]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
           </div>
         </div>
       </div>
@@ -140,7 +188,7 @@
         <!-- Brackets de Autoligado -->
         <div class="glass-card rounded-2xl overflow-hidden border border-[#AF9880]/20">
           <div class="h-64 overflow-hidden">
-            <img class="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Brackets de autoligado" src="/images/ortondoncia-autoligado.webp"/>
+            <img class="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Brackets de autoligado" src="/images/ortodoncia-autoligado.webp"/>
           </div>
           <div class="p-8">
             <h3 class="font-headline-md text-[#AF9880] mb-4">Brackets de Autoligado</h3>
@@ -179,7 +227,7 @@
         <!-- Brackets Cerámicos -->
         <div class="glass-card rounded-2xl overflow-hidden border border-[#AF9880]/20">
           <div class="h-64 overflow-hidden bg-surface-container flex items-center justify-center">
-            <img class="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Brackets cerámicos estéticos" src="/images/sonrisa.webp"/>
+            <img class="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Brackets cerámicos estéticos" src="/images/ortodoncia-ceramico.webp"/>
           </div>
           <div class="p-8">
             <h3 class="font-headline-md text-[#AF9880] mb-4">Brackets Cerámicos Estéticos</h3>
