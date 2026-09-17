@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Manrope:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+<link rel="preload" as="image" href="/images/MYOBRACE1-.webp" fetchpriority="high">
 <title>Myobrace - Dra. Camila Valencia</title>
 <link rel="icon" type="image/webp" href="/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
 <link rel="stylesheet" href="/src/styles/main.css">
@@ -22,7 +27,7 @@
 <section class="relative min-h-screen flex flex-col md:flex-row items-stretch overflow-hidden bg-[#0b1d28]" id="hero-carousel">
   <!-- Mitad izquierda: imagen fija -->
   <div class="w-full md:w-1/2 h-[50vh] md:h-screen relative">
-    <img class="absolute inset-0 w-full h-full object-cover" alt="Aparato Myobrace" src="/images/MYOBRACE1-.webp"/>
+    <img fetchpriority="high" class="absolute inset-0 w-full h-full object-cover" alt="Aparato Myobrace" src="/images/MYOBRACE1-.webp"/>
     <div class="absolute inset-0 bg-gradient-to-t from-[#0b1d28]/70 via-transparent to-transparent md:hidden"></div>
     <div class="hidden md:block absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#0b1d28] to-transparent z-10 pointer-events-none"></div>
   </div>
@@ -36,7 +41,7 @@
           <span class="font-label-caps text-[#AF9880] mb-3 block tracking-[0.3em] text-sm">PROBLEMA</span>
           <h2 class="font-display-xl text-on-surface mb-4 leading-tight">Respiración oral y alteración funcional</h2>
           <p class="font-body-lg text-on-surface-variant leading-relaxed">
-            La respiración oral y la mala postura lingual afectan el desarrollo maxilar, la calidad del sueño y la alineación dental. Identificamos estos patrones para tratarlos desde su origen.
+            La respiración oral y la mala posición de la lengua afectan el desarrollo maxilar, la calidad del sueño y la alineación dental. Identificamos estos patrones para tratarlos desde su origen.
           </p>
         </div>
       </div>
@@ -58,7 +63,7 @@
           <span class="font-label-caps text-[#AF9880] mb-3 block tracking-[0.3em] text-sm">RESULTADO</span>
           <h2 class="font-display-xl text-on-surface mb-4 leading-tight">Armonía facial y sonrisa saludable</h2>
           <p class="font-body-lg text-on-surface-variant leading-relaxed">
-            Logramos una sonrisa sana, estable y funcional desde la raíz. Más que alinear dientes, recuperamos tu armonía facial y tu bienestar integral.
+            Logramos una mordida y sonrisa sana, estable y funcional. Más que alinear dientes, recuperamos tu armonía facial y tu bienestar integral.
           </p>
         </div>
       </div>
@@ -97,7 +102,7 @@
 
   function startAuto() {
     stopAuto();
-    interval = setInterval(next, 4000);
+    interval = setInterval(next, 7000);
   }
 
   function stopAuto() {
@@ -123,37 +128,43 @@
   <section class="py-section-padding grid md:grid-cols-2 gap-stack-lg items-center">
     <div class="order-2 md:order-1">
       <span class="font-label-caps text-[#AF9880] mb-4 block">¿Qué es Myobrace?</span>
-      <h2 class="font-headline-lg text-on-surface mb-stack-md">Ingeniería de Alta Precisión</h2>
-      <p class="font-body-lg text-on-surface-variant mb-stack-md">Es un sistema de aparatos removibles que, a diferencia de la ortodoncia tradicional, no solo alinea tus dientes, sino que corrige los hábitos funcionales que impiden un desarrollo maxilar y facial saludable.</p>
+      <p class="font-body-lg text-on-surface-variant mb-stack-md">Es un sistema de aparatos (Trainers) miofuncionales removibles diseñado para corregir los hábitos que afectan el crecimiento facial, el desarrollo de los maxilares y la posición de los dientes.</p>
+      <span class="font-label-caps text-[#AF9880] mb-4 block tracking-[0.2em]">TRABAJA SOBRE</span>
       <div class="space-y-4">
         <div class="flex items-start gap-4 p-4 glass-card rounded-xl">
           <span class="material-symbols-outlined text-[#AF9880]">air</span>
           <div>
-            <h4 class="font-label-caps text-on-surface">Respiración oral</h4>
+            <h4 class="font-label-caps text-on-surface">Respiración oral.</h4>
           </div>
         </div>
         <div class="flex items-start gap-4 p-4 glass-card rounded-xl">
           <span class="material-symbols-outlined text-[#AF9880]">psychology</span>
           <div>
-            <h4 class="font-label-caps text-on-surface">Alteraciones funcionales musculares</h4>
-          </div>
-        </div>
-        <div class="flex items-start gap-4 p-4 glass-card rounded-xl">
-          <span class="material-symbols-outlined text-[#AF9880]">expand_content</span>
-          <div>
-            <h4 class="font-label-caps text-on-surface">Desarrollo insuficiente de los maxilares</h4>
+            <h4 class="font-label-caps text-on-surface">Alteraciones musculares.</h4>
           </div>
         </div>
         <div class="flex items-start gap-4 p-4 glass-card rounded-xl">
           <span class="material-symbols-outlined text-[#AF9880]">arrow_upward</span>
           <div>
-            <h4 class="font-label-caps text-on-surface">Mala postura lingual</h4>
+            <h4 class="font-label-caps text-on-surface">Mala posición de la lengua.</h4>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-4 glass-card rounded-xl">
+          <span class="material-symbols-outlined text-[#AF9880]">expand_content</span>
+          <div>
+            <h4 class="font-label-caps text-on-surface">Desarrollo insuficiente de los maxilares.</h4>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-4 glass-card rounded-xl">
+          <span class="material-symbols-outlined text-[#AF9880]">bedtime</span>
+          <div>
+            <h4 class="font-label-caps text-on-surface">Ronquidos y alteraciones en el sueño.</h4>
           </div>
         </div>
       </div>
     </div>
     <div class="order-1 md:order-2 relative aspect-square">
-      <img class="w-full h-full object-cover rounded-3xl border border-white/5 shadow-2xl" alt="Estructura craneofacial" src="/images/MYOBRACE-2.webp"/>
+      <img loading="lazy" decoding="async" class="w-full h-full object-cover rounded-3xl border border-white/5 shadow-2xl" alt="Estructura craneofacial" src="/images/MYOBRACE-2.webp"/>
     </div>
   </section>
 
@@ -168,9 +179,9 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter max-w-5xl mx-auto">
       <div class="ba-slider relative w-full h-[320px] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl group select-none cursor-ew-resize">
-        <img class="absolute inset-0 w-full h-full object-cover" alt="Antes" src="/images/2%20MYOBRACE%20CASO%20ANTES.webp"/>
+        <img loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" alt="Antes" src="/images/2%20MYOBRACE%20CASO%20ANTES.webp"/>
         <div class="slider-overlay absolute inset-0 overflow-hidden z-10">
-          <img class="absolute inset-0 w-full h-full object-cover" alt="Después" src="/images/2-MYOBRACE-CASO-DESPUES.webp"/>
+          <img loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" alt="Después" src="/images/2-MYOBRACE-CASO-DESPUES.webp"/>
           <div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-label-caps border border-white/10 uppercase">Después</div>
         </div>
         <div class="slider-handle absolute top-0 bottom-0 w-1 bg-[#AF9880] z-20 flex items-center justify-center -translate-x-1/2">
@@ -182,9 +193,9 @@
       </div>
 
       <div class="ba-slider relative w-full h-[320px] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl group select-none cursor-ew-resize">
-        <img class="absolute inset-0 w-full h-full object-cover" alt="Antes" src="/images/1.-MYOBRACE-CASO-ANTES.webp"/>
+        <img loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" alt="Antes" src="/images/1.-MYOBRACE-CASO-ANTES.webp"/>
         <div class="slider-overlay absolute inset-0 overflow-hidden z-10">
-          <img class="absolute inset-0 w-full h-full object-cover" alt="Después" src="/images/1.-MYOBRACE-CASO-DESPUES.webp"/>
+          <img loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" alt="Después" src="/images/1.-MYOBRACE-CASO-DESPUES.webp"/>
           <div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-label-caps border border-white/10 uppercase">Después</div>
         </div>
         <div class="slider-handle absolute top-0 bottom-0 w-1 bg-[#AF9880] z-20 flex items-center justify-center -translate-x-1/2">
@@ -248,7 +259,7 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
       <div class="md:col-span-8 relative overflow-hidden rounded-3xl glass-card group">
-        <img class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" alt="Perfil facial" src="/images/QUE%20ES%20MYOBRACE%20.webp"/>
+        <img loading="lazy" decoding="async" class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" alt="Perfil facial" src="/images/QUE%20ES%20MYOBRACE%20.webp"/>
         <div class="absolute bottom-8 left-8">
           <h3 class="font-headline-md mb-2 text-[#AF9880]">¿Qué es?</h3>
           <p class="font-label-caps text-on-surface">Es la fisioterapia de la boca y la respiración. Enseña al paciente a usar correctamente los músculos de la lengua, labios, mejillas y mandíbula, y restablece la respiración nasal adecuada.</p>
@@ -260,7 +271,7 @@
           <p class="text-sm text-on-surface leading-relaxed">La lengua ejerce presión sobre los maxilares miles de veces al día. Cuando está en una posición incorrecta puede causar:</p>
           <ul class="mt-3 space-y-1 text-sm text-on-surface-variant">
             <li class="flex items-start gap-2">• Desarrollo deficiente de los maxilares</li>
-            <li class="flex items-start gap-2">• Paladar estrecho y apiñamiento dental</li>
+            <li class="flex items-start gap-2">• Paladar estrecho y dientes torcidos</li>
             <li class="flex items-start gap-2">• Alteraciones respiratorias y del sueño</li>
           </ul>
         </div>
@@ -270,8 +281,7 @@
           <ul class="mt-3 space-y-1 text-sm text-on-surface-variant">
             <li class="flex items-start gap-2">• Respiración oral y ronquidos</li>
             <li class="flex items-start gap-2">• Bruxismo y alteraciones funcionales</li>
-            <li class="flex items-start gap-2">• Paladar estrecho y apiñamiento dental</li>
-            <li class="flex items-start gap-2">• Mordida cruzada, abierta y deglución atípica</li>
+            <li class="flex items-start gap-2">• Mordida cruzada, abierta y alteraciones en la forma de tragar</li>
           </ul>
         </div>
       </div>
@@ -280,45 +290,73 @@
 
   <div class="gold-divider w-full"></div>
 
-  <!-- Diagnostic Tech-Specs -->
-  <section class="py-section-padding bg-[#141311]/50 rounded-[4rem] px-12 border border-white/5">
-    <div class="max-w-3xl mx-auto text-center mb-stack-lg">
-      <span class="font-label-caps text-[#AF9880] mb-4 block">CONFIGURADOR</span>
-      <h2 class="font-headline-lg text-on-surface">Especificaciones Técnicas</h2>
-      <p class="font-body-md text-on-surface-variant mt-4">Seleccione los marcadores fisiológicos que requieren optimización.</p>
+  <!-- FAQ Grid -->
+  <section class="py-section-padding bg-[#141311]">
+    <div class="max-w-7xl mx-auto px-8 text-center mb-stack-lg">
+      <h2 class="font-display-xl text-white">Preguntas Frecuentes</h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="group cursor-pointer p-8 rounded-3xl border border-[#AF9880]/10 hover:border-[#AF9880]/40 transition-all duration-500 bg-surface-container-low hover:bg-surface-container">
-        <div class="flex justify-between items-start mb-12">
-          <span class="material-symbols-outlined text-3xl text-[#AF9880]">priority_high</span>
-          <div class="w-6 h-6 rounded-full border-2 border-[#AF9880] flex items-center justify-center">
-            <div class="w-3 h-3 bg-[#AF9880] rounded-full"></div>
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="flex flex-col lg:flex-row gap-8 items-stretch">
+        <div class="w-full lg:w-[30%] max-w-[260px] mx-auto lg:mx-0 flex items-center">
+          <div class="w-full rounded-2xl border-2 border-[#AF9880] overflow-hidden bg-[#0f0e0c] flex items-center justify-center">
+            <img loading="lazy" decoding="async" src="/images/camila-preguntas.webp" alt="Camila Valencia" class="max-h-full w-auto object-contain"/>
           </div>
         </div>
-        <h3 class="font-headline-md text-2xl mb-2">¿Por qué tratarlos?</h3>
-        <p class="text-sm text-on-surface-variant mb-6">Estas alteraciones no solo afectan los dientes: influyen en el crecimiento facial, la respiración, la calidad del sueño, la masticación y la postura lingual. Corregir la función garantiza resultados más saludables, estables y duraderos.</p>
-        <div class="h-[1px] w-full bg-[#AF9880]/20 mb-6"></div>
-      </div>
-      <div class="group cursor-pointer p-8 rounded-3xl border border-white/5 hover:border-[#AF9880]/40 transition-all duration-500 bg-surface-container-low hover:bg-surface-container">
-        <div class="flex justify-between items-start mb-12">
-          <span class="material-symbols-outlined text-3xl text-slate-500 group-hover:text-[#AF9880]">calendar_month</span>
-          <div class="w-6 h-6 rounded-full border-2 border-white/10 group-hover:border-[#AF9880] flex items-center justify-center"><div class="w-3 h-3 bg-[#AF9880] rounded-full"></div></div>
+        <div class="w-full lg:flex-1">
+          <div class="glass-card pt-4 pb-4 px-5 rounded-2xl border border-[#AF9880]/20 flex flex-col justify-center h-full">
+            <h3 class="text-[#AF9880] font-serif text-lg text-center mb-4">Todo lo que necesitas saber</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-4 mt-6" id="faq-grid"></div>
+            <div id="faq-answer-card" class="glass-card p-4 rounded-xl border border-[#AF9880]/10 min-h-[70px] text-center hidden">
+              <p class="font-body-lg text-on-surface-variant leading-relaxed" id="faq-answer-text"></p>
+            </div>
+            <div id="faq-placeholder" class="text-center py-4">
+              <span class="material-symbols-outlined text-4xl text-[#AF9880]/30 block mb-3">touch_app</span>
+              <p class="font-body-md text-on-surface-variant">Selecciona una pregunta para ver la respuesta</p>
+            </div>
+          </div>
         </div>
-        <h3 class="font-headline-md text-2xl mb-2 text-slate-400 group-hover:text-on-surface">Edad y Duración</h3>
-        <p class="text-sm text-on-surface-variant mb-6">Se recomienda iniciar entre los 4 y 12 años, cuando hay mayor potencial de crecimiento. Duración promedio: infantil 18–36 meses, adolescentes 12–24 meses. Nunca es tarde para mejorar la función.</p>
-        <div class="h-[1px] w-full bg-white/5 group-hover:bg-[#AF9880]/20 mb-6"></div>
-      </div>
-      <div class="group cursor-pointer p-8 rounded-3xl border border-white/5 hover:border-[#AF9880]/40 transition-all duration-500 bg-surface-container-low hover:bg-surface-container">
-        <div class="flex justify-between items-start mb-12">
-          <span class="material-symbols-outlined text-3xl text-slate-500 group-hover:text-[#AF9880]">science</span>
-          <div class="w-6 h-6 rounded-full border-2 border-white/10 group-hover:border-[#AF9880] flex items-center justify-center"><div class="w-3 h-3 bg-[#AF9880] rounded-full"></div></div>
-        </div>
-        <h3 class="font-headline-md text-2xl mb-2 text-slate-400 group-hover:text-on-surface">Materiales</h3>
-        <p class="text-sm text-on-surface-variant mb-6">Fabricados con silicona grado médico, libres de BPA. Flexibles, cómodos y seguros para uso prolongado. Existen diseños según la edad, tipo de mordida y objetivos funcionales de cada paciente.</p>
-        <div class="h-[1px] w-full bg-white/5 group-hover:bg-[#AF9880]/20 mb-6"></div>
       </div>
     </div>
   </section>
+
+  <script>
+  (function() {
+    var faqs = [
+      { q: "¿A qué edad se recomienda iniciar?", a: "Idealmente entre los 4 y 12 años, porque es el momento donde existe mayor potencial de crecimiento. Sin embargo, nunca es demasiado tarde para mejorar la función. También tratamos adolescentes y adultos que presentan alteraciones miofuncionales o respiratorias." },
+      { q: "¿Cuánto tiempo dura el tratamiento?", a: "En promedio de 18 a 24 meses. La duración depende principalmente del nivel de colaboración y constancia de cada paciente." },
+      { q: "¿De qué materiales están hechos los aparatos (Trainers)?", a: "Los aparatos Myobrace están fabricados con silicona grado médico biocompatibles de alta calidad. Son libres de BPA, flexibles, cómodos y seguros para uso prolongado." },
+      { q: "¿Todos los aparatos (trainers) son iguales?", a: "No, existen diferentes diseños según la edad, tipo de mordida, etapa de tratamiento y objetivos funcionales." },
+      { q: "¿Myobrace reemplaza los brackets?", a: "No siempre. En muchos niños puede disminuir significativamente la complejidad de una futura ortodoncia. En otros casos funciona como una fase previa que mejora los resultados de brackets o alineadores." },
+      { q: "¿Mi hijo debe usar el aparato todo el día?", a: "No, se utiliza 1 a 2 horas durante el día y toda la noche al momento de dormir." },
+      { q: "¿Duele el tratamiento con Myobrace?", a: "No, puede existir una sensación inicial de adaptación, pero suele ser muy bien tolerada." },
+      { q: "¿Puede ayudar con los ronquidos?", a: "Muchas personas con ronquidos presentan alteraciones funcionales y respiratorias que deben ser evaluadas. Nuestro protocolo incluye análisis de la vía aérea para identificar posibles factores asociados." },
+      { q: "¿Los adultos pueden usar Myobrace?", a: "Sí, existen trainers diseñados específicamente para adolescentes y adultos para tratar problemas como bruxismo, alteraciones en la ATM, ronquidos, entre otros." }
+    ];
+
+    var grid = document.getElementById('faq-grid');
+    var answerCard = document.getElementById('faq-answer-card');
+    var answerText = document.getElementById('faq-answer-text');
+    var placeholder = document.getElementById('faq-placeholder');
+
+    faqs.forEach(function(faq, i) {
+      var cell = document.createElement('div');
+      cell.className = 'glass-card p-2 rounded-xl border border-[#AF9880]/10 hover:border-[#AF9880]/40 cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] flex items-center justify-center text-center min-h-[60px] group';
+      cell.innerHTML = '<h5 class="font-headline-md text-xs text-white group-hover:text-[#AF9880] transition-colors duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] leading-snug">' + faq.q + '</h5>';
+      cell.addEventListener('click', function() {
+        document.querySelectorAll('#faq-grid > div').forEach(function(c) {
+          c.classList.remove('border-[#AF9880]/60', 'bg-[#AF9880]/5');
+          c.classList.add('border-[#AF9880]/10');
+        });
+        cell.classList.remove('border-[#AF9880]/10');
+        cell.classList.add('border-[#AF9880]/60', 'bg-[#AF9880]/5');
+        answerText.textContent = faq.a;
+        answerCard.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      });
+      grid.appendChild(cell);
+    });
+  })();
+  </script>
 </main>
 
 <div class="gold-divider w-full"></div>
@@ -337,7 +375,7 @@
     <div class="absolute top-0 right-0 w-64 h-64 bg-[#AF9880]/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2"></div>
     <div class="grid grid-cols-1 md:grid-cols-5 gap-stack-lg relative z-10">
       <div class="md:col-span-2">
-        <img src="/images/form.webp" alt="Consulta odontológica" class="w-full h-full object-cover rounded-2xl"/>
+        <img loading="lazy" decoding="async" src="/images/form.webp" alt="Consulta odontológica" class="w-full h-full object-cover rounded-2xl"/>
       </div>
       <div class="md:col-span-3 flex flex-col gap-stack-md">
         <div>

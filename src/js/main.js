@@ -49,20 +49,26 @@ function finishProgress() {
 
 function cascadeSections() {
   const sections = document.querySelectorAll("body > section, main > section");
-
+  if (!("IntersectionObserver" in window)) {
+    sections.forEach((el) => el.classList.remove("cascade-section"));
+    return;
+  }
   sections.forEach((el, i) => {
-    if (i === 0) return;
-    el.classList.add("cascade-section");
+    if (i !== 0) el.classList.add("cascade-section");
   });
-
-  void document.body.offsetHeight;
-
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("cascade-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+  );
   sections.forEach((el, i) => {
-    if (i === 0) return;
-    const delay = 0.4 + i * 0.9;
-    el.style.transition = `opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s, transform 1.8s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`;
-    el.style.opacity = "1";
-    el.style.transform = "translateY(0)";
+    if (i !== 0) io.observe(el);
   });
 }
 
@@ -161,10 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadComponent("navbar", "/camila-odontologa/src/components/navbar.html", initMobileMenu);
   loadComponent("footer", "/camila-odontologa/src/components/footer.html");
 
-  const viaTransition = sessionStorage.getItem("vt") === "1";
-  sessionStorage.removeItem("vt");
-  const delay = viaTransition ? 2400 : 600;
-  setTimeout(cascadeSections, delay);
+  cascadeSections();
 });
 
 document.addEventListener("click", (e) => {
@@ -185,7 +188,6 @@ document.addEventListener("click", (e) => {
   e.preventDefault();
 
   startProgress();
-  sessionStorage.setItem("vt", "1");
   if (document.startViewTransition) {
     document.startViewTransition(() => {
       window.location.href = link.href;

@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Manrope:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+<link rel="preload" as="image" href="/images/bg-hero-medellin.webp" fetchpriority="high">
 <title>Turismo Dental - Dra. Camila Valencia</title>
 <link rel="icon" type="image/webp" href="/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
 <link rel="stylesheet" href="/src/styles/main.css">
@@ -46,6 +51,12 @@
   .destino-gallery-scroll::-webkit-scrollbar { display: none; }
   .destino-gallery-scroll > div { scroll-snap-align: start; flex: 0 0 85%; min-width: 0; }
   @media (min-width: 768px) { .destino-gallery-scroll > div { flex: 0 0 70%; } }
+
+  .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 40px; height: 40px; border-radius: 9999px; background: rgba(15,14,12,0.7); backdrop-filter: blur(4px); border: 1px solid rgba(175,152,128,0.4); color: #AF9880; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
+  .gallery-nav:hover { background: #AF9880; color: #141311; border-color: #AF9880; transform: translateY(-50%) scale(1.08); }
+  .gallery-nav-prev { left: 8px; }
+  .gallery-nav-next { right: 8px; }
+  .gallery-hint { text-align: center; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(175,152,128,0.7); margin-top: 0.4rem; }
 </style>
 </head>
 <body data-page="turismo">
@@ -54,17 +65,18 @@
   <!-- Hero -->
   <section class="relative h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 z-0">
-      <img alt="Medellín" class="w-full h-full object-cover brightness-[0.4]" src="/images/bg-hero-medellin.webp"/>
+      <img alt="Medellín" fetchpriority="high" class="w-full h-full object-cover brightness-[0.4]" src="/images/bg-hero-medellin.webp"/>
 
     </div>
     <div class="relative z-10 text-center px-gutter max-w-4xl">
-      <span class="font-label-caps text-tertiary mb-base block tracking-[0.3em]">LA EXPERIENCIA DENTAL DEFINITIVA</span>
+      <span class="font-label-caps text-tertiary mb-base block tracking-[0.3em]">TU EXPERIENCIA DENTAL EN MEDELLIN</span>
+      <p class="font-label-caps text-on-surface mb-base tracking-[0.3em] text-sm">SONRIE, VIAJA, TRANSFORMATE.</p>
       <h1 class="font-display-xl text-on-surface mb-stack-md italic leading-tight">Tú experiencia comienza en Medellín.</h1>
       <p class="font-body-lg text-font-white max-w-2xl mx-auto opacity-80">Diseñamos una experiencia cómoda y personalizada para pacientes nacionales e internacionales. Integramos bienestar, tecnología y acompañamiento en cada etapa de su tratamiento.</p>
       <div class="mt-stack-lg flex justify-center">
         <button class="relative border border-tertiary text-tertiary px-10 py-4 rounded-full font-label-caps overflow-hidden group transition-colors duration-500">
           <span class="absolute inset-y-0 left-0 w-0 bg-tertiary group-hover:w-full transition-all duration-500 ease-in-out"></span>
-          <span class="relative z-10 group-hover:text-primary-container transition-colors duration-500">Tu experiencia comienza en Medellín</span>
+          <span class="relative z-10 group-hover:text-primary-container transition-colors duration-500">Comienza tu viaje</span>
         </button>
       </div>
     </div>
@@ -77,28 +89,28 @@
     <div class="flex flex-col md:flex-row items-center justify-between gap-stack-lg">
       <div class="max-w-xl space-y-stack-md md:ml-20">
         <div class="w-12 h-1 bg-tertiary mb-base mx-auto"></div>
-        <h2 class="font-headline-lg text-[#AF9880] text-center">La Experiencia VIP</h2>
-        <p class="font-body-lg text-on-surface-variant">Nuestro equipo de concierge orquesta cada detalle de su visita, asegurando una transición fluida desde su hogar hasta nuestras instalaciones clínicas de vanguardia.</p>
+        <h2 class="font-headline-lg text-[#AF9880] text-center">Una experiencia pensada en ti</h2>
+        <p class="font-body-lg text-on-surface-variant">Queremos que tu visita a Medellín sea tan sencilla como tu experiencia en nuestra clínica. Te acompañamos en cada detalle para que puedas concentrarte en lo más importante: tu tratamiento.</p>
         <ul class="space-y-stack-sm">
           <li class="flex items-start gap-4">
             <span class="material-symbols-outlined text-[#AF9880]">flight_takeoff</span>
             <div>
               <h4 class="font-label-caps text-[#AF9880]">Traslados personalizados:</h4>
-              <p class="text-sm text-on-surface-variant">Coordinamos tu movilidad durante la experiencia clínica en Medellín.</p>
+              <p class="text-sm text-on-surface-variant">Coordinamos tu movilidad durante tu estancia en Medellín.</p>
             </div>
           </li>
           <li class="flex items-start gap-4">
             <span class="material-symbols-outlined text-[#AF9880]">hotel</span>
             <div>
               <h4 class="font-label-caps text-[#AF9880]">Hospedaje recomendado:</h4>
-              <p class="text-sm text-on-surface-variant">Convenios y recomendaciones en zonas exclusivas y estratégicas de la ciudad.</p>
+              <p class="text-sm text-on-surface-variant">Te orientamos con opciones de alojamiento en zonas estratégicas de la ciudad.</p>
             </div>
           </li>
           <li class="flex items-start gap-4">
             <span class="material-symbols-outlined text-[#AF9880]">speed</span>
             <div>
-              <h4 class="font-label-caps text-[#AF9880]">Planificación optimizada:</h4>
-              <p class="text-sm text-on-surface-variant">Diseñamos agendas eficientes para aprovechar al máximo su tiempo en Medellín.</p>
+              <h4 class="font-label-caps text-[#AF9880]">Planificación de tu estancia:</h4>
+              <p class="text-sm text-on-surface-variant">Organizamos tus citas de manera eficiente para aprovechar al máximo tu tiempo en Medellín.</p>
             </div>
           </li>
         </ul>
@@ -165,7 +177,16 @@
       <h3 id="hotel-modal-title" class="font-headline-lg text-on-surface mb-3"></h3>
       <p id="hotel-modal-desc" class="font-body-md text-on-surface-variant leading-relaxed"></p>
       <ul id="hotel-modal-features" class="mt-4 mb-5 space-y-2"></ul>
-      <div id="hotel-modal-gallery" class="hotel-gallery-scroll"></div>
+      <div class="relative">
+        <div id="hotel-modal-gallery" class="hotel-gallery-scroll"></div>
+        <button id="hotel-gallery-prev" class="gallery-nav gallery-nav-prev" type="button" aria-label="Imagen anterior">
+          <span class="material-symbols-outlined text-base">arrow_back</span>
+        </button>
+        <button id="hotel-gallery-next" class="gallery-nav gallery-nav-next" type="button" aria-label="Imagen siguiente">
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </button>
+      </div>
+      <p class="gallery-hint">Desliza o usa la rueda del mouse para ver más fotos</p>
       <a id="hotel-modal-wa" href="#" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-label-caps text-xs tracking-widest hover:scale-[1.03] transition-transform">
         <span class="material-symbols-outlined text-base">chat</span>
         <span>RESERVAR E INTERESADO POR WHATSAPP</span>
@@ -186,7 +207,16 @@
       <h3 id="destino-modal-title" class="font-headline-lg text-on-surface mb-3"></h3>
       <p id="destino-modal-desc" class="font-body-md text-on-surface-variant leading-relaxed"></p>
       <div id="destino-modal-tags" class="mt-4 flex flex-wrap gap-2"></div>
-      <div id="destino-modal-gallery" class="destino-gallery-scroll mt-5"></div>
+      <div class="relative mt-5">
+        <div id="destino-modal-gallery" class="destino-gallery-scroll"></div>
+        <button id="destino-gallery-prev" class="gallery-nav gallery-nav-prev" type="button" aria-label="Imagen anterior">
+          <span class="material-symbols-outlined text-base">arrow_back</span>
+        </button>
+        <button id="destino-gallery-next" class="gallery-nav gallery-nav-next" type="button" aria-label="Imagen siguiente">
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </button>
+      </div>
+      <p class="gallery-hint">Desliza o usa la rueda del mouse para ver más fotos</p>
     </div>
   </div>
 </div>
@@ -353,6 +383,21 @@
       document.getElementById('hotel-modal-backdrop').addEventListener('click', closeModal);
       document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
+      // Galería: rueda del mouse + flechas
+      var hotelGal = document.getElementById('hotel-modal-gallery');
+      hotelGal.addEventListener('wheel', function(e) {
+        if (Math.abs(e.deltaY) > 0 && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          e.preventDefault();
+          hotelGal.scrollLeft += e.deltaY;
+        }
+      }, { passive: false });
+      document.getElementById('hotel-gallery-prev').addEventListener('click', function() {
+        hotelGal.scrollBy({ left: -hotelGal.clientWidth * 0.8, behavior: 'smooth' });
+      });
+      document.getElementById('hotel-gallery-next').addEventListener('click', function() {
+        hotelGal.scrollBy({ left: hotelGal.clientWidth * 0.8, behavior: 'smooth' });
+      });
+
       // Swipe-down on the handle to close
       (function() {
         var sheet = document.getElementById('hotel-sheet');
@@ -384,14 +429,14 @@
       <div class="text-center mb-stack-lg">
         <span class="font-label-caps text-tertiary tracking-widest">TRANSFORMACIONES REALES</span>
         <h2 class="font-headline-lg text-on-surface mt-base italic">Antes y Después</h2>
-        <p class="font-body-md text-on-surface-variant max-w-2xl mx-auto mt-4">Resultados excepcionales para pacientes internacionales que confiaron su sonrisa a nuestra visión artística y precisión técnica.</p>
+        <p class="font-body-md text-on-surface-variant max-w-2xl mx-auto mt-4">Resultados diseñados con precisión. Pacientes internacionales que confiaron en nuestra planificación y visión estética.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-stack-lg">
         <div class="relative group cursor-pointer rounded-3xl overflow-hidden glass-card">
           <div class="aspect-[16/9] relative">
-            <img alt="Antes" class="w-full h-full object-cover" src="/images/imagen-1-antes.webp"/>
+            <img loading="lazy" decoding="async" alt="Antes" class="w-full h-full object-cover" src="/images/imagen-1-antes.webp"/>
             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[#122838]/60">
-              <img alt="Después" class="w-full h-full object-cover" src="/images/imagen-1-despues.webp"/>
+              <img loading="lazy" decoding="async" alt="Después" class="w-full h-full object-cover" src="/images/imagen-1-despues.webp"/>
             </div>
             <div class="absolute top-4 left-4 bg-surface/80 px-4 py-1 rounded-full text-[10px] font-label-caps text-tertiary border border-tertiary/20">ANTES</div>
             <div class="absolute top-4 right-4 bg-tertiary px-4 py-1 rounded-full text-[10px] font-label-caps text-primary-container shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">DESPUÉS</div>
@@ -402,9 +447,9 @@
         </div>
         <div class="relative group cursor-pointer rounded-3xl overflow-hidden glass-card">
           <div class="aspect-[16/9] relative">
-            <img alt="Antes" class="w-full h-full object-cover" src="/images/imagen-2-antes.webp"/>
+            <img loading="lazy" decoding="async" alt="Antes" class="w-full h-full object-cover" src="/images/imagen-2-antes.webp"/>
             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[#122838]/60">
-              <img alt="Después" class="w-full h-full object-cover" src="/images/imagen-2-despues.webp"/>
+              <img loading="lazy" decoding="async" alt="Después" class="w-full h-full object-cover" src="/images/imagen-2-despues.webp"/>
             </div>
             <div class="absolute top-4 left-4 bg-surface/80 px-4 py-1 rounded-full text-[10px] font-label-caps text-tertiary border border-tertiary/20">ANTES</div>
             <div class="absolute top-4 right-4 bg-tertiary px-4 py-1 rounded-full text-[10px] font-label-caps text-primary-container shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">DESPUÉS</div>
@@ -415,9 +460,9 @@
         </div>
         <div class="relative group cursor-pointer rounded-3xl overflow-hidden glass-card">
           <div class="aspect-[16/9] relative">
-            <img alt="Antes" class="w-full h-full object-cover" src="/images/imagen-3-antes.webp"/>
+            <img loading="lazy" decoding="async" alt="Antes" class="w-full h-full object-cover" src="/images/imagen-3-antes.webp"/>
             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[#122838]/60">
-              <img alt="Después" class="w-full h-full object-cover" src="/images/imagen-3-despues.webp"/>
+              <img loading="lazy" decoding="async" alt="Después" class="w-full h-full object-cover" src="/images/imagen-3-despues.webp"/>
             </div>
             <div class="absolute top-4 left-4 bg-surface/80 px-4 py-1 rounded-full text-[10px] font-label-caps text-tertiary border border-tertiary/20">ANTES</div>
             <div class="absolute top-4 right-4 bg-tertiary px-4 py-1 rounded-full text-[10px] font-label-caps text-primary-container shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">DESPUÉS</div>
@@ -473,7 +518,7 @@
     </div>
     <div class="flex flex-col md:flex-row w-full md:h-[430px] gap-gutter md:gap-0 rounded-3xl overflow-hidden glass-card">
       <div class="relative w-full md:w-0 md:flex-grow group overflow-hidden rounded-3xl md:rounded-none md:hover:w-[300px] transition-all duration-500 ease-in-out" style="min-height:240px">
-        <img alt="Medellín" class="w-full h-full object-cover brightness-[0.55] group-hover:brightness-[0.7] transition-all duration-500" src="/images/medellin.webp"/>
+        <img alt="Medellín" class="w-full h-full object-cover brightness-[0.55] group-hover:brightness-[0.7] transition-all duration-500" loading="lazy" decoding="async" src="/images/medellin.webp"/>
         <div class="absolute inset-0 flex flex-col items-center justify-end p-6 pb-6 text-center bg-gradient-to-t from-black/65 via-black/20 to-transparent group-hover:from-black/80 transition-all duration-500">
           <span class="font-label-caps text-white/70 tracking-widest text-[10px] mb-2">ESCAPADA · MEDELLÍN</span>
           <p class="text-white text-sm mb-3 opacity-90">A minutos de la clínica · Arte, gastronomía y cultura</p>
@@ -483,7 +528,7 @@
         </div>
       </div>
       <div class="relative w-full md:w-0 md:flex-grow group overflow-hidden rounded-3xl md:rounded-none md:hover:w-[300px] transition-all duration-500 ease-in-out" style="min-height:240px">
-        <img alt="Guatapé" class="w-full h-full object-cover brightness-[0.55] group-hover:brightness-[0.7] transition-all duration-500" src="/images/guatape.webp"/>
+        <img alt="Guatapé" class="w-full h-full object-cover brightness-[0.55] group-hover:brightness-[0.7] transition-all duration-500" loading="lazy" decoding="async" src="/images/guatape.webp"/>
         <div class="absolute inset-0 flex flex-col items-center justify-end p-6 pb-6 text-center bg-gradient-to-t from-black/65 via-black/20 to-transparent group-hover:from-black/80 transition-all duration-500">
           <span class="font-label-caps text-white/70 tracking-widest text-[10px] mb-2">GUATAPÉ · 1H 30</span>
           <p class="text-white text-sm mb-3 opacity-90">Piedra del Peñol, zócalos y deportes acuáticos</p>
@@ -493,7 +538,7 @@
         </div>
       </div>
       <div class="relative w-full md:w-0 md:flex-grow group overflow-hidden rounded-3xl md:rounded-none md:hover:w-[300px] transition-all duration-500 ease-in-out" style="min-height:240px">
-        <img alt="Jardín" class="w-full h-full object-cover brightness-[0.55] group-hover:brightness-[0.7] transition-all duration-500" src="/images/jardin.webp"/>
+        <img alt="Jardín" class="w-full h-full object-cover brightness-[0.55] group-hover:brightness-[0.7] transition-all duration-500" loading="lazy" decoding="async" src="/images/jardin.webp"/>
         <div class="absolute inset-0 flex flex-col items-center justify-end p-6 pb-6 text-center bg-gradient-to-t from-black/65 via-black/20 to-transparent group-hover:from-black/80 transition-all duration-500">
           <span class="font-label-caps text-white/70 tracking-widest text-[10px] mb-2">JARDÍN · 3H</span>
           <p class="text-white text-sm mb-3 opacity-90">Pueblo patrimonio y cultura cafetera</p>
@@ -503,7 +548,7 @@
         </div>
       </div>
       <div class="relative w-full md:w-0 md:flex-grow group overflow-hidden rounded-3xl md:rounded-none md:hover:w-[300px] transition-all duration-500 ease-in-out" style="min-height:240px">
-        <img alt="Santa Fe de Antioquia" class="w-full h-full object-cover brightness-[0.55] group-hover:brightness-[0.7] transition-all duration-500" src="/images/santa-fe-de-antioquia.webp"/>
+        <img alt="Santa Fe de Antioquia" class="w-full h-full object-cover brightness-[0.55] group-hover:brightness-[0.7] transition-all duration-500" loading="lazy" decoding="async" src="/images/santa-fe-de-antioquia.webp"/>
         <div class="absolute inset-0 flex flex-col items-center justify-end p-6 pb-6 text-center bg-gradient-to-t from-black/65 via-black/20 to-transparent group-hover:from-black/80 transition-all duration-500">
           <span class="font-label-caps text-white/70 tracking-widest text-[10px] mb-2">SANTA FE · 1H 30</span>
           <p class="text-white text-sm mb-3 opacity-90">Arquitectura colonial y Puente de Occidente</p>
@@ -531,7 +576,7 @@
       <div class="absolute top-0 right-0 w-64 h-64 bg-[#AF9880]/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2"></div>
       <div class="grid grid-cols-1 md:grid-cols-5 gap-stack-lg relative z-10">
         <div class="md:col-span-2">
-          <img src="/images/form.webp" alt="Consulta odontológica" class="w-full h-full object-cover rounded-2xl"/>
+          <img loading="lazy" decoding="async" src="/images/form.webp" alt="Consulta odontológica" class="w-full h-full object-cover rounded-2xl"/>
         </div>
         <div class="md:col-span-3 flex flex-col gap-stack-md">
           <div>
@@ -691,6 +736,21 @@
       if (btn && btn.getAttribute('data-destino')) {
         openDestino(btn.getAttribute('data-destino'));
       }
+    });
+
+    // Galería: rueda del mouse + flechas
+    var destinoGal = document.getElementById('destino-modal-gallery');
+    destinoGal.addEventListener('wheel', function(e) {
+      if (Math.abs(e.deltaY) > 0 && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        destinoGal.scrollLeft += e.deltaY;
+      }
+    }, { passive: false });
+    document.getElementById('destino-gallery-prev').addEventListener('click', function() {
+      destinoGal.scrollBy({ left: -destinoGal.clientWidth * 0.8, behavior: 'smooth' });
+    });
+    document.getElementById('destino-gallery-next').addEventListener('click', function() {
+      destinoGal.scrollBy({ left: destinoGal.clientWidth * 0.8, behavior: 'smooth' });
     });
 
     destinoClose.addEventListener('click', closeDestino);

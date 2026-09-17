@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Manrope:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+<link rel="preload" as="image" href="/images/bg-hero-inicio.webp" fetchpriority="high">
 <title>Dra. Camila Valencia - Ortodoncia de Alta Precisión</title>
 <link rel="icon" type="image/webp" href="/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
 <link rel="stylesheet" href="/src/styles/main.css">
@@ -29,7 +34,7 @@
     </div>
     <div class="w-full md:w-1/2 min-h-screen relative overflow-hidden">
       <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#0b1d28] to-transparent z-10 pointer-events-none"></div>
-      <img class="absolute inset-0 w-full h-full object-cover object-top" alt="" src="/images/bg-hero-inicio.webp"/>
+      <img class="absolute inset-0 w-full h-full object-cover object-top" alt="" fetchpriority="high" src="/images/bg-hero-inicio.webp"/>
     </div>
   </div>
 </section>
@@ -53,18 +58,18 @@
         <div class="flex-1 glass-card rounded-xl p-5 border-t-2 border-t-[#AF9880]/60 transition-all duration-500 hover:border-t-[#AF9880] hover:-translate-y-1 flex flex-col items-center">
           <span class="material-symbols-outlined text-[#AF9880] mb-3 block text-[28px]">air</span>
           <h4 class="font-label-caps text-[#AF9880] mb-2">FUNCIÓN</h4>
-          <p class="text-sm text-on-surface-variant">Optimización del flujo aéreo y posición mandibular.</p>
+          <p class="text-sm text-on-surface-variant">Buscamos recuperar el equilibrio de la mordida, la respiración y la función muscular, para lograr resultados estables y saludables.</p>
         </div>
         <div class="flex-1 glass-card rounded-xl p-5 border-t-2 border-t-[#AF9880]/60 transition-all duration-500 hover:border-t-[#AF9880] hover:-translate-y-1 flex flex-col items-center">
           <span class="material-symbols-outlined text-[#AF9880] mb-3 block text-[28px]">diamond</span>
           <h4 class="font-label-caps text-[#AF9880] mb-2">ESTÉTICA</h4>
-          <p class="text-sm text-on-surface-variant">Proporción áurea y análisis cefalométrico facial.</p>
+          <p class="text-sm text-on-surface-variant">Diseñamos sonrisas armónicas y naturales, respetando las proporciones del rostro y la individualidad de cada paciente.</p>
         </div>
       </div>
     </div>
     <div class="relative flex justify-center md:py-8">
       <div class="golden-fire-container">
-        <img class="h-[440px] sm:h-[510px] w-auto object-contain deep-shadow" alt="Equipo de trabajo" src="/images/2.-FOTO-EQUIPO-DSC_0298.webp"/>
+        <img loading="lazy" decoding="async" class="h-[440px] sm:h-[510px] w-auto object-contain deep-shadow" alt="Equipo de trabajo" src="/images/2.-FOTO-EQUIPO-DSC_0298.webp"/>
       </div>
     </div>
   </div>
@@ -76,8 +81,7 @@
 <section class="py-section-padding bg-surface-container-lowest" id="services">
   <div class="max-w-container-max mx-auto px-gutter">
     <div class="text-center mb-stack-lg">
-      <span class="font-label-caps text-[#AF9880] tracking-widest block mb-4">ECOSISTEMA DE PRECISIÓN</span>
-      <h2 class="font-display-xl text-on-surface">Especialidades</h2>
+      <h2 class="font-display-xl text-[32px] text-[#AF9880]">Nuestras especialidades</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
       <!-- Myobrace -->
@@ -94,7 +98,7 @@
           </div>
         </div>
         <div class="flex-1 h-64 md:h-auto relative">
-          <img class="w-full h-full object-cover rounded-xl transition-all duration-700" alt="Tratamiento Myobrace" src="/images/MYOBRACE.webp"/>
+          <img loading="lazy" decoding="async" class="w-full h-full object-cover rounded-xl transition-all duration-700" alt="Tratamiento Myobrace" src="/images/MYOBRACE.webp"/>
         </div>
       </div>
       <!-- Digital Flow -->
@@ -112,29 +116,44 @@
           <label class="flex items-center justify-center gap-4 group/item"><div class="w-5 h-5 border border-[#AF9880] rounded-sm flex items-center justify-center transition-all group-hover/item:bg-[#AF9880]/10"><span class="material-symbols-outlined text-[14px] text-[#AF9880]">check</span></div><span class="text-sm font-label-caps text-on-surface-variant">Transformación digital precisa</span></label>
         </div>
         <div class="mt-stack-md flex-1 min-h-0 overflow-hidden rounded-xl">
-          <img class="w-full h-full object-cover" alt="Alineadores invisibles" src="/images/ALINEADORES.webp"/>
+          <img loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Alineadores invisibles" src="/images/ALINEADORES.webp"/>
         </div>
       </div>
       <!-- Sapphire -->
-      <div class="md:col-span-6 glass-card p-stack-md rounded-2xl group relative overflow-hidden text-center">
-        <div class="flex items-center justify-center gap-3 mb-4">
-          <span class="material-symbols-outlined text-[#AF9880]">diamond</span>
-          <h3 class="font-headline-md text-[#AF9880]">Ortodoncia autoligado</h3>
+      <div class="md:col-span-6 glass-card p-stack-md rounded-2xl group flex flex-col md:flex-row gap-stack-md overflow-hidden">
+        <div class="flex-1 flex flex-col justify-center text-center">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-[#AF9880]">diamond</span>
+            <h3 class="font-headline-md text-[#AF9880]">Ortodoncia autoligado</h3>
+          </div>
+          <p class="font-body-md text-on-surface-variant max-w-md mx-auto mb-stack-md">Trabajamos con las mejores marcas del mercado, con brackets diseñados para lograr movimientos eficientes, menor fricción y mayor predictibilidad durante tu tratamiento.</p>
+          <div class="space-y-4 max-w-sm mx-auto w-full">
+            <label class="flex items-center justify-center gap-4 group/item"><div class="w-5 h-5 border border-[#AF9880] rounded-sm flex items-center justify-center transition-all group-hover/item:bg-[#AF9880]/10"><span class="material-symbols-outlined text-[14px] text-[#AF9880]">check</span></div><span class="text-sm font-label-caps text-on-surface-variant">Brackets cerámicos (Estéticos)</span></label>
+            <label class="flex items-center justify-center gap-4 group/item"><div class="w-5 h-5 border border-[#AF9880] rounded-sm flex items-center justify-center transition-all group-hover/item:bg-[#AF9880]/10"><span class="material-symbols-outlined text-[14px] text-[#AF9880]">check</span></div><span class="text-sm font-label-caps text-on-surface-variant">Brackets metálicos</span></label>
+          </div>
         </div>
-        <p class="font-body-md text-on-surface-variant max-w-lg mx-auto">Trabajamos con las mejores marcas del mercado, con brackets diseñados para lograr movimientos eficientes, menor fricción y mayor predictibilidad durante tu tratamiento.</p>
-        <div class="mt-stack-md h-48 overflow-hidden rounded-xl">
-          <img class="w-full h-full object-cover" alt="Brackets autoligado" src="/images/ortondoncia-autoligado.webp"/>
+        <div class="flex-1 flex flex-col gap-3 md:gap-4 relative">
+          <div class="flex-1 min-h-[120px] overflow-hidden rounded-xl">
+            <img loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Brackets cerámicos estéticos" src="/images/ceramicos.webp"/>
+          </div>
+          <div class="flex-1 min-h-[120px] overflow-hidden rounded-xl">
+            <img loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Brackets metálicos" src="/images/autoligado.webp"/>
+          </div>
         </div>
       </div>
       <!-- DSD -->
       <div class="md:col-span-6 glass-card p-stack-md rounded-2xl group flex flex-col md:flex-row gap-stack-md overflow-hidden">
         <div class="flex-1 flex flex-col justify-center text-center">
           <span class="font-label-caps text-[#AF9880] mb-2 tracking-[0.2em]">Diseño de sonrisa digital</span>
-          <h3 class="font-headline-lg text-on-surface mb-4">Arquitectura Facial</h3>
-          <p class="font-body-md text-on-surface-variant max-w-sm mx-auto">Integramos fotografía clínica, escaneo digital y análisis facial para previsualizar resultados de sonrisas armónicas antes de iniciar cualquier tratamiento</p>
+          <p class="font-body-md text-on-surface-variant max-w-sm mx-auto mb-stack-md">Integramos fotografía clínica, escaneo digital y análisis facial para previsualizar resultados de sonrisas armónicas antes de iniciar cualquier tratamiento</p>
+          <div class="space-y-4 max-w-sm mx-auto w-full">
+            <label class="flex items-center justify-center gap-4 group/item"><div class="w-5 h-5 border border-[#AF9880] rounded-sm flex items-center justify-center transition-all group-hover/item:bg-[#AF9880]/10"><span class="material-symbols-outlined text-[14px] text-[#AF9880]">check</span></div><span class="text-sm font-label-caps text-on-surface-variant">Escaneo intraoral.</span></label>
+            <label class="flex items-center justify-center gap-4 group/item"><div class="w-5 h-5 border border-[#AF9880] rounded-sm flex items-center justify-center transition-all group-hover/item:bg-[#AF9880]/10"><span class="material-symbols-outlined text-[14px] text-[#AF9880]">check</span></div><span class="text-sm font-label-caps text-on-surface-variant">Planeación 3D.</span></label>
+            <label class="flex items-center justify-center gap-4 group/item"><div class="w-5 h-5 border border-[#AF9880] rounded-sm flex items-center justify-center transition-all group-hover/item:bg-[#AF9880]/10"><span class="material-symbols-outlined text-[14px] text-[#AF9880]">check</span></div><span class="text-sm font-label-caps text-on-surface-variant">Previsualización del tratamiento.</span></label>
+          </div>
         </div>
         <div class="flex-1 relative min-h-[280px]">
-          <img class="absolute inset-0 w-full h-full object-contain" alt="Diseño de sonrisa digital" src="/images/DISEÑO-DIGITAL.webp"/>
+          <img loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-contain" alt="Diseño de sonrisa digital" src="/images/DISEÑO-DIGITAL.webp"/>
         </div>
       </div>
     </div>
@@ -164,7 +183,7 @@
     </div>
     <div class="flex-1 w-full">
       <div class="aspect-[4/3] glass-card p-4 rounded-3xl relative overflow-hidden group">
-        <img class="w-full h-full object-cover rounded-2xl opacity-80 group-hover:opacity-100 transition-opacity" alt="Medellín" src="/images/medellin-inicio.webp"/>
+        <img loading="lazy" decoding="async" class="w-full h-full object-cover rounded-2xl opacity-80 group-hover:opacity-100 transition-opacity" alt="Medellín" src="/images/medellin-inicio.webp"/>
       </div>
     </div>
   </div>
@@ -177,7 +196,7 @@
   <div class="max-w-4xl mx-auto px-gutter text-center">
     <div class="mb-2 relative inline-block">
       <div class="w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-[#AF9880] p-1 mx-auto mb-8 overflow-hidden">
-        <img class="w-full h-full object-cover object-top rounded-full" alt="Dra. Camila Valencia" src="/images/DRA-Camila-Valencia.webp"/>
+        <img loading="lazy" decoding="async" class="w-full h-full object-cover object-top rounded-full" alt="Dra. Camila Valencia" src="/images/DRA-Camila-Valencia.webp"/>
       </div>
       <h2 class="font-headline-lg text-on-surface">Dra. Camila Valencia</h2>
       <p class="font-label-caps text-[#AF9880] tracking-[0.2em] mb-1">Ortodoncia • Ortopedia maxilar • Rehabilitación miofuncional</p>
@@ -204,7 +223,7 @@
     <div class="absolute top-0 right-0 w-64 h-64 bg-[#AF9880]/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2"></div>
     <div class="grid grid-cols-1 md:grid-cols-5 gap-stack-lg relative z-10">
       <div class="md:col-span-2">
-        <img src="/images/form.webp" alt="Consulta odontológica" class="w-full h-full object-cover rounded-2xl"/>
+        <img loading="lazy" decoding="async" src="/images/form.webp" alt="Consulta odontológica" class="w-full h-full object-cover rounded-2xl"/>
       </div>
       <div class="md:col-span-3 flex flex-col gap-stack-md">
         <div>

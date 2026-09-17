@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Manrope:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+<link rel="preload" as="image" href="/images/bg-alineadores.webp" fetchpriority="high">
 <title>Alineadores Invisibles - Dra. Camila Valencia</title>
 <link rel="icon" type="image/webp" href="/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
 <link rel="stylesheet" href="/src/styles/main.css">
@@ -63,7 +68,7 @@
   <!-- Hero -->
   <section class="relative min-h-screen overflow-hidden">
     <div class="min-h-screen flex items-center relative overflow-hidden">
-      <img src="/images/bg-alineadores.webp" alt="" class="absolute inset-0 w-full h-full object-cover"/>
+      <img src="/images/bg-alineadores.webp" alt="" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover"/>
       <div class="absolute inset-0 bg-black/40"></div>
       <div class="max-w-7xl mx-auto px-8 w-full py-24 lg:py-0 relative z-10">
         <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
@@ -105,7 +110,7 @@
               L1440,0 Z"/>
           </clipPath>
         </defs>
-        <image clip-path="url(#cloudSplit)" href="/images/fondo-alineadores.webp" class="w-full h-full object-cover" preserveAspectRatio="xMidYMid slice"/>
+        <image clip-path="url(#cloudSplit)" href="/images/bg-hero-inicio.webp" class="w-full h-full object-cover" preserveAspectRatio="xMidYMid slice"/>
       </svg>
     </div>
     <!-- Content at bottom-left of dark area -->
@@ -119,7 +124,7 @@
           <div class="flex flex-wrap gap-x-3 gap-y-1.5">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#AF9880]/50 bg-transparent w-fit">
               <span class="text-[#AF9880] text-xs font-bold shrink-0">&#10003;</span>
-              <span class="text-[11px] text-white whitespace-nowrap">Dientes apiñados</span>
+              <span class="text-[11px] text-white whitespace-nowrap">Dientes torcidos</span>
             </div>
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#AF9880]/50 bg-transparent w-fit">
               <span class="text-[#AF9880] text-xs font-bold shrink-0">&#10003;</span>
@@ -161,12 +166,12 @@
         <p class="font-body-lg text-on-surface mt-4 max-w-2xl mx-auto">Todo comienza con un diagnóstico digital completo.</p>
         <p class="font-body-md text-on-surface-variant mt-4 max-w-2xl mx-auto leading-relaxed">Utilizamos tecnología de escaneo intraoral 3D para crear una réplica virtual exacta de tu sonrisa. A partir de este escaneo realizamos una planeación digital detallada que nos permite:</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-gutter">
         <div class="group relative">
           <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
             <h3 class="font-headline-md text-[#AF9880] mb-2">Analizar tu mordida</h3>
             <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container relative">
-              <img class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Escáner intraoral 3D" src="/images/analizar tu mordida.webp"/>
+              <img loading="lazy" decoding="async" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Escáner intraoral 3D" src="/images/analizar tu mordida.webp"/>
             </div>
           </div>
         </div>
@@ -175,7 +180,7 @@
 items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
             <h3 class="font-headline-md text-[#AF9880]">Estudiar la posición de cada diente</h3>
             <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Diseño dental 3D" src="/images/estudiar la posicion.webp"/>
+              <img loading="lazy" decoding="async" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Diseño dental 3D" src="/images/estudiar la posicion.webp"/>
             </div>
           </div>
         </div>
@@ -184,7 +189,7 @@ items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cu
 items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
             <h3 class="font-headline-md text-[#AF9880]">Diseñar el movimiento dental de forma precisa</h3>
             <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Impresión 3D alineadores" src="/images/movimiento.webp"/>
+              <img loading="lazy" decoding="async" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Impresión 3D alineadores" src="/images/movimiento.webp"/>
             </div>
           </div>
         </div>
@@ -193,7 +198,15 @@ items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cu
 items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
             <h3 class="font-headline-md text-[#AF9880]">Mostrarte una simulación de cómo se verá tu sonrisa al finalizar</h3>
             <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container">
-              <img class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Sonrisa perfecta" src="/images/sonrisa.webp"/>
+              <img loading="lazy" decoding="async" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Sonrisa perfecta" src="/images/sonrisa.webp"/>
+            </div>
+          </div>
+        </div>
+        <div class="group relative">
+          <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
+            <h3 class="font-headline-md text-[#AF9880]">Fabricamos placas cada 15 días con los movimientos dentales planeados</h3>
+            <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container">
+              <img loading="lazy" decoding="async" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Placas de alineadores dentales" src="/images/ALINEADORES.webp"/>
             </div>
           </div>
         </div>
@@ -212,7 +225,7 @@ items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cu
         <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto mt-4">Precisión Invisible: Compare el diseño digital predictivo con el resultado clínico real.</p>
       </div>
       <div class="relative max-w-xl mx-auto rounded-2xl overflow-hidden border-2 border-[#AF9880]/40 shadow-2xl group">
-        <img alt="Realidad" class="w-full h-auto block" src="/images/antes1.webp"/>
+        <img loading="lazy" decoding="async" alt="Realidad" class="w-full h-auto block" src="/images/antes1.webp"/>
         <img alt="Diseño 3D" class="absolute top-0 left-0 w-full h-full object-contain" id="before-image" style="clip-path: inset(0 50% 0 0);" src="/images/despues2.webp"/>
         <span class="absolute top-4 right-4 z-10 bg-[#AF9880] text-[#122838] px-4 py-1.5 rounded-full font-label-caps text-[10px] tracking-widest pointer-events-none transition-opacity duration-300" id="label-antes">ANTES</span>
         <span class="absolute top-4 left-4 z-10 bg-[#AF9880] text-[#122838] px-4 py-1.5 rounded-full font-label-caps text-[10px] tracking-widest pointer-events-none transition-opacity duration-300 opacity-0" id="label-despues">DESPUÉS</span>
@@ -233,59 +246,63 @@ items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cu
     <div class="max-w-7xl mx-auto px-8 text-center mb-stack-lg">
       <h2 class="font-display-xl text-[#AF9880]">Beneficios de los alineadores invisibles</h2>
     </div>
-     <div class="max-w-5xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="relative group aspect-square rounded-2xl overflow-hidden glass-card">
-        <img class="w-full h-full object-cover grayscale-[30%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Estilo de vida aligner" src="/images/imperceptibles.webp"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent flex flex-col px-6 pt-6 pb-1">
-          <div class="mt-auto flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-8">
-            <h4 class="font-headline-md text-white">Prácticamente imperceptibles</h4>
-            <div class="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"><p class="font-body-md text-slate-300 text-sm mt-1">La mayoría de las personas ni siquiera notará que los estás usando.            </p></div>
+     <div class="max-w-5xl mx-auto px-8">
+      <div class="glass-card rounded-[2rem] p-8 md:p-12 border border-[#AF9880]/20 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-72 h-72 bg-[#AF9880]/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 relative z-10">
+          <div class="flex items-start gap-4 group transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
+            <div class="w-10 h-10 rounded-full border border-[#AF9880]/25 bg-[#AF9880]/5 flex items-center justify-center shrink-0 mt-0.5 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:bg-[#AF9880] group-hover:scale-110 group-hover:-rotate-6 group-hover:border-[#AF9880] group-hover:shadow-[0_0_24px_rgba(175,152,128,0.4)]">
+              <span class="material-symbols-outlined text-[#AF9880] transition-colors duration-700 group-hover:text-[#141311] text-lg">visibility</span>
+            </div>
+            <div class="transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:translate-x-1.5">
+              <h4 class="font-headline-md text-sm text-on-surface mb-1 transition-colors duration-700 group-hover:text-[#AF9880]">Prácticamente imperceptibles.</h4>
+              <p class="font-body-md text-on-surface-variant text-sm">La mayoría de las personas ni siquiera notará que los estás usando.</p>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="relative group aspect-square rounded-2xl overflow-hidden glass-card">
-        <img class="w-full h-full object-cover grayscale-[30%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Mujer sonriendo" src="/images/comodos.webp"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent flex flex-col px-6 pt-6 pb-1">
-          <div class="mt-auto flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-8">
-            <h4 class="font-headline-md text-white">Cómodos</h4>
-            <div class="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"><p class="font-body-md text-slate-300 text-sm mt-1">Sin alambres ni brackets que puedan generar llagas o rozaduras.            </p></div>
+          <div class="flex items-start gap-4 group transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
+            <div class="w-10 h-10 rounded-full border border-[#AF9880]/25 bg-[#AF9880]/5 flex items-center justify-center shrink-0 mt-0.5 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:bg-[#AF9880] group-hover:scale-110 group-hover:-rotate-6 group-hover:border-[#AF9880] group-hover:shadow-[0_0_24px_rgba(175,152,128,0.4)]">
+              <span class="material-symbols-outlined text-[#AF9880] transition-colors duration-700 group-hover:text-[#141311] text-lg">sentiment_satisfied</span>
+            </div>
+            <div class="transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:translate-x-1.5">
+              <h4 class="font-headline-md text-sm text-on-surface mb-1 transition-colors duration-700 group-hover:text-[#AF9880]">Cómodos.</h4>
+              <p class="font-body-md text-on-surface-variant text-sm">Sin alambres ni brackets que puedan generar llagas o rozaduras.</p>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="relative group aspect-square rounded-2xl overflow-hidden glass-card">
-        <img class="w-full h-full object-cover grayscale-[30%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Espacio profesional" src="/images/removibles.webp"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent flex flex-col px-6 pt-6 pb-1">
-          <div class="mt-auto flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-8">
-            <h4 class="font-headline-md text-white">Removibles</h4>
-            <div class="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"><p class="font-body-md text-slate-300 text-sm mt-1">Puedes retirarlos para: Comer, Cepillarte, Usar seda dental, Eventos importantes.            </p></div>
+          <div class="flex items-start gap-4 group transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
+            <div class="w-10 h-10 rounded-full border border-[#AF9880]/25 bg-[#AF9880]/5 flex items-center justify-center shrink-0 mt-0.5 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:bg-[#AF9880] group-hover:scale-110 group-hover:-rotate-6 group-hover:border-[#AF9880] group-hover:shadow-[0_0_24px_rgba(175,152,128,0.4)]">
+              <span class="material-symbols-outlined text-[#AF9880] transition-colors duration-700 group-hover:text-[#141311] text-lg">eject</span>
+            </div>
+            <div class="transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:translate-x-1.5">
+              <h4 class="font-headline-md text-sm text-on-surface mb-1 transition-colors duration-700 group-hover:text-[#AF9880]">Removibles.</h4>
+              <p class="font-body-md text-on-surface-variant text-sm">Puedes retirarlos para: Comer, Cepillarte, Usar seda dental y asistir a eventos importantes.</p>
+            </div>
           </div>
-        </div>
-      </div>
-      <!-- row 2 -->
-      <div class="relative group aspect-square rounded-2xl overflow-hidden glass-card">
-        <img class="w-full h-full object-cover grayscale-[30%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Higiene dental" src="/images/mejor-higiene.webp"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent flex flex-col px-6 pt-6 pb-1">
-          <div class="mt-auto flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-8">
-            <h4 class="font-headline-md text-white">Mejor higiene oral</h4>
-            <div class="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"><p class="font-body-md text-slate-300 text-sm mt-1">Facilitan el cepillado, lo cual permite mantener una adecuada salud dental y periodontal durante el tratamiento.            </p></div>
+          <div class="flex items-start gap-4 group transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
+            <div class="w-10 h-10 rounded-full border border-[#AF9880]/25 bg-[#AF9880]/5 flex items-center justify-center shrink-0 mt-0.5 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:bg-[#AF9880] group-hover:scale-110 group-hover:-rotate-6 group-hover:border-[#AF9880] group-hover:shadow-[0_0_24px_rgba(175,152,128,0.4)]">
+              <span class="material-symbols-outlined text-[#AF9880] transition-colors duration-700 group-hover:text-[#141311] text-lg">backup_table</span>
+            </div>
+            <div class="transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:translate-x-1.5">
+              <h4 class="font-headline-md text-sm text-on-surface mb-1 transition-colors duration-700 group-hover:text-[#AF9880]">Mejor higiene oral.</h4>
+              <p class="font-body-md text-on-surface-variant text-sm">Facilitan el cepillado, lo cual permite mantener una adecuada salud dental y periodontal durante el tratamiento.</p>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="relative group aspect-square rounded-2xl overflow-hidden glass-card">
-        <img class="w-full h-full object-cover object-center grayscale-[30%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Plan digital 3D" src="/images/urgencias.webp"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent flex flex-col px-6 pt-6 pb-1">
-          <div class="mt-auto flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-8">
-            <h4 class="font-headline-md text-white">Menos urgencias</h4>
-            <div class="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"><p class="font-body-md text-slate-300 text-sm mt-1">No existen brackets despegados ni alambres que puedan lastimar.            </p></div>
+          <div class="flex items-start gap-4 group transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
+            <div class="w-10 h-10 rounded-full border border-[#AF9880]/25 bg-[#AF9880]/5 flex items-center justify-center shrink-0 mt-0.5 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:bg-[#AF9880] group-hover:scale-110 group-hover:-rotate-6 group-hover:border-[#AF9880] group-hover:shadow-[0_0_24px_rgba(175,152,128,0.4)]">
+              <span class="material-symbols-outlined text-[#AF9880] transition-colors duration-700 group-hover:text-[#141311] text-lg">security</span>
+            </div>
+            <div class="transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:translate-x-1.5">
+              <h4 class="font-headline-md text-sm text-on-surface mb-1 transition-colors duration-700 group-hover:text-[#AF9880]">Menos urgencias.</h4>
+              <p class="font-body-md text-on-surface-variant text-sm">No existen brackets despegados ni alambres que puedan lastimar.</p>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="relative group aspect-square rounded-2xl overflow-hidden glass-card">
-        <img class="w-full h-full object-cover grayscale-[30%] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Sonrisa sin metal" src="/images/presivilidad.webp"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent flex flex-col px-6 pt-6 pb-1">
-          <div class="mt-auto flex flex-col transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-8">
-            <h4 class="font-headline-md text-white">Mayor previsibilidad</h4>
-            <div class="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"><p class="font-body-md text-slate-300 text-sm mt-1">Gracias a la planeación digital podemos visualizar el resultado antes de iniciar.            </p></div>
+          <div class="flex items-start gap-4 group transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
+            <div class="w-10 h-10 rounded-full border border-[#AF9880]/25 bg-[#AF9880]/5 flex items-center justify-center shrink-0 mt-0.5 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:bg-[#AF9880] group-hover:scale-110 group-hover:-rotate-6 group-hover:border-[#AF9880] group-hover:shadow-[0_0_24px_rgba(175,152,128,0.4)]">
+              <span class="material-symbols-outlined text-[#AF9880] transition-colors duration-700 group-hover:text-[#141311] text-lg">insights</span>
+            </div>
+            <div class="transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:translate-x-1.5">
+              <h4 class="font-headline-md text-sm text-on-surface mb-1 transition-colors duration-700 group-hover:text-[#AF9880]">Mayor previsibilidad.</h4>
+              <p class="font-body-md text-on-surface-variant text-sm">Gracias a la planeación digital podemos visualizar el resultado antes de iniciar y saber el tiempo exacto que va a durar tu tratamiento.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -299,7 +316,7 @@ items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cu
     <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 lg:gap-16 gap-stack-lg items-center">
       <div class="relative lg:ml-auto lg:mr-6">
         <div class="glass-card p-4 max-w-sm rounded-[2rem] border-[#AF9880]/30 relative">
-          <img class="w-full h-auto rounded-[1.5rem] object-contain" alt="Cita de valoración" src="/images/QUE-INCLUYE-LA-CITA-DE-VALORACI%C3%93N-.webp"/>
+          <img loading="lazy" decoding="async" class="w-full h-auto rounded-[1.5rem] object-contain" alt="Cita de valoración" src="/images/QUE-INCLUYE-LA-CITA-DE-VALORACI%C3%93N-.webp"/>
         </div>
       </div>
       <div class="flex flex-col gap-8">
@@ -347,14 +364,13 @@ items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cu
   <!-- FAQ Grid -->
   <section class="py-section-padding bg-[#141311]">
     <div class="max-w-7xl mx-auto px-8 text-center mb-stack-lg">
-      <span class="font-label-caps text-[#AF9880] uppercase tracking-[0.3em] block mb-4">Información</span>
       <h2 class="font-display-xl text-white">Preguntas Frecuentes</h2>
     </div>
     <div class="max-w-6xl mx-auto px-8">
       <div class="flex flex-col lg:flex-row gap-8 items-stretch">
         <div class="w-full lg:w-[30%] max-w-[260px] mx-auto lg:mx-0 flex items-center">
           <div class="w-full rounded-2xl border-2 border-[#AF9880] overflow-hidden bg-[#0f0e0c] flex items-center justify-center">
-            <img src="/images/camila-preguntas.webp" alt="Camila Valencia" class="max-h-full w-auto object-contain"/>
+            <img loading="lazy" decoding="async" src="/images/camila-preguntas.webp" alt="Camila Valencia" class="max-h-full w-auto object-contain"/>
           </div>
         </div>
         <div class="w-full lg:flex-1">
@@ -379,11 +395,11 @@ items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cu
     var faqs = [
       { q: "¿Cuántas horas al día debo usarlos?", a: "20 a 22 horas diarias. Solo retirarlos para comer, beber (excepto agua), cepillarse y usar seda dental." },
       { q: "¿De qué material están hechos?", a: "Polímeros termoplásticos médicos. Transparentes, libres de BPA, biocompatibles y diseñados a la medida de cada paciente." },
-      { q: "¿Cuánto dura el tratamiento?", a: "Depende del caso: leve (4 a 8 meses), moderado (8 a 18 meses) o complejo (18 a 30 meses)." },
+      { q: "¿Cuánto dura el tratamiento?", a: "Depende del caso: simple (4 a 8 meses), moderado (8 a 18 meses) o complejo (18 a 30 meses)." },
       { q: "¿Cuánto cuestan los alineadores?", a: "Desde $4.000.000 COP hasta $12.000.000 COP según la complejidad del caso." },
-      { q: "¿Duele el proceso?", a: "Molestias mínimas. Puede haber sensibilidad leve los primeros días de cada cambio de alineador." },
+      { q: "¿Duele el tratamiento?", a: "Es normal sentir una ligera presión durante los primeros días de cada cambio de alineador." },
       { q: "¿Puedo comer con ellos?", a: "No. Debes retirarlos para comer y volver a colocarlos después de cepillarte." },
-      { q: "¿Cómo mantenerlos limpios?", a: "Cepillarlos con cepillo suave y agua. Evitar pasta dental abrasiva y agua caliente." },
+      { q: "¿Cómo debo higienizarlos?", a: "Cepillarlos con cepillo suave y agua. Evitar crema dental abrasiva y agua caliente." },
       { q: "¿Necesitaré retenedores?", a: "Sí. Todos los tratamientos requieren una fase de retención para mantener los resultados obtenidos." },
       { q: "¿Funcionan igual que los brackets?", a: "Sí. Con un diagnóstico correcto y buen cumplimiento, logran excelentes resultados funcionales y estéticos." }
     ];
@@ -429,7 +445,7 @@ items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cu
       <div class="absolute top-0 right-0 w-64 h-64 bg-[#AF9880]/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2"></div>
       <div class="grid grid-cols-1 md:grid-cols-5 gap-stack-lg relative z-10">
         <div class="md:col-span-2">
-          <img src="/images/form.webp" alt="Consulta odontológica" class="w-full h-full object-cover rounded-2xl"/>
+          <img loading="lazy" decoding="async" src="/images/form.webp" alt="Consulta odontológica" class="w-full h-full object-cover rounded-2xl"/>
         </div>
         <div class="md:col-span-3 flex flex-col gap-stack-md">
           <div>

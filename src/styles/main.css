@@ -1,6 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Manrope:wght@400;600;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -160,12 +157,12 @@
 }
 
 ::view-transition-old(root) {
-  animation: luxury-exit 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: luxury-exit 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   pointer-events: none;
 }
 
 ::view-transition-new(root) {
-  animation: luxury-enter 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: luxury-enter 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   pointer-events: none;
 }
 
@@ -198,11 +195,31 @@
 
 .cascade-section {
   opacity: 0;
-  transform: translateY(60px);
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cascade-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cascade-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .nav-hidden {
   transform: translate(-50%, calc(-100% - 3rem)) scale(0.96) !important;
   opacity: 0;
   pointer-events: none;
+}
+
+#footer:empty {
+  min-height: 24rem;
+  background: #122838;
+  border-top: 1px solid rgba(175, 152, 128, 0.1);
 }
