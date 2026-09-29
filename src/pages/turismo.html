@@ -57,13 +57,18 @@
   .gallery-nav-prev { left: 8px; }
   .gallery-nav-next { right: 8px; }
   .gallery-hint { text-align: center; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(175,152,128,0.7); margin-top: 0.4rem; }
+  @media (max-width: 480px) {
+    #hotel-sheet-body, #destino-sheet-body { padding: 1.25rem 1.1rem 1.5rem; }
+    #hotel-sheet, #destino-sheet { max-height: 88vh; border-radius: 1.5rem; }
+    .gallery-nav { width: 34px; height: 34px; }
+  }
 </style>
 </head>
 <body data-page="turismo">
 <div id="navbar"></div>
 <main>
   <!-- Hero -->
-  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img alt="Medellín" fetchpriority="high" class="w-full h-full object-cover brightness-[0.4]" src="/images/bg-hero-medellin.webp"/>
 
@@ -116,7 +121,7 @@
         </ul>
       </div>
       <div class="relative w-full max-w-[400px] shrink-0 md:mr-20">
-        <div id="hoteles-carousel" class="relative w-full h-[420px] md:h-[540px] overflow-hidden rounded-[2rem] glass-card">
+        <div id="hoteles-carousel" class="relative w-full h-[300px] sm:h-[420px] md:h-[540px] overflow-hidden rounded-[2rem] glass-card">
           <!-- Slide 1 -->
           <div class="hotel-slide active" data-index="0">
             <img alt="Hotel Estelar" class="w-full h-full object-cover opacity-80" src="/images/hotel%20estelar.webp"/>
@@ -187,7 +192,7 @@
         </button>
       </div>
       <p class="gallery-hint">Desliza o usa la rueda del mouse para ver más fotos</p>
-      <a id="hotel-modal-wa" href="#" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-label-caps text-xs tracking-widest hover:scale-[1.03] transition-transform">
+      <a id="hotel-modal-wa" href="#" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center gap-3 bg-[#25D366] text-white px-5 sm:px-8 py-4 rounded-full font-label-caps text-xs tracking-widest hover:scale-[1.03] transition-transform text-center">
         <span class="material-symbols-outlined text-base">chat</span>
         <span>RESERVAR E INTERESADO POR WHATSAPP</span>
       </a>
