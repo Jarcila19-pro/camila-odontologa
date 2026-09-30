@@ -235,9 +235,9 @@
       var hoteles = [
         {
           id: 'estelar',
-          nombre: 'Hotel Estelar',
-          desc: 'Ubicado en una de las zonas más exclusivas de Medellín, combina confort, gastronomía de autor y vistas panorámicas a la ciudad. Ideal para una recuperación tranquila y rodeada de comodidades.',
-          features: ['Habitaciones ejecutivas y suites', 'Restaurante y room service', 'Zona húmeda y gimnasio', 'Cercano a clínicas y restaurantes'],
+          nombre: 'Estelar Square Hotel',
+          desc: 'Ubicado en una de las zonas más exclusivas de Medellín, a 17 minutos caminando o 3 minutos en automóvil de nuestra clínica. Combina confort, excelente ubicación y espacios ideales para descansar durante tu tratamiento. Una opción perfecta si buscas comodidad y fácil acceso a restaurantes, cafés y lugares de interés.',
+          features: ['Habitaciones ejecutivas y suites', 'Restaurante y servicio de room service', 'Zona húmeda y gimnasio', 'Cercano a restaurantes, cafés y museos', 'Vistas panorámicas de la ciudad'],
           imagenes: [
             { src: '/images/hoteles/estelar/estelar-square-barc.webp', desc: 'Bar' },
             { src: '/images/hoteles/estelar/estelar-square-piscinaf.webp', desc: 'Piscina' },
@@ -247,8 +247,8 @@
         {
           id: 'porton',
           nombre: 'Hotel Portón',
-          desc: 'Hospitalidad cálida y ubicación estratégica para tu experiencia clínica. Sus espacios tranquilos y su atención personalizada hacen de tu estadía un momento de descanso total.',
-          features: ['Ambiente boutique y familiar', 'Desayuno incluido', 'Transporte privado disponible', 'Zonas verdes y terraza'],
+          desc: 'Con un ambiente cálido y acogedor, está ubicado estratégicamente a 12 minutos caminando o 4 minutos en automóvil de nuestra clínica. Sus espacios tranquilos y atención personalizada lo convierten en una excelente alternativa para disfrutar de tu estadía y descansar durante tu tratamiento.',
+          features: ['Ambiente boutique y familiar', 'Restaurante', 'Bar y cafetería', 'Gimnasio', 'Terraza en la azotea con tinas', 'Ubicación cercana a restaurantes y zonas de interés'],
           imagenes: [
             { src: '/images/hoteles/porton/unnamed.webp', desc: 'Habitación' },
             { src: '/images/hoteles/porton/496986815.webp', desc: 'Suite' },
@@ -258,8 +258,8 @@
         {
           id: 'santa-ana',
           nombre: 'Hotel Santa Ana',
-          desc: 'En el corazón financiero de El Poblado, a pocos minutos de la clínica. Perfecto para estancias cortas con estándares internacionales y fácil acceso a todo lo que necesitas.',
-          features: ['Ubicación privilegiada en El Poblado', 'Wi-Fi de alta velocidad', 'Recepción 24 horas', 'A pasos de cafés y restaurantes'],
+          desc: 'Una alternativa cómoda y cercana, ubicada a solo 6 minutos caminando o 1 minuto en automóvil de nuestra clínica. Cuenta con suites sencillas y funcionales, algunas con wifi, televisión, balcón, sala de estar y cocina integrada, ideales para estadías cortas o prolongadas.',
+          features: ['Restaurante', 'Estacionamiento', 'Suites con espacios independientes', 'Cercanía a cafés y restaurantes', 'Ambiente tranquilo y familiar'],
           imagenes: [
             { src: '/images/hoteles/santa-ana/unnamed.webp', desc: 'Habitación' },
             { src: '/images/hoteles/santa-ana/SANTA ANA.webp', desc: 'Suite' },
@@ -296,12 +296,19 @@
         dots[current].classList.remove('active');
         dots[index].classList.add('active');
 
+        var dur = 0.55;
+        var ease = 'cubic-bezier(0.33, 1, 0.68, 1)';
+
         inc.style.transition = 'none';
         inc.style.transform = 'translateX(' + (dir > 0 ? 100 : -100) + '%)';
+        out.style.transition = 'none';
+        out.style.transform = 'translateX(0)';
         inc.classList.add('active');
         void inc.offsetWidth;
-        inc.style.transition = 'transform 0.65s cubic-bezier(0.33, 1, 0.68, 1)';
+        inc.style.transition = 'transform ' + dur + 's ' + ease;
         inc.style.transform = 'translateX(0)';
+        out.style.transition = 'transform ' + dur + 's ' + ease;
+        out.style.transform = 'translateX(' + (dir > 0 ? -100 : 100) + '%)';
 
         setTimeout(function() {
           out.classList.remove('active');
@@ -310,7 +317,7 @@
           inc.style.transition = '';
           inc.style.transform = '';
           animating = false;
-        }, 680);
+        }, dur * 1000 + 40);
 
         current = index;
       }
