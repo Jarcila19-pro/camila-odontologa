@@ -463,11 +463,12 @@ items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cu
               <div><p class="text-[10px] font-label-caps text-outline">EMAIL CORPORATIVO</p><p class="text-on-surface group-hover:text-[#AF9880] transition-colors text-sm">cvodontodigitalymiofuncional@gmail.com</p></div>
             </a>
           </div>
-          <form id="contact-form" class="space-y-5" action="https://formsubmit.co/jespitia1921@gmail.com" method="POST">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_subject" value="Nueva solicitud de valoración — Alineadores">
+          <form id="contact-form" class="space-y-5" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="a799c6e8-691a-44bd-8da6-a1af1f3b7232">
+            <input type="hidden" name="subject" value="Nueva solicitud de valoración — Alineadores">
+            <input type="hidden" name="from_name" value="Camila Odontología">
             <input type="hidden" name="Página" value="Alineadores">
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="space-y-1"><label class="font-label-caps text-[10px] text-[#AF9880]">NOMBRE COMPLETO</label><input name="Nombre" class="w-full bg-transparent border-b border-outline-variant focus:border-[#AF9880] outline-none py-2 text-on-surface transition-colors" placeholder="Escriba su nombre" type="text" required/></div>
               <div class="space-y-1"><label class="font-label-caps text-[10px] text-[#AF9880]">WHATSAPP</label><input name="WhatsApp" class="w-full bg-transparent border-b border-outline-variant focus:border-[#AF9880] outline-none py-2 text-on-surface transition-colors" placeholder="+57 ..." type="tel" required/></div>
@@ -483,7 +484,7 @@ items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cu
               <p class="text-green-400 font-label-caps text-sm">¡Solicitud recibida! En las próximas 24 horas nos contactaremos contigo.</p>
             </div>
             <div id="error-message" class="hidden mt-4 p-4 bg-red-900/30 border border-red-500/50 rounded-lg text-center">
-              <p class="text-red-400 font-label-caps text-sm">No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos por WhatsApp.</p>
+              <p id="error-text" class="text-red-400 font-label-caps text-sm">No pudimos enviar tu solicitud. Intenta de nuevo, o escríbenos por <a href="https://wa.me/573160427231" target="_blank" rel="noopener" class="underline">WhatsApp</a> al +57 316 042 7231.</p>
             </div>
         </div>
       </div>
@@ -496,29 +497,35 @@ items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cu
   const form = document.getElementById("contact-form");
   const successMsg = document.getElementById("success-message");
   const errorMsg = document.getElementById("error-message");
+  const errorText = document.getElementById("error-text");
   const submitBtn = form.querySelector('button[type="submit"]');
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
     errorMsg.classList.add("hidden");
 
-    const data = new FormData(form);
-    data.append("_captcha", "false");
-    data.append("_template", "table");
+    const data = Object.fromEntries(new FormData(form));
 
     submitBtn.disabled = true;
     submitBtn.textContent = "ENVIANDO…";
 
-    fetch("https://formsubmit.co/ajax/jespitia1921@gmail.com", { method: "POST", body: data })
-      .then(r => r.json())
-      .then(res => {
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(data)
+    })
+      .then(async (r) => {
+        const res = await r.json();
         submitBtn.disabled = false;
         submitBtn.textContent = "ENVIAR SOLICITUD DE VALORACIÓN";
-        if (res.success) {
+        const ok = r.status === 200 && String(res.success) !== "false";
+        if (ok) {
           form.classList.add("hidden");
           successMsg.classList.remove("hidden");
           form.reset();
+          window.location.href = "/camila-odontologa/gracias.html";
         } else {
+          errorText.textContent = res.message || errorText.textContent;
           errorMsg.classList.remove("hidden");
         }
       })
