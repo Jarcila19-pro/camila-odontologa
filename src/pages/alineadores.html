@@ -9,6 +9,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
 <link rel="preload" as="image" href="/images/bg-alineadores.webp" fetchpriority="high">
 <title>Alineadores Invisibles - Dra. Camila Valencia</title>
+<meta name="description" content="Alineadores invisibles en Medellín con escaneo intraoral 3D y planeación digital. Ortodoncia transparente, precisa y estética con la Dra. Camila Valencia."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Alineadores Invisibles - Dra. Camila Valencia"/>
+<meta property="og:description" content="Ortodoncia invisible diseñada digitalmente: escaneo intraoral 3D, planificación y resultados precisos en Medellín."/>
+<meta property="og:url" content="https://jarcila19-pro.github.io/camila-odontologa/src/pages/alineadores.html"/>
+<meta property="og:image" content="https://jarcila19-pro.github.io/camila-odontologa/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
+<meta name="twitter:card" content="summary"/>
 <link rel="icon" type="image/webp" href="/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
 <link rel="stylesheet" href="/src/styles/main.css">
 <script type="module" src="/src/js/main.js"></script>
@@ -94,9 +101,9 @@
   <div class="gold-divider w-full"></div>
 
   <!-- Problemas que corrigen los alineadores -->
-  <section class="relative overflow-hidden min-h-[600px] bg-[#141311]">
-    <!-- Cloud diagonal: image from top-left, dark from bottom-right -->
-    <div class="absolute inset-0 pointer-events-none">
+  <section class="relative overflow-hidden md:min-h-[600px] bg-[#141311]">
+    <!-- Cloud diagonal: image from top-left, dark from bottom-right (solo tablet/escritorio) -->
+    <div class="hidden md:block absolute inset-0 pointer-events-none">
       <svg class="w-full h-full" viewBox="0 0 1440 800" preserveAspectRatio="none">
         <defs>
           <clipPath id="cloudSplit">
@@ -113,9 +120,12 @@
         <image clip-path="url(#cloudSplit)" href="/images/ALINEADORES.webp" class="w-full h-full object-cover" preserveAspectRatio="xMidYMid slice"/>
       </svg>
     </div>
+    <!-- Imagen fija para móvil -->
+    <img src="/images/ALINEADORES.webp" alt="Alineadores invisibles" loading="lazy" decoding="async" class="md:hidden w-full h-64 object-cover"/>
+
     <!-- Content at bottom-left of dark area -->
-    <div class="relative z-10 min-h-[360px] md:min-h-[500px] flex flex-col justify-end">
-      <div class="max-w-7xl mx-auto px-5 md:px-8 w-full pb-4 md:pb-6">
+    <div class="relative z-10 md:min-h-[500px] flex flex-col md:justify-end">
+      <div class="max-w-7xl mx-auto px-5 md:px-8 w-full py-10 md:py-6">
         <div class="md:w-[55%]">
           <div class="mb-4">
             <span class="font-label-caps text-[#AF9880] uppercase tracking-[0.3em] block mb-1 text-[10px]">Tratamiento</span>
