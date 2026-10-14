@@ -160,6 +160,26 @@ function initMobileMenu() {
   });
 }
 
+function revealCards() {
+  const targets = document.querySelectorAll("main article");
+  if (!targets.length || !("IntersectionObserver" in window)) return;
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          el.classList.add("reveal-card", "revealed");
+          io.unobserve(el);
+        } else {
+          el.classList.add("reveal-card");
+        }
+      });
+    },
+    { threshold: 0.06, rootMargin: "0px 0px -50px 0px" }
+  );
+  targets.forEach((el) => io.observe(el));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initProgressBar();
   finishProgress();
@@ -168,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadComponent("footer", "/camila-odontologa/src/components/footer.html");
 
   cascadeSections();
+  revealCards();
 });
 
 document.addEventListener("click", (e) => {

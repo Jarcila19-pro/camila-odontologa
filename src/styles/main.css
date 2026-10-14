@@ -204,6 +204,51 @@
   transform: translateY(0);
 }
 
+/* ---------------------------------------------------------------
+   Animaciones de entrada (hero + tarjetas de páginas legales)
+   --------------------------------------------------------------- */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(28px); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+.hero-anim {
+  opacity: 0;
+  animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero-anim-1 { animation-delay: 0.05s; }
+.hero-anim-2 { animation-delay: 0.2s; }
+.hero-anim-3 { animation-delay: 0.35s; }
+.hero-anim-4 { animation-delay: 0.5s; }
+.hero-anim-5 { animation-delay: 0.65s; }
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.reveal-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim {
+    opacity: 1;
+    animation: none;
+  }
+  .reveal-card {
+    opacity: 1;
+    transform: none;
+    transition: border-color 0.5s ease, box-shadow 0.5s ease;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cascade-section {
     opacity: 1;
