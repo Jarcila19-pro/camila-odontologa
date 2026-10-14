@@ -26,8 +26,10 @@
 
 <!-- Hero Section -->
 <section class="hero relative md:min-h-screen flex overflow-hidden bg-[#0b1d28]">
+  <!-- Velo oscuro para móvil/tablet: el texto va encima de la foto -->
+  <div class="md:hidden absolute inset-0 bg-gradient-to-b from-[#0b1d28]/85 via-[#0b1d28]/65 to-[#0b1d28]/85 pointer-events-none z-10"></div>
   <div class="flex flex-col md:flex-row w-full">
-    <div class="w-full md:w-1/2 flex items-center justify-center md:min-h-screen px-gutter md:px-gutter pt-32 pb-16 md:py-0 relative overflow-hidden">
+    <div class="w-full md:w-1/2 relative z-20 flex items-center justify-center md:min-h-screen px-gutter md:px-gutter pt-32 pb-16 md:py-0 overflow-hidden">
       <div class="hidden md:block absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#0b1d28] to-transparent z-10 pointer-events-none"></div>
       <div class="w-full px-4 md:px-8 lg:px-12 xl:px-16 text-center">
         <span class="font-label-caps text-[#AF9880] tracking-[0.3em] mb-stack-sm block">DRA. CAMILA VALENCIA</span>
@@ -40,7 +42,7 @@
         </a>
       </div>
     </div>
-    <div class="w-full md:w-1/2 h-[55vh] md:h-auto md:min-h-screen relative overflow-hidden">
+    <div class="w-full md:w-1/2 md:h-auto md:min-h-screen absolute md:relative inset-0 md:inset-auto overflow-hidden">
       <div class="hidden md:block absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#0b1d28] to-transparent z-10 pointer-events-none"></div>
       <img class="absolute inset-0 w-full h-full object-cover object-top" alt="" fetchpriority="high" src="/images/bg-hero-inicio.webp"/>
       <div class="md:hidden absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#141311] to-transparent pointer-events-none"></div>
