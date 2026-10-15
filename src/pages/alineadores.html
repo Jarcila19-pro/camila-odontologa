@@ -104,7 +104,7 @@
   <section class="relative overflow-hidden md:min-h-[600px] bg-[#141311]">
     <!-- Cloud diagonal: image from top-left, dark from bottom-right (solo tablet/escritorio) -->
     <div class="hidden md:block absolute inset-0 pointer-events-none">
-      <svg class="w-full h-full" viewBox="0 0 1440 800" preserveAspectRatio="none">
+      <svg class="w-full h-full" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
         <defs>
           <clipPath id="cloudSplit">
             <path d="M0,0 
@@ -176,47 +176,49 @@
         <p class="font-body-lg text-on-surface mt-4 max-w-2xl mx-auto">Todo comienza con un diagnóstico digital completo.</p>
         <p class="font-body-md text-on-surface-variant mt-4 max-w-2xl mx-auto leading-relaxed">Utilizamos tecnología de escaneo intraoral 3D para crear una réplica virtual exacta de tu sonrisa. A partir de este escaneo realizamos una planeación digital detallada que nos permite:</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-gutter">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-gutter">
         <div class="group relative">
           <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
-            <h3 class="font-headline-md text-base md:text-lg lg:text-lg text-[#AF9880] mb-2">Analizar tu mordida</h3>
-            <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container relative">
-              <img loading="lazy" decoding="async" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Escáner intraoral 3D" src="/images/analizar tu mordida.webp"/>
-            </div>
-          </div>
-        </div>
-        <div class="group relative">
-          <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col
-items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
-            <h3 class="font-headline-md text-base md:text-lg lg:text-lg text-[#AF9880]">Estudiar la posición de cada diente</h3>
-            <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container">
-              <img loading="lazy" decoding="async" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Diseño dental 3D" src="/images/estudiar la posicion.webp"/>
-            </div>
-          </div>
-        </div>
-        <div class="group relative">
-          <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col
-items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
-            <h3 class="font-headline-md text-base md:text-lg lg:text-lg text-[#AF9880]">Diseñar el movimiento dental de forma precisa</h3>
-            <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container">
-              <img loading="lazy" decoding="async" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Impresión 3D alineadores" src="/images/movimiento.webp"/>
-            </div>
-          </div>
-        </div>
-        <div class="group relative">
-          <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col
-items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
-            <h3 class="font-headline-md text-base md:text-lg lg:text-lg text-[#AF9880]">Mostrarte una simulación de cómo se verá tu sonrisa al finalizar</h3>
-            <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container">
-              <img loading="lazy" decoding="async" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Sonrisa perfecta" src="/images/sonrisa.webp"/>
+            <span class="font-serif text-3xl text-[#AF9880]/70 leading-none mb-3">01</span>
+            <h3 class="font-headline-md text-base md:text-lg text-on-surface mb-4 min-h-[3.75rem] flex items-center justify-center">Analizar tu mordida</h3>
+            <div class="mt-auto w-full h-40 rounded-xl overflow-hidden border border-[#AF9880]/20 group-hover:border-[#AF9880]/60 transition-colors duration-500">
+              <img loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Escáner intraoral 3D" src="/images/analizar tu mordida.webp"/>
             </div>
           </div>
         </div>
         <div class="group relative">
           <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
-            <h3 class="font-headline-md text-base md:text-lg lg:text-lg text-[#AF9880]">Fabricamos placas cada 15 días con los movimientos dentales planeados</h3>
-            <div class="mt-auto h-40 w-full rounded-lg overflow-hidden bg-surface-container">
-              <img loading="lazy" decoding="async" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Placas de alineadores dentales" src="/images/ALINEADORES.webp"/>
+            <span class="font-serif text-3xl text-[#AF9880]/70 leading-none mb-3">02</span>
+            <h3 class="font-headline-md text-base md:text-lg text-on-surface mb-4 min-h-[3.75rem] flex items-center justify-center">Estudiar la posición de cada diente</h3>
+            <div class="mt-auto w-full h-40 rounded-xl overflow-hidden border border-[#AF9880]/20 group-hover:border-[#AF9880]/60 transition-colors duration-500">
+              <img loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Diseño dental 3D" src="/images/estudiar la posicion.webp"/>
+            </div>
+          </div>
+        </div>
+        <div class="group relative">
+          <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
+            <span class="font-serif text-3xl text-[#AF9880]/70 leading-none mb-3">03</span>
+            <h3 class="font-headline-md text-base md:text-lg text-on-surface mb-4 min-h-[3.75rem] flex items-center justify-center">Diseñar el movimiento dental de forma precisa</h3>
+            <div class="mt-auto w-full h-40 rounded-xl overflow-hidden border border-[#AF9880]/20 group-hover:border-[#AF9880]/60 transition-colors duration-500">
+              <img loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Impresión 3D alineadores" src="/images/movimiento.webp"/>
+            </div>
+          </div>
+        </div>
+        <div class="group relative">
+          <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
+            <span class="font-serif text-3xl text-[#AF9880]/70 leading-none mb-3">04</span>
+            <h3 class="font-headline-md text-base md:text-lg text-on-surface mb-4 min-h-[3.75rem] flex items-center justify-center">Mostrarte una simulación de cómo se verá tu sonrisa al finalizar</h3>
+            <div class="mt-auto w-full h-40 rounded-xl overflow-hidden border border-[#AF9880]/20 group-hover:border-[#AF9880]/60 transition-colors duration-500">
+              <img loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Sonrisa perfecta" src="/images/sonrisa.webp"/>
+            </div>
+          </div>
+        </div>
+        <div class="group relative">
+          <div class="glass-card p-stack-md rounded-2xl h-full flex flex-col items-center text-center hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
+            <span class="font-serif text-3xl text-[#AF9880]/70 leading-none mb-3">05</span>
+            <h3 class="font-headline-md text-base md:text-lg text-on-surface mb-4 min-h-[3.75rem] flex items-center justify-center">Fabricamos placas cada 15 días con los movimientos dentales planeados</h3>
+            <div class="mt-auto w-full h-40 rounded-xl overflow-hidden border border-[#AF9880]/20 group-hover:border-[#AF9880]/60 transition-colors duration-500">
+              <img loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" alt="Placas de alineadores dentales" src="/images/ALINEADORES.webp"/>
             </div>
           </div>
         </div>
