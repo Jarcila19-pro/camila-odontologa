@@ -104,7 +104,7 @@
   <section class="relative overflow-hidden md:min-h-[600px] bg-[#141311]">
     <!-- Cloud diagonal: la foto ocupa la mitad derecha completa (contrast + mix-blend-lighten funden su negro con el fondo) y la nube oscura cubre la zona inferior-izquierda -->
     <div class="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
-      <img src="/images/ALINEADORES.webp" alt="" aria-hidden="true" class="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-auto contrast-125 mix-blend-lighten"/>
+      <img src="/images/ALINEADORES.webp" alt="" aria-hidden="true" class="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-auto contrast-125 brightness-110 mix-blend-lighten"/>
       <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1440 800" preserveAspectRatio="none">
         <defs>
           <linearGradient id="cloudFade" x1="0" y1="0" x2="1440" y2="800" gradientUnits="userSpaceOnUse">
@@ -116,7 +116,10 @@
       </svg>
     </div>
     <!-- Imagen fija para móvil -->
-    <img src="/images/ALINEADORES.webp" alt="Alineadores invisibles" loading="lazy" decoding="async" class="md:hidden w-full h-72 object-cover object-top contrast-125 mix-blend-lighten"/>
+    <img src="/images/ALINEADORES.webp" alt="Alineadores invisibles" loading="lazy" decoding="async" class="md:hidden w-full h-72 object-cover object-top contrast-125 brightness-110 mix-blend-lighten"/>
+
+    <!-- Brillo sutil de la seccion: resplandor dorado que desvanece el fondo negro -->
+    <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(125%_135%_at_18%_-10%,rgba(175,152,128,0.16),rgba(175,152,128,0.05)_45%,transparent_75%)]"></div>
 
     <!-- Content at bottom-left of dark area -->
     <div class="relative z-10 md:min-h-[500px] flex flex-col md:justify-end">
