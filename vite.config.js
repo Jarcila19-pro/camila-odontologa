@@ -1,17 +1,17 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/camila-odontologa/",
+  base: "/",
   publicDir: "public",
   build: {
     outDir: "dist",
     rollupOptions: {
       input: {
         index: "index.html",
-        myobrace: "src/pages/myobrace.html",
-        alineadores: "src/pages/alineadores.html",
-        ortodoncia: "src/pages/ortodoncia.html",
-        turismo: "src/pages/turismo.html",
+        myobrace: "myobrace.html",
+        alineadores: "alineadores.html",
+        ortodoncia: "ortodoncia.html",
+        turismo: "turismo.html",
         politica: "politica-de-privacidad-y-tratamiento-de-datos.html",
         terminos: "terminos-y-condiciones.html",
       },

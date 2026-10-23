@@ -13,8 +13,9 @@
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Ortodoncia - Dra. Camila Valencia"/>
 <meta property="og:description" content="Brackets autoligados de las mejores marcas: cerámicos estéticos y metálicos con planificación digital en Medellín."/>
-<meta property="og:url" content="https://jarcila19-pro.github.io/camila-odontologa/src/pages/ortodoncia.html"/>
-<meta property="og:image" content="https://jarcila19-pro.github.io/camila-odontologa/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
+<meta property="og:url" content="https://camilavalenciaodontologia.com/ortodoncia.html"/>
+<link rel="canonical" href="https://camilavalenciaodontologia.com/ortodoncia.html"/>
+<meta property="og:image" content="https://camilavalenciaodontologia.com/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
 <meta name="twitter:card" content="summary"/>
 <link rel="icon" type="image/webp" href="/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
 <link rel="stylesheet" href="/src/styles/main.css">
@@ -60,6 +61,25 @@
     to { opacity: 1; transform: translateY(0); }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Ortodoncia con brackets en Medellín",
+  "serviceType": "Ortodoncia fija con brackets autoligados",
+  "description": "Ortodoncia en Medellín con brackets autoligados cerámicos y metálicos: movimientos eficientes, menor fricción y resultados predecibles con la Dra. Camila Valencia.",
+  "url": "https://camilavalenciaodontologia.com/ortodoncia.html",
+  "provider": {
+    "@type": "Dentist",
+    "name": "Camila Valencia Odontología Digital y Miofuncional",
+    "url": "https://camilavalenciaodontologia.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Medellín"
+  }
+}
+</script>
 </head>
 <body data-page="ortodoncia">
 <div id="navbar"></div>
@@ -400,7 +420,7 @@
             </div>
             <label class="flex items-start gap-3 cursor-pointer select-none">
               <input type="checkbox" name="Acepto_Politica_y_Terminos" value="Sí" required class="mt-0.5 w-4 h-4 accent-[#AF9880] shrink-0 cursor-pointer">
-              <span class="text-xs leading-relaxed text-on-surface">Acepto la <a href="/camila-odontologa/politica-de-privacidad-y-tratamiento-de-datos.html" target="_blank" rel="noopener" class="text-[#AF9880] underline hover:no-underline">Política de Tratamiento de Datos Personales</a> y los <a href="/camila-odontologa/terminos-y-condiciones.html" target="_blank" rel="noopener" class="text-[#AF9880] underline hover:no-underline">Términos y Condiciones</a>, y autorizo el tratamiento de mis datos para atender mi solicitud.</span>
+              <span class="text-xs leading-relaxed text-on-surface">Acepto la <a href="/politica-de-privacidad-y-tratamiento-de-datos.html" target="_blank" rel="noopener" class="text-[#AF9880] underline hover:no-underline">Política de Tratamiento de Datos Personales</a> y los <a href="/terminos-y-condiciones.html" target="_blank" rel="noopener" class="text-[#AF9880] underline hover:no-underline">Términos y Condiciones</a>, y autorizo el tratamiento de mis datos para atender mi solicitud.</span>
             </label>
             <button type="submit" class="block w-full bg-[#AF9880] text-primary-container py-4 rounded-lg font-label-caps text-xs tracking-[0.2em] transition-all text-center">ENVIAR SOLICITUD DE VALORACIÓN</button>
           </form>
@@ -447,7 +467,7 @@
           form.classList.add("hidden");
           successMsg.classList.remove("hidden");
           form.reset();
-          window.location.href = "/camila-odontologa/gracias.html";
+          window.location.href = "/gracias.html";
         } else {
           errorText.textContent = res.message || errorText.textContent;
           errorMsg.classList.remove("hidden");

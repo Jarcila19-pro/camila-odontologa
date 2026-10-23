@@ -184,8 +184,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initProgressBar();
   finishProgress();
   initSmartNav();
-  loadComponent("navbar", "/camila-odontologa/src/components/navbar.html", initMobileMenu);
-  loadComponent("footer", "/camila-odontologa/src/components/footer.html");
+  loadComponent("navbar", "/src/components/navbar.html", initMobileMenu);
+  loadComponent("footer", "/src/components/footer.html");
 
   cascadeSections();
   revealCards();

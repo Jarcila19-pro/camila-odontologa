@@ -1,0 +1,36 @@
+name: Deploy a Hostinger (rama hostinger)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del codigo fuente
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Construir el sitio
+        run: npm run build
+
+      - name: Publicar dist en la rama hostinger
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: hostinger
+          force_orphan: true

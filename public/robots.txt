@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jarcila19-pro.github.io/camila-odontologa/sitemap.xml
+Sitemap: https://camilavalenciaodontologia.com/sitemap.xml
