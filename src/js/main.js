@@ -209,11 +209,7 @@ document.addEventListener("click", (e) => {
   e.preventDefault();
 
   startProgress();
-  if (document.startViewTransition) {
-    document.startViewTransition(() => {
-      window.location.href = link.href;
-    });
-  } else {
-    window.location.href = link.href;
-  }
+  // Navegación directa: startViewTransition alrededor de location.href rompe la
+  // navegación en Safari/iOS (la transición cancela o deja la página sin estilos).
+  window.location.href = link.href;
 });
