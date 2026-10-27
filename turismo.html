@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Manrope:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+<link rel="preload" as="image" href="/images/bg-hero-medellin.webp" fetchpriority="high">
+<title>Turismo Dental - Dra. Camila Valencia</title>
+<meta name="description" content="Turismo dental en Medellín: tratamientos odontológicos de alto nivel con tecnología avanzada, asesoría en traslados y alojamiento. Planifica tu experiencia."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Turismo Dental - Dra. Camila Valencia"/>
+<meta property="og:description" content="Tratamientos de alto nivel en Medellín, Colombia, con acompañamiento personalizado: traslados, alojamiento y resultados armoniciosos."/>
+<meta property="og:url" content="https://camilavalenciaodontologia.com/turismo.html"/>
+<link rel="canonical" href="https://camilavalenciaodontologia.com/turismo.html"/>
+<meta property="og:image" content="https://camilavalenciaodontologia.com/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
+<meta name="twitter:card" content="summary"/>
+<link rel="icon" type="image/webp" href="/images/LOGOS_PROFILE-05-removebg-preview.webp"/>
+<style>
+  .hotel-slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; z-index: 1; }
+  .hotel-slide.active { opacity: 1; pointer-events: auto; z-index: 2; }
+  .hotel-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(175,152,128,0.2); border: 1px solid rgba(175,152,128,0.3); transition: all 0.5s ease; cursor: pointer; }
+  .hotel-dot.active { background: #AF9880; border-color: #AF9880; box-shadow: 0 0 12px rgba(175,152,128,0.5); width: 32px; border-radius: 999px; }
+
+  /* Hotel Modal — slide-up sheet */
+  #hotel-modal { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1); }
+  #hotel-modal.is-open { opacity: 1; pointer-events: auto; }
+  #hotel-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0); backdrop-filter: blur(0); transition: all 0.5s cubic-bezier(0.22,1,0.36,1); }
+  #hotel-modal.is-open #hotel-modal-backdrop { background: rgba(0,0,0,0.65); backdrop-filter: blur(12px); }
+  #hotel-sheet { position: relative; width: 100%; max-width: 42rem; max-height: 80vh; background: #262320; border: 1px solid rgba(175,152,128,0.2); border-radius: 2rem; overflow: hidden; transform: translateY(30px) scale(0.97); opacity: 0; transition: all 0.55s cubic-bezier(0.22,1,0.36,1); display: flex; flex-direction: column; box-shadow: 0 24px 60px rgba(0,0,0,0.55); }
+  #hotel-modal.is-open #hotel-sheet { transform: translateY(0) scale(1); opacity: 1; }
+  #hotel-sheet-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 1.5rem 2rem 2rem; -ms-overflow-style: none; scrollbar-width: none; }
+  #hotel-sheet-body::-webkit-scrollbar { display: none; }
+  .hotel-sheet-handle { width: 36px; height: 4px; border-radius: 999px; background: rgba(175,152,128,0.35); margin: 0.75rem auto 0; cursor: grab; }
+  .hotel-gallery-scroll { display: flex; gap: 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding-bottom: 0.5rem; -ms-overflow-style: none; scrollbar-width: none; }
+  .hotel-gallery-scroll::-webkit-scrollbar { display: none; }
+  .hotel-gallery-scroll > div { scroll-snap-align: start; flex: 0 0 85%; min-width: 0; }
+  @media (min-width: 768px) { .hotel-gallery-scroll > div { flex: 0 0 70%; } }
+  .hotel-sheet-close { position: sticky; top: 0; float: right; z-index: 10; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: rgba(28,27,25,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(175,152,128,0.2); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.3s, transform 0.3s; }
+  .hotel-sheet-close:hover { border-color: #AF9880; transform: rotate(90deg); }
+
+  /* Destinos Modal */
+  #destino-modal-backdrop { position: fixed; inset: 0; z-index: 59; background: rgba(0,0,0,0); backdrop-filter: blur(0); transition: all 0.5s cubic-bezier(0.22,1,0.36,1); }
+  #destino-modal.is-open #destino-modal-backdrop { background: rgba(0,0,0,0.65); backdrop-filter: blur(12px); }
+  #destino-modal { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1); }
+  #destino-modal.is-open { opacity: 1; pointer-events: auto; }
+  #destino-sheet { position: relative; z-index: 61; width: 100%; max-width: 42rem; max-height: 80vh; background: #262320; border: 1px solid rgba(175,152,128,0.2); border-radius: 2rem; overflow: hidden; transform: translateY(30px) scale(0.97); opacity: 0; transition: all 0.55s cubic-bezier(0.22,1,0.36,1); display: flex; flex-direction: column; box-shadow: 0 24px 60px rgba(0,0,0,0.55); }
+  #destino-modal.is-open #destino-sheet { transform: translateY(0) scale(1); opacity: 1; }
+  #destino-sheet-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 1.5rem 2rem 2rem; -ms-overflow-style: none; scrollbar-width: none; }
+  #destino-sheet-body::-webkit-scrollbar { display: none; }
+  .destino-sheet-handle { width: 36px; height: 4px; border-radius: 999px; background: rgba(175,152,128,0.35); margin: 0.75rem auto 0; cursor: grab; }
+  .destino-sheet-close { position: sticky; top: 0; float: right; z-index: 10; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: rgba(28,27,25,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(175,152,128,0.2); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.3s, transform 0.3s; }
+  .destino-sheet-close:hover { border-color: #AF9880; transform: rotate(90deg); }
+  .destino-gallery-scroll { display: flex; gap: 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding-bottom: 0.5rem; -ms-overflow-style: none; scrollbar-width: none; }
+  .destino-gallery-scroll::-webkit-scrollbar { display: none; }
+  .destino-gallery-scroll > div { scroll-snap-align: start; flex: 0 0 85%; min-width: 0; }
+  @media (min-width: 768px) { .destino-gallery-scroll > div { flex: 0 0 70%; } }
+
+  .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 40px; height: 40px; border-radius: 9999px; background: rgba(15,14,12,0.7); backdrop-filter: blur(4px); border: 1px solid rgba(175,152,128,0.4); color: #AF9880; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
+  .gallery-nav:hover { background: #AF9880; color: #141311; border-color: #AF9880; transform: translateY(-50%) scale(1.08); }
+  .gallery-nav-prev { left: 8px; }
+  .gallery-nav-next { right: 8px; }
+  .gallery-hint { text-align: center; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(175,152,128,0.7); margin-top: 0.4rem; }
+  @media (max-width: 480px) {
+    #hotel-sheet-body, #destino-sheet-body { padding: 1.25rem 1.1rem 1.5rem; }
+    #hotel-sheet, #destino-sheet { max-height: 88vh; border-radius: 1.5rem; }
+    .gallery-nav { width: 34px; height: 34px; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Turismo dental en Medellín",
+  "serviceType": "Odontología para turismo dental",
+  "description": "Turismo dental en Medellín: tratamientos odontológicos de alto nivel con tecnología avanzada, asesoría en traslados y alojamiento. Planifica tu experiencia.",
+  "url": "https://camilavalenciaodontologia.com/turismo.html",
+  "provider": {
+    "@type": "Dentist",
+    "name": "Camila Valencia Odontología Digital y Miofuncional",
+    "url": "https://camilavalenciaodontologia.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Medellín"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/turismo-Bi9mYHgC.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-DzslfwzC.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-Utfmc7oA.css">
+</head>
+<body data-page="turismo">
+<div id="navbar"></div>
+<main>
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img alt="Medellín" fetchpriority="high" class="w-full h-full object-cover brightness-[0.4]" src="/images/bg-hero-medellin.webp"/>
+
+    </div>
+    <div class="relative z-10 text-center px-gutter max-w-4xl">
+      <span class="font-label-caps text-tertiary mb-base block tracking-[0.3em]">TU EXPERIENCIA DENTAL EN MEDELLIN</span>
+      <p class="font-label-caps text-on-surface mb-base tracking-[0.3em] text-sm">SONRIE, VIAJA, TRANSFORMATE.</p>
+      <h1 class="font-display-xl text-on-surface mb-stack-md italic leading-tight">Tú experiencia comienza en Medellín.</h1>
+      <p class="font-body-lg text-font-white max-w-2xl mx-auto opacity-80">Diseñamos una experiencia cómoda y personalizada para pacientes nacionales e internacionales. Integramos bienestar, tecnología y acompañamiento en cada etapa de su tratamiento.</p>
+      <div class="mt-stack-lg flex justify-center">
+        <a href="https://wa.me/573242812322?text=Hola%2C%20vengo%20del%20sitio%20web%20de%20turismo%20dental%20y%20quiero%20comenzar%20a%20planear%20mi%20viaje%20a%20Medell%C3%ADn.%20%C2%BFMe%20pueden%20orientar%3F" target="_blank" rel="noopener" class="relative inline-block text-center border border-tertiary text-tertiary px-10 py-4 rounded-full font-label-caps overflow-hidden group transition-colors duration-500">
+          <span class="absolute inset-y-0 left-0 w-0 bg-tertiary group-hover:w-full transition-all duration-500 ease-in-out"></span>
+          <span class="relative z-10 group-hover:text-primary-container transition-colors duration-500">Comienza tu viaje</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider w-full"></div>
+
+  <!-- VIP Journey -->
+  <section class="py-section-padding container mx-auto px-gutter max-w-container-max">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-stack-lg">
+      <div class="max-w-xl space-y-stack-md md:ml-20">
+        <div class="w-12 h-1 bg-tertiary mb-base mx-auto"></div>
+        <h2 class="font-headline-lg text-[#AF9880] text-center">Una experiencia pensada en ti</h2>
+        <p class="font-body-lg text-on-surface-variant">Queremos que tu visita a Medellín sea tan sencilla como tu experiencia en nuestra clínica. Te acompañamos en cada detalle para que puedas concentrarte en lo más importante: tu tratamiento.</p>
+        <ul class="space-y-stack-sm">
+          <li class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-[#AF9880]">flight_takeoff</span>
+            <div>
+              <h4 class="font-label-caps text-[#AF9880]">Traslados personalizados:</h4>
+              <p class="text-sm text-on-surface-variant">Coordinamos tu movilidad durante tu estancia en Medellín.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-[#AF9880]">hotel</span>
+            <div>
+              <h4 class="font-label-caps text-[#AF9880]">Hospedaje recomendado:</h4>
+              <p class="text-sm text-on-surface-variant">Te orientamos con opciones de alojamiento en zonas estratégicas de la ciudad.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-[#AF9880]">speed</span>
+            <div>
+              <h4 class="font-label-caps text-[#AF9880]">Planificación de tu estancia:</h4>
+              <p class="text-sm text-on-surface-variant">Organizamos tus citas de manera eficiente para aprovechar al máximo tu tiempo en Medellín.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="relative w-full max-w-[400px] shrink-0 md:mr-20">
+        <div id="hoteles-carousel" class="relative w-full h-[300px] sm:h-[420px] md:h-[540px] overflow-hidden rounded-[2rem] glass-card">
+          <!-- Slide 1 -->
+          <div class="hotel-slide active" data-index="0">
+            <img alt="Hotel Estelar" class="w-full h-full object-cover opacity-80" src="/images/hotel estelar.webp"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <span class="font-label-caps text-[#AF9880] text-[10px] tracking-[0.25em] block">HOSPEDAJE RECOMENDADO</span>
+              <h3 class="font-headline-md text-on-surface mt-1">Hotel Estelar</h3>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="hotel-slide" data-index="1">
+            <img alt="Hotel Portón" class="w-full h-full object-cover opacity-80" src="/images/hotel porton.webp"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <span class="font-label-caps text-[#AF9880] text-[10px] tracking-[0.25em] block">HOSPEDAJE RECOMENDADO</span>
+              <h3 class="font-headline-md text-on-surface mt-1">Hotel Portón</h3>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="hotel-slide" data-index="2">
+            <img alt="Hotel Santa Ana" class="w-full h-full object-cover opacity-80" src="/images/hotel santa ana.webp"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <span class="font-label-caps text-[#AF9880] text-[10px] tracking-[0.25em] block">HOSPEDAJE RECOMENDADO</span>
+              <h3 class="font-headline-md text-on-surface mt-1">Hotel Santa Ana</h3>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center items-center gap-3 mt-4">
+          <div class="hotel-dot active" data-slide="0"></div>
+          <div class="hotel-dot" data-slide="1"></div>
+          <div class="hotel-dot" data-slide="2"></div>
+        </div>
+
+        <!-- Controles: atrás / ver más / siguiente -->
+        <div class="flex items-center justify-center gap-4 mt-6">
+          <button id="hoteles-prev" class="flex items-center gap-2 border border-[#AF9880]/40 text-on-surface px-6 py-3 rounded-full font-label-caps text-xs tracking-widest hover:border-[#AF9880] hover:text-[#AF9880] transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-sm">arrow_back</span>ATRÁS
+          </button>
+          <button id="hoteles-vermas" class="bg-[#AF9880] text-primary-container px-8 py-3 rounded-full font-label-caps text-xs tracking-widest hover:scale-105 transition-transform cursor-pointer">VER MÁS</button>
+          <button id="hoteles-next" class="flex items-center gap-2 border border-[#AF9880]/40 text-on-surface px-6 py-3 rounded-full font-label-caps text-xs tracking-widest hover:border-[#AF9880] hover:text-[#AF9880] transition-all cursor-pointer">
+            SIGUIENTE<span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div id="hotel-modal">
+  <div id="hotel-modal-backdrop"></div>
+  <div id="hotel-sheet">
+    <div class="hotel-sheet-handle"></div>
+    <div id="hotel-sheet-body">
+      <button id="hotel-modal-close" class="hotel-sheet-close">
+        <span class="material-symbols-outlined text-[#AF9880] text-sm">close</span>
+      </button>
+      <span class="font-label-caps text-[#AF9880] text-[10px] tracking-[0.25em] block mb-1">HOSPEDAJE RECOMENDADO</span>
+      <h3 id="hotel-modal-title" class="font-headline-lg text-on-surface mb-3"></h3>
+      <p id="hotel-modal-desc" class="font-body-md text-on-surface-variant leading-relaxed"></p>
+      <ul id="hotel-modal-features" class="mt-4 mb-5 space-y-2"></ul>
+      <div class="relative">
+        <div id="hotel-modal-gallery" class="hotel-gallery-scroll"></div>
+        <button id="hotel-gallery-prev" class="gallery-nav gallery-nav-prev" type="button" aria-label="Imagen anterior">
+          <span class="material-symbols-outlined text-base">arrow_back</span>
+        </button>
+        <button id="hotel-gallery-next" class="gallery-nav gallery-nav-next" type="button" aria-label="Imagen siguiente">
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </button>
+      </div>
+      <p class="gallery-hint">Desliza o usa la rueda del mouse para ver más fotos</p>
+      <a id="hotel-modal-wa" href="#" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center gap-3 bg-[#25D366] text-white px-5 sm:px-8 py-4 rounded-full font-label-caps text-xs tracking-widest hover:scale-[1.03] transition-transform text-center">
+        <span class="material-symbols-outlined text-base">chat</span>
+        <span>RESERVAR E INTERESADO POR WHATSAPP</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="destino-modal">
+  <div id="destino-modal-backdrop"></div>
+  <div id="destino-sheet">
+    <div class="destino-sheet-handle"></div>
+    <div id="destino-sheet-body">
+      <button id="destino-modal-close" class="destino-sheet-close">
+        <span class="material-symbols-outlined text-[#AF9880] text-sm">close</span>
+      </button>
+      <span class="font-label-caps text-[#AF9880] text-[10px] tracking-[0.25em] block mb-1">DESTINO RECOMENDADO</span>
+      <h3 id="destino-modal-title" class="font-headline-lg text-on-surface mb-3"></h3>
+      <p id="destino-modal-desc" class="font-body-md text-on-surface-variant leading-relaxed"></p>
+      <div id="destino-modal-tags" class="mt-4 flex flex-wrap gap-2"></div>
+      <div class="relative mt-5">
+        <div id="destino-modal-gallery" class="destino-gallery-scroll"></div>
+        <button id="destino-gallery-prev" class="gallery-nav gallery-nav-prev" type="button" aria-label="Imagen anterior">
+          <span class="material-symbols-outlined text-base">arrow_back</span>
+        </button>
+        <button id="destino-gallery-next" class="gallery-nav gallery-nav-next" type="button" aria-label="Imagen siguiente">
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </button>
+      </div>
+      <p class="gallery-hint">Desliza o usa la rueda del mouse para ver más fotos</p>
+    </div>
+  </div>
+</div>
+
+  <script>
+    (function() {
+      var slides = document.querySelectorAll('#hoteles-carousel .hotel-slide');
+      var dots = document.querySelectorAll('.hotel-dot');
+      var current = 0;
+
+      var hoteles = [
+        {
+          id: 'estelar',
+          nombre: 'Estelar Square Hotel',
+          desc: 'Ubicado en una de las zonas más exclusivas de Medellín, a 17 minutos caminando o 3 minutos en automóvil de nuestra clínica. Combina confort, excelente ubicación y espacios ideales para descansar durante tu tratamiento. Una opción perfecta si buscas comodidad y fácil acceso a restaurantes, cafés y lugares de interés.',
+          features: ['Habitaciones ejecutivas y suites', 'Restaurante y servicio de room service', 'Zona húmeda y gimnasio', 'Cercano a restaurantes, cafés y museos', 'Vistas panorámicas de la ciudad'],
+          imagenes: [
+            { src: '/images/hoteles/estelar/estelar-square-barc.webp', desc: 'Bar' },
+            { src: '/images/hoteles/estelar/estelar-square-piscinaf.webp', desc: 'Piscina' },
+            { src: '/images/hoteles/estelar/estelar-square-roomb.webp', desc: 'Habitación' }
+          ]
+        },
+        {
+          id: 'porton',
+          nombre: 'Hotel Portón',
+          desc: 'Con un ambiente cálido y acogedor, está ubicado estratégicamente a 12 minutos caminando o 4 minutos en automóvil de nuestra clínica. Sus espacios tranquilos y atención personalizada lo convierten en una excelente alternativa para disfrutar de tu estadía y descansar durante tu tratamiento.',
+          features: ['Ambiente boutique y familiar', 'Restaurante', 'Bar y cafetería', 'Gimnasio', 'Terraza en la azotea con tinas', 'Ubicación cercana a restaurantes y zonas de interés'],
+          imagenes: [
+            { src: '/images/hoteles/porton/unnamed.webp', desc: 'Habitación' },
+            { src: '/images/hoteles/porton/496986815.webp', desc: 'Suite' },
+            { src: '/images/hoteles/porton/496986048.webp', desc: 'Zonas comunes' }
+          ]
+        },
+        {
+          id: 'santa-ana',
+          nombre: 'Hotel Santa Ana',
+          desc: 'Una alternativa cómoda y cercana, ubicada a solo 6 minutos caminando o 1 minuto en automóvil de nuestra clínica. Cuenta con suites sencillas y funcionales, algunas con wifi, televisión, balcón, sala de estar y cocina integrada, ideales para estadías cortas o prolongadas.',
+          features: ['Restaurante', 'Estacionamiento', 'Suites con espacios independientes', 'Cercanía a cafés y restaurantes', 'Ambiente tranquilo y familiar'],
+          imagenes: [
+            { src: '/images/hoteles/santa-ana/unnamed.webp', desc: 'Habitación' },
+            { src: '/images/hoteles/santa-ana/SANTA ANA.webp', desc: 'Suite' },
+            { src: '/images/hoteles/santa-ana/SANTA ANA COCINA.webp', desc: 'Cocina' }
+          ]
+        }
+      ];
+
+      var BASE = '';
+      var manifesto = null;
+
+      function cargarManifesto() {
+        if (manifesto) return Promise.resolve(manifesto);
+        return fetch(BASE + '/images/hoteles/hoteles.json')
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .catch(function() { return null; })
+          .then(function(j) { manifesto = j; return j; });
+      }
+
+      function describirArchivo(archivo) {
+        var t = archivo.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ').trim();
+        return t.charAt(0).toUpperCase() + t.slice(1);
+      }
+
+      var animating = false;
+
+      function goTo(index, dir) {
+        if (index === current || animating) return;
+        dir = dir || 1;
+        var out = slides[current];
+        var inc = slides[index];
+        animating = true;
+
+        dots[current].classList.remove('active');
+        dots[index].classList.add('active');
+
+        var dur = 0.55;
+        var ease = 'cubic-bezier(0.33, 1, 0.68, 1)';
+
+        inc.style.transition = 'none';
+        inc.style.transform = 'translateX(' + (dir > 0 ? 100 : -100) + '%)';
+        out.style.transition = 'none';
+        out.style.transform = 'translateX(0)';
+        inc.classList.add('active');
+        void inc.offsetWidth;
+        inc.style.transition = 'transform ' + dur + 's ' + ease;
+        inc.style.transform = 'translateX(0)';
+        out.style.transition = 'transform ' + dur + 's ' + ease;
+        out.style.transform = 'translateX(' + (dir > 0 ? -100 : 100) + '%)';
+
+        setTimeout(function() {
+          out.classList.remove('active');
+          out.style.transition = '';
+          out.style.transform = '';
+          inc.style.transition = '';
+          inc.style.transform = '';
+          animating = false;
+        }, dur * 1000 + 40);
+
+        current = index;
+      }
+
+      dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() { goTo(i, i > current ? 1 : -1); });
+      });
+
+      document.getElementById('hoteles-prev').addEventListener('click', function() {
+        goTo((current - 1 + slides.length) % slides.length, -1);
+      });
+      document.getElementById('hoteles-next').addEventListener('click', function() {
+        goTo((current + 1) % slides.length, 1);
+      });
+
+      var modal = document.getElementById('hotel-modal');
+
+      function openModal() {
+        var h = hoteles[current];
+        document.getElementById('hotel-modal-title').textContent = h.nombre;
+        document.getElementById('hotel-modal-desc').textContent = h.desc;
+        var wa = document.getElementById('hotel-modal-wa');
+        var msg = 'Hola, me interesa el hospedaje recomendado ' + h.nombre + '. ¿Pueden darme más información?';
+        wa.href = 'https://wa.me/573242812322?text=' + encodeURIComponent(msg);
+        var ul = document.getElementById('hotel-modal-features');
+        ul.innerHTML = '';
+        h.features.forEach(function(f) {
+          var li = document.createElement('li');
+          li.className = 'flex items-start gap-2 text-sm text-on-surface-variant';
+          li.innerHTML = '<span class="material-symbols-outlined text-[#AF9880] text-base shrink-0">check</span>' + f;
+          ul.appendChild(li);
+        });
+
+        var gal = document.getElementById('hotel-modal-gallery');
+        gal.innerHTML = '';
+        var body = document.getElementById('hotel-sheet-body');
+        body.scrollTop = 0;
+
+        cargarManifesto().then(function(m) {
+          var items;
+          if (m && h.id && m[h.id] && m[h.id].length) {
+            items = m[h.id].map(function(a) {
+              return { src: BASE + '/images/hoteles/' + h.id + '/' + a, desc: describirArchivo(a) };
+            });
+          } else {
+            items = (h.imagenes || []).map(function(img) {
+              return { src: BASE + img.src, desc: img.desc };
+            });
+          }
+          items.forEach(function(img) {
+            var wrap = document.createElement('div');
+            wrap.className = 'rounded-2xl overflow-hidden border border-white/10 bg-surface-container-low aspect-[4/3]';
+            var im = document.createElement('img');
+            im.src = img.src;
+            im.alt = img.desc;
+            im.loading = 'lazy';
+            im.className = 'w-full h-full object-cover';
+            im.onerror = function() { wrap.style.display = 'none'; };
+            wrap.appendChild(im);
+            gal.appendChild(wrap);
+          });
+        });
+
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('hoteles-vermas').addEventListener('click', openModal);
+      document.getElementById('hotel-modal-close').addEventListener('click', closeModal);
+      document.getElementById('hotel-modal-backdrop').addEventListener('click', closeModal);
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+      // Galería: rueda del mouse + flechas
+      var hotelGal = document.getElementById('hotel-modal-gallery');
+      hotelGal.addEventListener('wheel', function(e) {
+        if (Math.abs(e.deltaY) > 0 && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          e.preventDefault();
+          hotelGal.scrollLeft += e.deltaY;
+        }
+      }, { passive: false });
+      document.getElementById('hotel-gallery-prev').addEventListener('click', function() {
+        hotelGal.scrollBy({ left: -hotelGal.clientWidth * 0.8, behavior: 'smooth' });
+      });
+      document.getElementById('hotel-gallery-next').addEventListener('click', function() {
+        hotelGal.scrollBy({ left: hotelGal.clientWidth * 0.8, behavior: 'smooth' });
+      });
+
+      // Swipe-down on the handle to close
+      (function() {
+        var sheet = document.getElementById('hotel-sheet');
+        var handle = sheet.querySelector('.hotel-sheet-handle');
+        var startY = 0, currentY = 0, dragging = false;
+        handle.addEventListener('touchstart', function(e) { startY = e.touches[0].clientY; dragging = true; }, { passive: true });
+        document.addEventListener('touchmove', function(e) {
+          if (!dragging) return;
+          currentY = e.touches[0].clientY;
+          var diff = currentY - startY;
+          if (diff > 0) sheet.style.transform = 'translateY(' + diff + 'px)';
+        }, { passive: true });
+        document.addEventListener('touchend', function() {
+          if (!dragging) return;
+          dragging = false;
+          var diff = currentY - startY;
+          if (diff > 80) { closeModal(); }
+          sheet.style.transform = '';
+        });
+      })();
+    })();
+  </script>
+
+  <div class="gold-divider w-full"></div>
+
+  <!-- Antes y Después -->
+  <section class="py-section-padding bg-surface-container overflow-hidden">
+    <div class="container mx-auto px-gutter max-w-container-max">
+      <div class="text-center mb-stack-lg">
+        <span class="font-label-caps text-tertiary tracking-widest">TRANSFORMACIONES REALES</span>
+        <h2 class="font-headline-lg text-on-surface mt-base italic">Antes y Después</h2>
+        <p class="font-body-md text-on-surface-variant max-w-2xl mx-auto mt-4">Resultados diseñados con precisión. Pacientes internacionales que confiaron en nuestra planificación y visión estética.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-stack-lg">
+        <div class="relative group cursor-pointer rounded-3xl overflow-hidden glass-card">
+          <div class="aspect-[16/9] relative">
+            <img loading="lazy" decoding="async" alt="Antes" class="w-full h-full object-cover" src="/images/imagen-1-antes.webp"/>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[#122838]/60">
+              <img loading="lazy" decoding="async" alt="Después" class="w-full h-full object-cover" src="/images/imagen-1-despues.webp"/>
+            </div>
+            <div class="absolute top-4 left-4 bg-surface/80 px-4 py-1 rounded-full text-[10px] font-label-caps text-tertiary border border-tertiary/20">ANTES</div>
+            <div class="absolute top-4 right-4 bg-tertiary px-4 py-1 rounded-full text-[10px] font-label-caps text-primary-container shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">DESPUÉS</div>
+          </div>
+          <div class="p-stack-sm text-center">
+            <h4 class="font-headline-md text-on-surface text-xl">Diseño Cerámico (Disilicato de Litio)</h4>
+          </div>
+        </div>
+        <div class="relative group cursor-pointer rounded-3xl overflow-hidden glass-card">
+          <div class="aspect-[16/9] relative">
+            <img loading="lazy" decoding="async" alt="Antes" class="w-full h-full object-cover" src="/images/imagen-2-antes.webp"/>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[#122838]/60">
+              <img loading="lazy" decoding="async" alt="Después" class="w-full h-full object-cover" src="/images/imagen-2-despues.webp"/>
+            </div>
+            <div class="absolute top-4 left-4 bg-surface/80 px-4 py-1 rounded-full text-[10px] font-label-caps text-tertiary border border-tertiary/20">ANTES</div>
+            <div class="absolute top-4 right-4 bg-tertiary px-4 py-1 rounded-full text-[10px] font-label-caps text-primary-container shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">DESPUÉS</div>
+          </div>
+          <div class="p-stack-sm text-center">
+            <h4 class="font-headline-md text-on-surface text-xl">Rehabilitaciones Orales Estéticas Integrales</h4>
+          </div>
+        </div>
+        <div class="relative group cursor-pointer rounded-3xl overflow-hidden glass-card">
+          <div class="aspect-[16/9] relative">
+            <img loading="lazy" decoding="async" alt="Antes" class="w-full h-full object-cover" src="/images/imagen-3-antes.webp"/>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[#122838]/60">
+              <img loading="lazy" decoding="async" alt="Después" class="w-full h-full object-cover" src="/images/imagen-3-despues.webp"/>
+            </div>
+            <div class="absolute top-4 left-4 bg-surface/80 px-4 py-1 rounded-full text-[10px] font-label-caps text-tertiary border border-tertiary/20">ANTES</div>
+            <div class="absolute top-4 right-4 bg-tertiary px-4 py-1 rounded-full text-[10px] font-label-caps text-primary-container shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">DESPUÉS</div>
+          </div>
+          <div class="p-stack-sm text-center">
+            <h4 class="font-headline-md text-on-surface text-xl">Diseño en Resina<br>3D Impresa</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider w-full"></div>
+
+  <!-- Remote Precision -->
+  <section class="py-section-padding bg-surface-container-lowest relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-tertiary/20 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-gutter max-w-container-max relative z-10">
+      <div class="text-center mb-stack-lg">
+        <span class="font-label-caps text-tertiary tracking-widest">CONSULTA DIGITAL</span>
+        <h2 class="font-headline-lg text-on-surface mt-base">Precisión Remota</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+        <div class="glass-card p-gutter rounded-3xl group hover:border-tertiary transition-all duration-500 text-center">
+          <span class="material-symbols-outlined text-4xl text-tertiary mb-stack-sm block">connected_tv</span>
+          <h3 class="font-headline-md text-tertiary mb-base">Valoración Digital</h3>
+          <p class="font-body-md text-on-surface-variant">Analizamos tu caso a distancia y diseñamos un plan personalizado antes de tu viaje.</p>
+        </div>
+        <div class="glass-card p-gutter rounded-3xl group hover:border-tertiary transition-all duration-500 text-center">
+          <span class="material-symbols-outlined text-4xl text-tertiary mb-stack-sm block">biotech</span>
+          <h3 class="font-headline-md text-tertiary mb-base">Monitoreo Virtual</h3>
+          <p class="font-body-md text-on-surface-variant">Acompañamiento digital antes, durante y después de tu tratamiento.</p>
+        </div>
+        <div class="glass-card p-gutter rounded-3xl group hover:border-tertiary transition-all duration-500 text-center">
+          <span class="material-symbols-outlined text-4xl text-tertiary mb-stack-sm block">security</span>
+          <h3 class="font-headline-md text-tertiary mb-base">Atención Internacional</h3>
+          <p class="font-body-md text-on-surface-variant">Coordinamos tu experiencia dental para que tu visita sea segura, cómoda y eficiente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider w-full"></div>
+
+  <!-- Manizales -->
+  <section class="py-section-padding container mx-auto px-gutter max-w-container-max">
+    <div class="text-center mb-stack-lg">
+      <h2 class="font-display-xl text-tertiary mb-base">Medellin</h2>
+      <h3 class="font-headline-md text-on-surface">La Ciudad de la Eterna Primavera</h3>
+      <p class="font-body-md text-on-surface-variant mt-stack-sm max-w-2xl mx-auto">Cada día libre es una historia por descubrir. Medellín y sus alrededores te esperan con sorpresas que superan cualquier expectativa.</p>
+    </div>
+    <div class="flex flex-col md:flex-row w-full md:h-[430px] gap-gutter md:gap-0 rounded-3xl overflow-hidden glass-card">
+      <div class="relative w-full md:w-0 md:flex-grow group overflow-hidden rounded-3xl md:rounded-none md:hover:w-[300px] transition-all duration-500 ease-in-out" style="min-height:240px">
+        <img alt="Medellín" class="w-full h-full object-cover brightness-[0.55] group-hover:brightness-[0.7] transition-all duration-500" loading="lazy" decoding="async" src="/images/medellin.webp"/>
+        <div class="absolute inset-0 flex flex-col items-center justify-end p-6 pb-6 text-center bg-gradient-to-t from-black/65 via-black/20 to-transparent group-hover:from-black/80 transition-all duration-500">
+          <span class="font-label-caps text-white/70 tracking-widest text-[10px] mb-2">ESCAPADA · MEDELLÍN</span>
+          <p class="text-white text-sm mb-3 opacity-90">A minutos de la clínica · Arte, gastronomía y cultura</p>
+          <button class="destino-vermas cursor-pointer inline-flex items-center gap-1.5 bg-black/55 backdrop-blur-sm border border-[#AF9880] text-white px-4 py-2 rounded-full font-label-caps text-[10px] tracking-widest hover:bg-[#AF9880] hover:text-primary-container transition-all duration-500" data-destino="medellin">
+            VER MÁS <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+      <div class="relative w-full md:w-0 md:flex-grow group overflow-hidden rounded-3xl md:rounded-none md:hover:w-[300px] transition-all duration-500 ease-in-out" style="min-height:240px">
+        <img alt="Guatapé" class="w-full h-full object-cover brightness-[0.55] group-hover:brightness-[0.7] transition-all duration-500" loading="lazy" decoding="async" src="/images/guatape.webp"/>
+        <div class="absolute inset-0 flex flex-col items-center justify-end p-6 pb-6 text-center bg-gradient-to-t from-black/65 via-black/20 to-transparent group-hover:from-black/80 transition-all duration-500">
+          <span class="font-label-caps text-white/70 tracking-widest text-[10px] mb-2">GUATAPÉ · 1H 30</span>
+          <p class="text-white text-sm mb-3 opacity-90">Piedra del Peñol, zócalos y deportes acuáticos</p>
+          <button class="destino-vermas cursor-pointer inline-flex items-center gap-1.5 bg-black/55 backdrop-blur-sm border border-[#AF9880] text-white px-4 py-2 rounded-full font-label-caps text-[10px] tracking-widest hover:bg-[#AF9880] hover:text-primary-container transition-all duration-500" data-destino="guatape">
+            VER MÁS <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+      <div class="relative w-full md:w-0 md:flex-grow group overflow-hidden rounded-3xl md:rounded-none md:hover:w-[300px] transition-all duration-500 ease-in-out" style="min-height:240px">
+        <img alt="Jardín" class="w-full h-full object-cover brightness-[0.55] group-hover:brightness-[0.7] transition-all duration-500" loading="lazy" decoding="async" src="/images/jardin.webp"/>
+        <div class="absolute inset-0 flex flex-col items-center justify-end p-6 pb-6 text-center bg-gradient-to-t from-black/65 via-black/20 to-transparent group-hover:from-black/80 transition-all duration-500">
+          <span class="font-label-caps text-white/70 tracking-widest text-[10px] mb-2">JARDÍN · 3H</span>
+          <p class="text-white text-sm mb-3 opacity-90">Pueblo patrimonio y cultura cafetera</p>
+          <button class="destino-vermas cursor-pointer inline-flex items-center gap-1.5 bg-black/55 backdrop-blur-sm border border-[#AF9880] text-white px-4 py-2 rounded-full font-label-caps text-[10px] tracking-widest hover:bg-[#AF9880] hover:text-primary-container transition-all duration-500" data-destino="jardin">
+            VER MÁS <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+      <div class="relative w-full md:w-0 md:flex-grow group overflow-hidden rounded-3xl md:rounded-none md:hover:w-[300px] transition-all duration-500 ease-in-out" style="min-height:240px">
+        <img alt="Santa Fe de Antioquia" class="w-full h-full object-cover brightness-[0.55] group-hover:brightness-[0.7] transition-all duration-500" loading="lazy" decoding="async" src="/images/santa-fe-de-antioquia.webp"/>
+        <div class="absolute inset-0 flex flex-col items-center justify-end p-6 pb-6 text-center bg-gradient-to-t from-black/65 via-black/20 to-transparent group-hover:from-black/80 transition-all duration-500">
+          <span class="font-label-caps text-white/70 tracking-widest text-[10px] mb-2">SANTA FE · 1H 30</span>
+          <p class="text-white text-sm mb-3 opacity-90">Arquitectura colonial y Puente de Occidente</p>
+          <button class="destino-vermas cursor-pointer inline-flex items-center gap-1.5 bg-black/55 backdrop-blur-sm border border-[#AF9880] text-white px-4 py-2 rounded-full font-label-caps text-[10px] tracking-widest hover:bg-[#AF9880] hover:text-primary-container transition-all duration-500" data-destino="santafe">
+            VER MÁS <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider w-full"></div>
+
+  <!-- Lead Form -->
+  <section class="py-section-padding px-gutter bg-surface-container-low">
+    <div class="max-w-5xl mx-auto text-center">
+      <button id="form-toggle-btn" onclick="document.getElementById('form-wrapper').classList.toggle('hidden');this.classList.add('hidden')" class="bg-[#AF9880] text-primary-container px-12 py-5 rounded-full font-label-caps text-sm tracking-[0.2em] transition-all">
+        SOLICITAR VALORACIÓN
+      </button>
+    </div>
+    <div id="form-wrapper" class="hidden max-w-5xl mx-auto mt-stack-lg glass-card p-8 md:p-12 rounded-[2rem] relative overflow-hidden transition-all duration-500">
+      <button onclick="document.getElementById('form-wrapper').classList.add('hidden');document.getElementById('form-toggle-btn').classList.remove('hidden')" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-primary-container flex items-center justify-center border border-[#AF9880]/20 hover:border-[#AF9880] transition-colors cursor-pointer">
+        <span class="material-symbols-outlined text-[#AF9880] text-sm">close</span>
+      </button>
+      <div class="absolute top-0 right-0 w-64 h-64 bg-[#AF9880]/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2"></div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-stack-lg relative z-10">
+        <div class="md:col-span-2">
+          <img loading="lazy" decoding="async" src="/images/form.webp" alt="Consulta odontológica" class="w-full h-full object-cover rounded-2xl"/>
+        </div>
+        <div class="md:col-span-3 flex flex-col gap-stack-md">
+          <div>
+            <h2 class="font-headline-lg text-[#AF9880] mb-stack-sm">Tu diagnóstico comienza aquí</h2>
+            <p class="font-body-md text-on-surface-variant">Completa el formulario para una preevaluación por parte de nuestro equipo clínico.</p>
+          </div>
+          <div class="glass-card rounded-xl p-4 flex flex-col gap-4">
+            <a href="https://wa.me/573242812322?text=Hola%2C%20vengo%20del%20sitio%20web%20de%20turismo%20dental%20y%20prefiero%20agendar%20mi%20valoraci%C3%B3n%20directo%20por%20WhatsApp.%20%C2%BFMe%20pueden%20ayudar%3F" target="_blank" class="flex items-center gap-3 group">
+              <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center border border-[#AF9880]/20 group-hover:border-[#AF9880] transition-colors shrink-0"><span class="material-symbols-outlined text-[#AF9880] text-sm">phone_iphone</span></div>
+              <div><p class="text-[10px] font-label-caps text-outline">WHATSAPP</p><p class="text-on-surface group-hover:text-[#AF9880] transition-colors text-sm">+57 324 281 2322</p></div>
+            </a>
+            <div class="w-full h-px bg-[#AF9880]/10"></div>
+            <a href="mailto:cvodontodigitalymiofuncional@gmail.com" target="_blank" class="flex items-center gap-3 group">
+              <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center border border-[#AF9880]/20 group-hover:border-[#AF9880] transition-colors shrink-0"><span class="material-symbols-outlined text-[#AF9880] text-sm">mail</span></div>
+              <div><p class="text-[10px] font-label-caps text-outline">EMAIL CORPORATIVO</p><p class="text-on-surface group-hover:text-[#AF9880] transition-colors text-sm">cvodontodigitalymiofuncional@gmail.com</p></div>
+            </a>
+          </div>
+          <form id="contact-form" class="space-y-5" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="17633fb6-bf01-4edc-8ab4-fb9724f92eaf">
+            <input type="hidden" name="subject" value="Nueva solicitud de valoración — Turismo">
+            <input type="hidden" name="from_name" value="Camila Odontología">
+            <input type="hidden" name="Página" value="Turismo">
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="space-y-1"><label class="font-label-caps text-[10px] text-[#AF9880]">NOMBRE COMPLETO</label><input name="Nombre" class="w-full bg-transparent border-b border-outline-variant focus:border-[#AF9880] outline-none py-2 text-on-surface transition-colors" placeholder="Escriba su nombre" type="text" required/></div>
+              <div class="space-y-1"><label class="font-label-caps text-[10px] text-[#AF9880]">WHATSAPP</label><input name="WhatsApp" class="w-full bg-transparent border-b border-outline-variant focus:border-[#AF9880] outline-none py-2 text-on-surface transition-colors" placeholder="+57 ..." type="tel" required/></div>
+            </div>
+            <div class="space-y-1"><label class="font-label-caps text-[10px] text-[#AF9880]">CORREO ELECTRÓNICO</label><input name="Correo" class="w-full bg-transparent border-b border-outline-variant focus:border-[#AF9880] outline-none py-2 text-on-surface transition-colors" placeholder="correo@ejemplo.com" type="email" required/></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="space-y-1"><label class="font-label-caps text-[10px] text-[#AF9880]">MOTIVO</label><input name="Motivo" class="w-full bg-transparent border-b border-outline-variant focus:border-[#AF9880] outline-none py-2 text-on-surface transition-colors" placeholder="Ej: Estética, función" type="text" required/></div>
+              <div class="space-y-1"><label class="font-label-caps text-[10px] text-[#AF9880]">UBICACI&Oacute;N</label><input name="Ubicación" class="w-full bg-transparent border-b border-outline-variant focus:border-[#AF9880] outline-none py-2 text-on-surface transition-colors" placeholder="Ciudad, País" type="text" required/></div>
+            </div>
+            <label class="flex items-start gap-3 cursor-pointer select-none">
+              <input type="checkbox" name="Acepto_Politica_y_Terminos" value="Sí" required class="mt-0.5 w-4 h-4 accent-[#AF9880] shrink-0 cursor-pointer">
+              <span class="text-xs leading-relaxed text-on-surface">Acepto la <a href="/politica-de-privacidad-y-tratamiento-de-datos.html" target="_blank" rel="noopener" class="text-[#AF9880] underline hover:no-underline">Política de Tratamiento de Datos Personales</a> y los <a href="/terminos-y-condiciones.html" target="_blank" rel="noopener" class="text-[#AF9880] underline hover:no-underline">Términos y Condiciones</a>, y autorizo el tratamiento de mis datos para atender mi solicitud.</span>
+            </label>
+            <button type="submit" class="block w-full bg-[#AF9880] text-primary-container py-4 rounded-lg font-label-caps text-xs tracking-[0.2em] transition-all text-center">ENVIAR SOLICITUD DE VALORACI&Oacute;N</button>
+          </form>
+<div id="success-message" class="hidden mt-4 p-4 bg-green-900/30 border border-green-500/50 rounded-lg text-center">
+              <p class="text-green-400 font-label-caps text-sm">¡Solicitud recibida! En las próximas 24 horas nos contactaremos contigo.</p>
+            </div>
+            <div id="error-message" class="hidden mt-4 p-4 bg-red-900/30 border border-red-500/50 rounded-lg text-center">
+              <p id="error-text" class="text-red-400 font-label-caps text-sm">No pudimos enviar tu solicitud. Intenta de nuevo, o escríbenos por <a href="https://wa.me/573242812322?text=Hola%2C%20intent%C3%A9%20enviar%20el%20formulario%20del%20sitio%20web%20de%20turismo%20dental%20pero%20hubo%20un%20problema.%20Prefiero%20agendar%20mi%20valoraci%C3%B3n%20por%20aqu%C3%AD." target="_blank" rel="noopener" class="underline">WhatsApp</a> al +57 324 281 2322.</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="footer"></div>
+<script>
+  const form = document.getElementById("contact-form");
+  const successMsg = document.getElementById("success-message");
+  const errorMsg = document.getElementById("error-message");
+  const errorText = document.getElementById("error-text");
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    errorMsg.classList.add("hidden");
+
+    const data = Object.fromEntries(new FormData(form));
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "ENVIANDO…";
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(data)
+    })
+      .then(async (r) => {
+        const res = await r.json();
+        submitBtn.disabled = false;
+        submitBtn.textContent = "ENVIAR SOLICITUD DE VALORACIÓN";
+        const ok = r.status === 200 && String(res.success) !== "false";
+        if (ok) {
+          form.classList.add("hidden");
+          successMsg.classList.remove("hidden");
+          form.reset();
+          window.location.href = "/gracias.html";
+        } else {
+          errorText.textContent = res.message || errorText.textContent;
+          errorMsg.classList.remove("hidden");
+        }
+      })
+      .catch(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "ENVIAR SOLICITUD DE VALORACIÓN";
+        errorMsg.classList.remove("hidden");
+      });
+  });
+</script>
+<script>
+  (function() {
+    var destinoModal = document.getElementById('destino-modal');
+    var destinoClose = document.getElementById('destino-modal-close');
+    var destinoBackdrop = document.getElementById('destino-modal-backdrop');
+    var BASE = '';
+
+    var destinos = {
+      medellin: {
+        title: 'Medellín: La ciudad más innovadora de América Latina',
+        desc: 'El corazón de tu experiencia. Durante tus días libres, Medellín es tu ciudad. Disfruta del arte urbano en la Comuna 13, gastronomía de clase mundial, el Jardín Botánico, la Plaza Botero y una vida nocturna inigualable. Todo, a minutos de la clínica.',
+        tags: ['Arte Urbano: Comuna 13', 'Gastronomía: El Poblado', 'Vida Nocturna: Provenza', 'Tradición: Cerro Nutibara', 'Naturaleza: Jardín Botánico', 'Conectividad: Metrocable al Parque Arví'],
+        gallery: [
+          { src: '/images/medellin.webp', desc: 'Medellín desde la ciudad' },
+          { src: '/images/destinos/medellin/comuna13.webp', desc: 'Arte urbano en la Comuna 13' },
+          { src: '/images/destinos/medellin/metrocable.webp', desc: 'Metrocable: conectividad al Parque Arví' },
+          { src: '/images/destinos/medellin/panoramica.webp', desc: 'Panorámica de la ciudad' }
+        ]
+      },
+      guatape: {
+        title: 'Guatapé: Escapada de un día',
+        desc: 'Distancia: 1h 30 min desde Medellín. Descubre una explosión de color y naturaleza. Sube los 740 escalones de la Piedra del Peñol para contemplar la mejor vista de Colombia, un panorama inolvidable del embalse. Recorre sus calles, donde los zócalos pintados a mano narran la historia de un pueblo que convirtió su arte en identidad.',
+        tags: ['La Piedra del Peñol: 740 escalones', 'Zócalos tradicionales', 'Deportes acuáticos', 'Gastronomía local: trucha fresca', 'Arquitectura colonial'],
+        gallery: [
+          { src: '/images/guatape.webp', desc: 'Guatapé y sus calles coloridas' },
+          { src: '/images/destinos/guatape/piedra.webp', desc: 'Vista desde la cima de la Piedra del Peñol' },
+          { src: '/images/destinos/guatape/zocalos.webp', desc: 'Zócalos pintados a mano' },
+          { src: '/images/destinos/guatape/embalse.webp', desc: 'Piedra del Peñol y el embalse' }
+        ]
+      },
+      jardin: {
+        title: 'Jardín: Escapada de un día',
+        desc: 'Distancia: 3h desde Medellín. Patrimonio cultural vivo entre montañas cafeteras. Jardín es un lugar donde el tiempo se detiene. Este pueblo, reconocido como Patrimonio Cultural de Colombia, te cautivará con su imponente catedral neogótica, sus tradicionales fincas cafeteras y el emblemático puente de hamaca. Disfruta del mejor café de origen antioqueño mientras contemplas la majestuosidad de las montañas desde su plaza central.',
+        tags: ['Pueblo Patrimonio', 'Catedral Neogótica', 'Cultura Cafetera', 'Puente de Hamaca', 'Experiencia sensorial: Café de origen'],
+        gallery: [
+          { src: '/images/jardin.webp', desc: 'Jardín entre montañas cafeteras' },
+          { src: '/images/destinos/jardin/panoramica.webp', desc: 'Panorámica del pueblo' },
+          { src: '/images/destinos/jardin/basilica.webp', desc: 'Catedral neogótica' },
+          { src: '/images/destinos/jardin/parque.webp', desc: 'Parque principal' }
+        ]
+      },
+      santafe: {
+        title: 'Santa Fe de Antioquia: Escapada de un día',
+        desc: '1h 30 min desde Medellín. La primera capital de Antioquia, intacta en el tiempo. A solo hora y media de Medellín, Santa Fe de Antioquia es un portal al pasado colonial colombiano. Sus calles empedradas, el icónico Puente de Occidente de 1887 y su arquitectura republicana te transportan a otra época. El calor del clima y la calidez de su gente hacen que sea imposible no enamorarse.',
+        tags: ['Escapada de un día', '1h 30 min desde Medellín', 'Puente de Occidente (1887)', 'Primera capital de Antioquia', 'Arquitectura republicana'],
+        gallery: [
+          { src: '/images/santa-fe-de-antioquia.webp', desc: 'Santa Fe de Antioquia' },
+          { src: '/images/destinos/santafe/puente.webp', desc: 'Puente de Occidente (1887)' },
+          { src: '/images/destinos/santafe/plaza.webp', desc: 'Plaza colonial y fuente' },
+          { src: '/images/destinos/santafe/calle.webp', desc: 'Vía hacia el Puente de Occidente' }
+        ]
+      }
+    };
+
+    function openDestino(key) {
+      var d = destinos[key];
+      if (!d) return;
+      document.getElementById('destino-modal-title').textContent = d.title;
+      document.getElementById('destino-modal-desc').textContent = d.desc;
+      var tags = document.getElementById('destino-modal-tags');
+      tags.innerHTML = '';
+      d.tags.forEach(function(t) {
+        var s = document.createElement('span');
+        s.className = 'bg-[#AF9880]/15 border border-[#AF9880]/30 px-3 py-1.5 rounded-full text-[#AF9880] text-[11px]';
+        s.textContent = t;
+        tags.appendChild(s);
+      });
+      var gal = document.getElementById('destino-modal-gallery');
+      gal.innerHTML = '';
+      (d.gallery || []).forEach(function(img) {
+        var wrap = document.createElement('div');
+        wrap.className = 'rounded-2xl overflow-hidden border border-white/10 bg-surface-container-low aspect-[4/3]';
+        var im = document.createElement('img');
+        im.src = BASE + img.src;
+        im.alt = img.desc;
+        im.loading = 'lazy';
+        im.className = 'w-full h-full object-cover';
+        im.onerror = function() { wrap.style.display = 'none'; };
+        wrap.appendChild(im);
+        gal.appendChild(wrap);
+      });
+      destinoModal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDestino() {
+      destinoModal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('.destino-vermas');
+      if (btn && btn.getAttribute('data-destino')) {
+        openDestino(btn.getAttribute('data-destino'));
+      }
+    });
+
+    // Galería: rueda del mouse + flechas
+    var destinoGal = document.getElementById('destino-modal-gallery');
+    destinoGal.addEventListener('wheel', function(e) {
+      if (Math.abs(e.deltaY) > 0 && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        destinoGal.scrollLeft += e.deltaY;
+      }
+    }, { passive: false });
+    document.getElementById('destino-gallery-prev').addEventListener('click', function() {
+      destinoGal.scrollBy({ left: -destinoGal.clientWidth * 0.8, behavior: 'smooth' });
+    });
+    document.getElementById('destino-gallery-next').addEventListener('click', function() {
+      destinoGal.scrollBy({ left: destinoGal.clientWidth * 0.8, behavior: 'smooth' });
+    });
+
+    destinoClose.addEventListener('click', closeDestino);
+    destinoBackdrop.addEventListener('click', closeDestino);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeDestino();
+    });
+  })();
+</script>
+</body>
+</html>
